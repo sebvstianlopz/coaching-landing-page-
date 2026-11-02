@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-02T23:51:07.439Z",
+        "reason": "Claude triage: flagged elements are full-bleed bands (method, FAQ bands, CTA band, FAQ heading) using the page's 16-24px side margin per the Taste layout rule, plus the nav tab whose links are vertically centred in a 48px bar; inset checked in renders at 390/768/1440"
+      }
+    ]
+  }
+}
