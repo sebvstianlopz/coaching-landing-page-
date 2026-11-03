@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T00:30:00Z",
+  "title": "Design System: Jan Medina · Coaching híbrido",
+  "extensions": {
+    "colorMeta": {
+      "sea-mist": { "role": "neutral", "displayName": "Sea Mist", "canonical": "#eef1ee", "cssVar": "--bg", "tonalRamp": ["#1d221e", "#343b36", "#4e5650", "#6b746d", "#8b938d", "#adb4ae", "#d0d6d1", "#eef1ee"] },
+      "mist-surface": { "role": "neutral", "displayName": "Mist Surface", "canonical": "#e1e7e2", "cssVar": "--surface", "tonalRamp": ["#1b211c", "#323a34", "#4b554d", "#68736a", "#88938a", "#aab4ac", "#cbd4cd", "#e1e7e2"] },
+      "mist-surface-deep": { "role": "neutral", "displayName": "Deep Mist", "canonical": "#cfd8d1", "cssVar": "--surface-2", "tonalRamp": ["#19201b", "#303a32", "#48554b", "#647368", "#839387", "#a5b3a8", "#cfd8d1", "#e9eeea"] },
+      "yunque-ink": { "role": "neutral", "displayName": "Yunque Ink", "canonical": "#141a16", "cssVar": "--ink", "tonalRamp": ["#141a16", "#2a332d", "#434d46", "#5e6961", "#7d877f", "#9fa8a1", "#c4cbc6", "#e8ece9"] },
+      "moss-muted": { "role": "neutral", "displayName": "Moss Muted", "canonical": "#4f5a53", "cssVar": "--muted", "tonalRamp": ["#181d1a", "#2d3530", "#4f5a53", "#66726a", "#828d86", "#a3aca6", "#c6cdc8", "#e7ebe8"] },
+      "yunque-green": { "role": "primary", "displayName": "El Yunque Green", "canonical": "#2f4a36", "cssVar": "--accent", "tonalRamp": ["#111c14", "#1f3225", "#2f4a36", "#46644d", "#628168", "#86a08a", "#b0c4b3", "#dde7de"] },
+      "yunque-green-press": { "role": "primary", "displayName": "Pressed Yunque", "canonical": "#233a2a", "cssVar": "--accent-press", "tonalRamp": ["#0f1a12", "#1a2e20", "#233a2a", "#3c5843", "#587660", "#7d9882", "#a9bfad", "#dae5dc"] },
+      "accent-ink": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "cssVar": "--accent-ink", "tonalRamp": ["#1a1a1a", "#383838", "#585858", "#7a7a7a", "#9c9c9c", "#bfbfbf", "#e2e2e2", "#ffffff"] },
+      "forest-panel": { "role": "primary", "displayName": "Forest Panel", "canonical": "#24382b", "cssVar": "--field-dark", "tonalRamp": ["#101a13", "#1a2a1f", "#24382b", "#3b5443", "#57725e", "#7c957f", "#a9bdac", "#dbe5dc"] },
+      "forest-panel-ink": { "role": "neutral", "displayName": "Sea Mist on Forest", "canonical": "#eef1ee", "cssVar": "--field-dark-ink", "tonalRamp": ["#1d221e", "#343b36", "#4e5650", "#6b746d", "#8b938d", "#adb4ae", "#d0d6d1", "#eef1ee"] },
+      "soft-on-forest": { "role": "neutral", "displayName": "Soft Fern", "canonical": "#c7d3ca", "cssVar": "--soft-on-dark", "tonalRamp": ["#18201a", "#2f3b32", "#47574b", "#637567", "#829486", "#a4b4a8", "#c7d3ca", "#e8eee9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "cssVar": "--step-display", "purpose": "The hero headline only, broken into deliberate lines." },
+      "headline": { "displayName": "Headline", "cssVar": "--step-head", "purpose": "Section titles; also large figures, footer menu links and the slider's sample words, all at weight 300." },
+      "title": { "displayName": "Title", "cssVar": "--step-lead", "purpose": "Sub-heads inside the panel and transformation case names." },
+      "lead": { "displayName": "Lead", "cssVar": "--step-lead", "purpose": "Hero supporting line, quotes, FAQ questions, fact lists and slider remarks." },
+      "body": { "displayName": "Body", "cssVar": "--step-body", "purpose": "Running copy, kept to 34 to 46ch. Buttons use this step at weight 500." },
+      "label": { "displayName": "Label", "cssVar": "--step-small", "purpose": "Nav links, small button, captions, slider tags, footer blocks and legal text. Sentence case, no tracking." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for presses, reveals, dock and accordion." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.76, 0, 0.24, 1)", "purpose": "Defined token for symmetric moves." },
+      { "name": "ease-soft", "value": "cubic-bezier(0.33, 1, 0.68, 1)", "purpose": "Photo settles (hero portrait, photo reveals)." },
+      { "name": "t-press", "value": "140ms", "purpose": "Button and knob press scale." },
+      { "name": "t-hover", "value": "180ms", "purpose": "Hover colour and underline changes." },
+      { "name": "t-ui", "value": "240ms", "purpose": "Dock slide, accordion chevron, footer link slide." },
+      { "name": "t-reveal", "value": "800ms", "purpose": "Headline rise on load, staggered 90ms." },
+      { "name": "hero-crossfade", "value": "1600ms ease", "purpose": "Slow crossfade between multiple hero portraits." }
+    ],
+    "breakpoints": [
+      { "name": "desktop", "value": "52em" }
+    ],
+    "layout": {
+      "grid": "12 columns at 52em and above, gutter var(--gutter); single column below.",
+      "darkBlockInset": "0.625rem on phones, 1.25rem on desktop",
+      "archRadius": "999px 999px 0 0 / 46% 46% 0 0"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action: a solid El Yunque pill reading 'Agenda por WhatsApp'.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Agenda por WhatsApp</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: var(--accent, #2f4a36); color: var(--accent-ink, #ffffff); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); text-decoration: none; white-space: nowrap; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn:hover { background: var(--accent-press, #233a2a); } .ds-btn:active { transform: scale(0.97); background: var(--accent-press, #233a2a); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #2f4a36); outline-offset: 3px; }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Sea-mist pill used only on forest-green grounds.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-light\" href=\"#\">Agenda por WhatsApp</a></div>",
+      "css": ".ds-dark { background: var(--field-dark, #24382b); padding: 1.5rem; border-radius: 16px; } .ds-btn-light { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: var(--field-dark-ink, #eef1ee); color: var(--ink, #141a16); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); text-decoration: none; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn-light:hover { background: #ffffff; } .ds-btn-light:active { transform: scale(0.97); background: #ffffff; } .ds-btn-light:focus-visible { outline: 2px solid var(--field-dark-ink, #eef1ee); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "button-small",
+      "description": "Wordmark and quiet links top left, the one solid small pill top right.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-left\"><a class=\"ds-wordmark\" href=\"#\">Jan Medina</a><nav class=\"ds-nav-links\"><a href=\"#\">Resultados</a><a href=\"#\">Cómo empezamos</a><a href=\"#\">Preguntas</a></nav></div><a class=\"ds-btn-sm\" href=\"#\">WhatsApp</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--bg, #eef1ee); color: var(--ink, #141a16); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-nav-left { display: flex; align-items: center; gap: 2.25rem; } .ds-wordmark { font-weight: 500; letter-spacing: -0.01em; text-decoration: none; color: inherit; } .ds-nav-links { display: flex; gap: 1.75rem; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); } .ds-nav-links a { color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.25em; text-decoration-thickness: 1px; transition: text-decoration-color 180ms ease; } .ds-nav-links a:hover { text-decoration-color: currentColor; } .ds-btn-sm { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.2rem; border-radius: 999px; background: var(--accent, #2f4a36); color: var(--accent-ink, #ffffff); font-weight: 500; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); text-decoration: none; transition: background-color 180ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-sm:hover { background: var(--accent-press, #233a2a); } .ds-btn-sm:active { transform: scale(0.97); } .ds-nav a:focus-visible { outline: 2px solid var(--accent, #2f4a36); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Photo Frame (empty slot)",
+      "kind": "card",
+      "refersTo": "photo-frame",
+      "description": "The base unit of the wall: 16px frame in a surface tone, labelled with its slot until the photo exists.",
+      "html": "<figure class=\"ds-photo\" data-slot=\"Retrato de Jan · vertical 4:5 · jan-retrato.webp\"></figure>",
+      "css": ".ds-photo { position: relative; overflow: hidden; width: 240px; aspect-ratio: 4 / 5; margin: 0; border-radius: 16px; background: var(--surface, #e1e7e2); } .ds-photo::after { content: attr(data-slot); position: absolute; left: 1rem; right: 1rem; bottom: 0.9rem; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); line-height: 1.35; color: var(--muted, #4f5a53); }"
+    },
+    {
+      "name": "Overlapping Print Pair",
+      "kind": "custom",
+      "refersTo": "photo-frame",
+      "description": "A smaller square print overlapping a larger portrait, separated by a tone step, never a shadow.",
+      "html": "<div class=\"ds-pair\"><figure class=\"ds-pair-tall\"></figure><figure class=\"ds-pair-sq\"></figure></div>",
+      "css": ".ds-pair { position: relative; width: 300px; padding: 0 0 2rem; background: var(--bg, #eef1ee); } .ds-pair-tall { margin: 0 0 0 auto; width: 78%; aspect-ratio: 4 / 5; border-radius: 16px; background: var(--surface, #e1e7e2); } .ds-pair-sq { position: relative; z-index: 1; margin: -24% 0 0; width: 42%; aspect-ratio: 1; border-radius: 16px; background: var(--surface-2, #cfd8d1); }"
+    },
+    {
+      "name": "Forest Panel with Arch",
+      "kind": "card",
+      "refersTo": "forest-panel",
+      "description": "The one dark inset block; its photo is arch-masked and cropped by the panel's bottom edge.",
+      "html": "<div class=\"ds-panel\"><h2 class=\"ds-panel-title\">Entrena con alguien que contesta.</h2><p class=\"ds-panel-text\">Check-in por WhatsApp con fotos, cargas y tiempos.</p><figure class=\"ds-arch\"></figure></div>",
+      "css": ".ds-panel { position: relative; display: grid; gap: 1.5rem; overflow: hidden; max-width: 360px; padding: 2.75rem 1.5rem 0; border-radius: 16px; background: var(--field-dark, #24382b); color: var(--field-dark-ink, #eef1ee); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-panel-title { margin: 0; font-weight: 300; font-size: 2rem; line-height: 1.04; letter-spacing: -0.03em; } .ds-panel-text { margin: 0; color: var(--soft-on-dark, #c7d3ca); line-height: 1.55; } .ds-arch { width: 86%; justify-self: center; aspect-ratio: 4 / 5; margin: 0 0 -22%; border-radius: 999px 999px 0 0 / 46% 46% 0 0; background: var(--accent, #2f4a36); }"
+    },
+    {
+      "name": "Before/After Slider",
+      "kind": "custom",
+      "refersTo": "slider-knob",
+      "description": "Signature interaction: drag, touch or keyboard to pull apart before and after. Shown in its sample state.",
+      "html": "<figure class=\"ds-ba\"><div class=\"ds-ba-layer ds-ba-after\"><span>Después</span></div><div class=\"ds-ba-layer ds-ba-before\"><span>Antes</span></div><span class=\"ds-ba-handle\"><span class=\"ds-ba-knob\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M9 6 3 12l6 6zM15 6l6 6-6 6z\" fill=\"currentColor\"/></svg></span></span></figure>",
+      "css": ".ds-ba { position: relative; overflow: hidden; width: 280px; aspect-ratio: 4 / 5; margin: 0; border-radius: 16px; background: var(--surface-2, #cfd8d1); cursor: ew-resize; font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-ba-layer { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1.25rem; font-size: 2rem; font-weight: 300; letter-spacing: -0.03em; line-height: 1; } .ds-ba-after { background: var(--accent, #2f4a36); color: var(--accent-ink, #ffffff); justify-content: flex-end; } .ds-ba-before { background: var(--surface-2, #cfd8d1); color: var(--ink, #141a16); clip-path: inset(0 50% 0 0); } .ds-ba-handle { position: absolute; inset: 0; z-index: 3; pointer-events: none; transform: translateX(50%); } .ds-ba-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: #fff; } .ds-ba-knob { position: absolute; top: 50%; left: 0; width: 3.25rem; height: 3.25rem; margin: -1.625rem 0 0 -1.625rem; display: grid; place-items: center; border-radius: 50%; background: #fff; color: var(--ink, #141a16); transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-ba:hover .ds-ba-knob { transform: scale(1.06); } .ds-ba:active .ds-ba-knob { transform: scale(0.9); } .ds-ba:focus-within { outline: 2px solid var(--accent, #2f4a36); outline-offset: 4px; }"
+    },
+    {
+      "name": "Slider Tag",
+      "kind": "chip",
+      "refersTo": "slider-tag",
+      "description": "Ink pill marking Antes/Después on real transformation photos.",
+      "html": "<span class=\"ds-tag\">Antes</span> <span class=\"ds-tag\">Después</span>",
+      "css": ".ds-tag { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--ink, #141a16); color: #fff; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); line-height: 1.3; }"
+    },
+    {
+      "name": "Quote Card",
+      "kind": "card",
+      "refersTo": "quote-card",
+      "description": "Client quote on a mist-surface frame, lead type with a muted caption.",
+      "html": "<figure class=\"ds-quote\"><blockquote><p>Texto de la cita del cliente.</p></blockquote><figcaption>Nombre, detalle</figcaption></figure>",
+      "css": ".ds-quote { display: grid; gap: 1.25rem; max-width: 26rem; margin: 0; padding: 1.75rem; border-radius: 16px; background: var(--surface, #e1e7e2); color: var(--ink, #141a16); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-quote blockquote, .ds-quote p { margin: 0; } .ds-quote p { font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); line-height: 1.4; } .ds-quote figcaption { font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); color: var(--muted, #4f5a53); }"
+    },
+    {
+      "name": "FAQ Accordion",
+      "kind": "custom",
+      "description": "Divider-free disclosure rows with a drawn two-stroke chevron.",
+      "html": "<div class=\"ds-acc\"><details open><summary>¿Es online o en persona?</summary><p>Las dos. Lo decides en la llamada.</p></details><details><summary>¿Necesito experiencia?</summary><p>No. El plan empieza donde estás hoy.</p></details></div>",
+      "css": ".ds-acc { display: grid; gap: 0.5rem; max-width: 30rem; color: var(--ink, #141a16); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-acc details { padding: 0.25rem 0; } .ds-acc summary { position: relative; display: flex; align-items: center; min-height: 2.75rem; padding-right: 2.5rem; font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); cursor: pointer; list-style: none; } .ds-acc summary::-webkit-details-marker { display: none; } .ds-acc summary::before, .ds-acc summary::after { content: ''; position: absolute; right: 0.4rem; top: 50%; width: 0.6rem; height: 2px; background: currentColor; border-radius: 2px; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-acc summary::before { right: calc(0.4rem + 0.42rem); transform: rotate(45deg); } .ds-acc summary::after { transform: rotate(-45deg); } .ds-acc details[open] summary::before { transform: rotate(-45deg); } .ds-acc details[open] summary::after { transform: rotate(45deg); } .ds-acc summary:focus-visible { outline: 2px solid var(--accent, #2f4a36); outline-offset: 3px; border-radius: 4px; } .ds-acc p { margin: 0; max-width: 46ch; padding: 0.25rem 2.5rem 1rem 0; line-height: 1.55; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Daylight Print Wall",
+    "overview": "The page is a pale wall in morning light with photographs hung on it. Prints come in different sizes and aspect ratios (4:5, 3:4, 1:1, 16:10), sit off-centre on a 12-column grid, and some overlap their neighbours the way prints pinned to a wall do. The ground is a cool sea-mist neutral. A single deep forest green does all the accent work, and photographs of sea, sky and training supply the rest of the colour. Type is Hanken Grotesk: very large at weight 300 in sentence case, with small text kept quiet.\n\nDensity is low and the air is generous. Section gaps run up to 13rem, copy blocks stay narrow (22 to 46ch), and each viewport holds one idea. Depth comes from overlap and tonal steps, never from shadow. The one dark moment is a forest-green inset panel; the closing band and its button echo it.\n\nThe world rejects the category default for fitness pages: a dark gym page with red glow, stat cards and icon tiles.",
+    "keyCharacteristics": [
+      "Light, cool, calm ground; one green accent; colour comes from photographs.",
+      "Light-weight display type at very large sizes, sentence case, tight negative tracking.",
+      "Every photo and panel uses the same soft 16px corner; every button is a pill.",
+      "Photos hang at uneven sizes and overlap; neighbouring frames differ in size or ratio.",
+      "Flat surfaces, separated by tone steps instead of borders or shadows.",
+      "The before/after slider is the signature interaction."
+    ],
+    "rules": [
+      { "name": "The One Green Rule", "body": "El Yunque green is the only hue in the system that is not neutral. A second accent colour is never added; photographs supply colour.", "section": "colors" },
+      { "name": "The Tone-Step Rule", "body": "Neighbouring surfaces separate by stepping down the mist ramp (sea-mist, mist-surface, mist-surface-deep), never with a border.", "section": "colors" },
+      { "name": "The Light-at-Scale Rule", "body": "Headings at headline size and above are weight 300 with negative tracking. Weight 500 is for buttons, the wordmark and inline emphasis only.", "section": "typography" },
+      { "name": "The Sentence-Case Rule", "body": "No uppercase labels or tracked-out small caps anywhere. Small text stays quiet: small step, regular weight, muted or ink colour.", "section": "typography" },
+      { "name": "The Pinned-Print Rule", "body": "When a surface needs to read as in front of another, overlap it and step its tone. Never add a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the 16px frame radius on every photo, panel, card and slider frame, and full pills for every button and tag.",
+      "Do hang photos at uneven widths and mixed aspect ratios (4:5, 3:4, 1:1, 16:10), overlapping a smaller print onto a larger one with negative margins.",
+      "Do separate surfaces by stepping the mist ramp (sea-mist, mist-surface, mist-surface-deep).",
+      "Do set headings at weight 300 in sentence case with negative tracking (-0.03em to -0.035em).",
+      "Do keep El Yunque green for actions, focus, selection and the single forest panel.",
+      "Do inset dark blocks from the viewport (0.625rem on phones, 1.25rem on desktop) so they read as framed.",
+      "Do keep labelled empty photo frames working until real photos exist."
+    ],
+    "donts": [
+      "Don't add `box-shadow` or glow to any surface; overlap and tone carry depth.",
+      "Don't add borders, hairline dividers or rules between sections, cards or FAQ rows. Functional strokes (the slider divider, the chevron, link underlines) are the only lines.",
+      "Don't introduce a second accent hue, a red glow or a dark full-page theme.",
+      "Don't use uppercase or letter-spaced labels, eyebrows above headings, or stat cards and icon tiles.",
+      "Don't repeat the arch outside the forest panel; it appears once.",
+      "Don't use weights other than 300, 400 and 500, or a family other than Hanken Grotesk."
+    ]
+  }
+}
