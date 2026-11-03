@@ -8,17 +8,22 @@
 
 /* ---------- tokens ---------- */
 :root {
-  --bg: #eef1ee;            /* bruma de mar por la mañana */
-  --surface: #e1e7e2;       /* un paso más oscuro */
-  --surface-2: #cfd8d1;
-  --ink: #141a16;           /* casi negro, verde de El Yunque */
-  --muted: #4f5a53;
-  --accent: #2f4a36;        /* verde profundo: botones y un panel */
-  --accent-ink: #ffffff;
-  --accent-press: #233a2a;
-  --field-dark: #24382b;
-  --field-dark-ink: #eef1ee;
-  --soft-on-dark: #c7d3ca;
+  --bg: #eef3f5;            /* bruma de mar por la mañana */
+  --surface: #e1eaef;       /* un paso más oscuro */
+  --surface-2: #cfdde5;
+  --ink: #121a1f;           /* casi negro, azul de noche */
+  --muted: #4b5962;
+  --white: #ffffff;
+  --accent: #5fb8e6;        /* azul cielo: botones */
+  --accent-ink: #121a1f;    /* texto sobre el azul cielo */
+  --accent-press: #46a6d8;
+  --focus: #1f6f98;         /* anillo de foco, contraste 3:1 o más */
+  --field-sky: #a9dcf2;     /* el panel: cielo de Puerto Rico */
+  --field-sky-ink: #121a1f;
+  --soft-on-sky: #26414f;
+  --field-dark: #1d4d68;    /* fondo de la banda final si falta la foto */
+  --field-dark-ink: #eef3f5;
+  --soft-on-dark: #c9dde8;
 
   --font: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
@@ -54,8 +59,8 @@ button { font: inherit; color: inherit; }
 a { color: inherit; touch-action: manipulation; }
 :target { scroll-margin-top: 1.5rem; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-.panel :focus-visible, .close :focus-visible { outline-color: var(--field-dark-ink); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+.close :focus-visible { outline-color: var(--field-dark-ink); }
 [hidden] { display: none !important; }
 
 /* ---------- type ---------- */
@@ -78,14 +83,14 @@ strong { font-weight: 500; }
 }
 .button:active { transform: scale(0.97); background: var(--accent-press); }
 .button-small { min-height: 2.75rem; padding: 0 1.2rem; font-size: var(--step-small); }
-.button-light { background: var(--field-dark-ink); color: var(--ink); }
-.button-light:active { background: var(--accent-ink); }
+.button-light { background: var(--white); color: var(--ink); }
+.button-light:active { background: var(--surface); }
 .link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.25em; text-decoration-thickness: 1px; transition: text-decoration-color var(--t-hover) ease, opacity var(--t-hover) ease; }
 .link-plain { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; transition: opacity var(--t-hover) ease; }
 .link:active, .link-plain:active { opacity: 0.6; transition-duration: 0ms; }
 @media (hover: hover) and (pointer: fine) {
   .button:hover { background: var(--accent-press); }
-  .button-light:hover { background: var(--accent-ink); }
+  .button-light:hover { background: var(--surface); }
   .link:hover { text-decoration-color: currentColor; }
   .link-plain:hover { opacity: 0.7; }
 }
@@ -124,22 +129,20 @@ strong { font-weight: 500; }
 
 /* ---------- panel: por qué Jan ---------- */
 .panel-wrap { padding: var(--gap-section) 0.625rem 0; }
-.panel { position: relative; display: grid; gap: 2.5rem; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); padding: 2.75rem 1.5rem 0; }
+.panel { position: relative; display: grid; gap: 2.5rem; overflow: hidden; border-radius: var(--radius); background: var(--field-sky); color: var(--field-sky-ink); padding: 2.75rem 1.5rem 1.5rem; }
 .panel-title { max-width: 22ch; }
 .panel-text { display: grid; gap: 2rem; align-content: start; }
 .panel-block { display: grid; gap: 0.6rem; max-width: 34ch; }
-.panel-block p { color: var(--soft-on-dark); }
+.panel-block p { color: var(--soft-on-sky); }
 .panel-text .button { justify-self: start; margin-top: 0.5rem; }
-/* El arco: las ventanas y puertas del Viejo San Juan. */
-.panel-photo { width: 86%; justify-self: center; aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0 / 46% 46% 0 0; margin-bottom: -22%; background: var(--accent); }
-.panel-photo.is-empty::after { color: var(--soft-on-dark); bottom: 30%; text-align: center; }
+.panel-photo { width: 100%; aspect-ratio: 1180 / 1469; background: var(--surface-2); }
 @media (min-width: 52em) {
   .panel-wrap { padding-inline: 1.25rem; }
-  .panel { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr; column-gap: var(--gutter); min-height: 110svh; padding: 3.5rem calc(var(--margin) - 1.25rem) 0; }
+  .panel { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr; column-gap: var(--gutter); padding: 3.5rem calc(var(--margin) - 1.25rem); }
   .panel-title { grid-column: 1 / 7; grid-row: 1; }
   .panel-text { grid-column: 8 / 12; grid-row: 1 / 3; gap: 4rem; padding-top: 0.5rem; }
   .panel-block { max-width: 300px; }
-  .panel-photo { grid-column: 1 / 6; grid-row: 2; width: 100%; justify-self: start; align-self: end; margin-top: 3rem; margin-bottom: -16%; }
+  .panel-photo { grid-column: 1 / 6; grid-row: 2; width: 100%; justify-self: start; align-self: end; margin-top: 3rem; }
 }
 
 /* ---------- resultados ---------- */
@@ -192,17 +195,17 @@ strong { font-weight: 500; }
 .ba-sample { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1.25rem; font-size: min(var(--step-head), 11cqi); font-weight: 300; letter-spacing: -0.03em; line-height: 1; }
 .ba-before .ba-sample { background: var(--surface-2); color: var(--ink); }
 .ba-after .ba-sample { background: var(--accent); color: var(--accent-ink); justify-content: flex-end; }
-.ba-tag { position: absolute; top: 0.9rem; z-index: 2; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--ink); color: var(--accent-ink); font-size: var(--step-small); line-height: 1.3; pointer-events: none; }
+.ba-tag { position: absolute; top: 0.9rem; z-index: 2; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--ink); color: var(--white); font-size: var(--step-small); line-height: 1.3; pointer-events: none; }
 .ba-tag-before { left: 0.9rem; }
 .ba-tag-after { right: 0.9rem; }
 .case.is-sample .ba-tag { display: none; }
 .ba-handle { position: absolute; inset: 0; z-index: 3; pointer-events: none; transform: translateX(50%); }
-.ba-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: var(--accent-ink); }
+.ba-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: var(--white); }
 .ba-knob { position: absolute; top: 50%; left: 0; width: 3.25rem; height: 3.25rem; margin: -1.625rem 0 0 -1.625rem; display: grid; place-items: center; border-radius: 50%; background: var(--accent-ink); color: var(--ink); transition: transform var(--t-press) var(--ease-out); }
 .ba.is-dragging .ba-knob { transform: scale(0.9); }
 @media (hover: hover) and (pointer: fine) { .ba:hover .ba-knob { transform: scale(1.06); } .ba.is-dragging .ba-knob { transform: scale(0.92); } }
 .ba-range { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.ba:focus-within { outline: 2px solid var(--accent); outline-offset: 4px; }
+.ba:focus-within { outline: 2px solid var(--focus); outline-offset: 4px; }
 
 /* ---------- números ---------- */
 .numbers { display: grid; gap: 3rem; padding: var(--gap-section) var(--margin) 0; }
@@ -262,7 +265,7 @@ strong { font-weight: 500; }
 .close { position: relative; margin: var(--gap-section) 0.625rem 0; min-height: 80svh; display: grid; align-items: end; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); }
 .close-photo { position: absolute; inset: 0; border-radius: 0; background: transparent; }
 .close-photo.is-empty::after { color: var(--soft-on-dark); top: 1rem; bottom: auto; }
-.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(20, 26, 22, 0.8), rgba(20, 26, 22, 0.5) 45%, rgba(20, 26, 22, 0) 85%); } /* taste-skill-ignore: neutral scrim under text on a photo */
+.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(18, 26, 31, 0.8), rgba(18, 26, 31, 0.5) 45%, rgba(18, 26, 31, 0) 85%); } /* taste-skill-ignore: neutral scrim under text on a photo */
 .close-copy { position: relative; z-index: 2; display: grid; gap: 1.25rem; padding: 2rem 1.5rem 2.25rem; max-width: 36rem; }
 .close-copy .button { justify-self: start; margin-top: 0.5rem; }
 @media (min-width: 52em) {

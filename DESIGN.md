@@ -1,18 +1,23 @@
 ---
 name: Jan Medina · Coaching híbrido
-description: A calm daylight gallery wall for a hybrid training coach; one deep green, light type, photographs carry the colour.
+description: A calm daylight gallery wall for a hybrid training coach; one sky blue, light type, photographs carry the colour.
 colors:
-  sea-mist: "#eef1ee"
-  mist-surface: "#e1e7e2"
-  mist-surface-deep: "#cfd8d1"
-  yunque-ink: "#141a16"
-  moss-muted: "#4f5a53"
-  yunque-green: "#2f4a36"
-  yunque-green-press: "#233a2a"
-  accent-ink: "#ffffff"
-  forest-panel: "#24382b"
-  forest-panel-ink: "#eef1ee"
-  soft-on-forest: "#c7d3ca"
+  sea-mist: "#eef3f5"
+  mist-surface: "#e1eaef"
+  mist-surface-deep: "#cfdde5"
+  night-ink: "#121a1f"
+  slate-muted: "#4b5962"
+  sky-blue: "#5fb8e6"
+  sky-blue-press: "#46a6d8"
+  accent-ink: "#121a1f"
+  white: "#ffffff"
+  focus-ring: "#1f6f98"
+  sky-panel: "#a9dcf2"
+  sky-panel-ink: "#121a1f"
+  closing-deep: "#1d4d68"
+  closing-ink: "#eef3f5"
+  soft-on-closing: "#c9dde8"
+  soft-on-sky: "#26414f"
 typography:
   display:
     fontFamily: "Hanken Grotesk, system-ui, -apple-system, Segoe UI, sans-serif"
@@ -57,56 +62,56 @@ spacing:
   section: "clamp(7rem, 14vw, 13rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.yunque-green}"
+    backgroundColor: "{colors.sky-blue}"
     textColor: "{colors.accent-ink}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "0 1.6rem"
     height: "3.25rem"
   button-primary-hover:
-    backgroundColor: "{colors.yunque-green-press}"
+    backgroundColor: "{colors.sky-blue-press}"
     textColor: "{colors.accent-ink}"
   button-small:
-    backgroundColor: "{colors.yunque-green}"
+    backgroundColor: "{colors.sky-blue}"
     textColor: "{colors.accent-ink}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "0 1.2rem"
     height: "2.75rem"
   button-light:
-    backgroundColor: "{colors.forest-panel-ink}"
-    textColor: "{colors.yunque-ink}"
+    backgroundColor: "{colors.sky-panel-ink}"
+    textColor: "{colors.night-ink}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "0 1.6rem"
     height: "3.25rem"
   button-light-hover:
     backgroundColor: "{colors.accent-ink}"
-    textColor: "{colors.yunque-ink}"
+    textColor: "{colors.night-ink}"
   photo-frame:
     backgroundColor: "{colors.mist-surface}"
-    textColor: "{colors.moss-muted}"
+    textColor: "{colors.slate-muted}"
     rounded: "{rounded.frame}"
-  forest-panel:
-    backgroundColor: "{colors.forest-panel}"
-    textColor: "{colors.forest-panel-ink}"
+  sky-panel:
+    backgroundColor: "{colors.sky-panel}"
+    textColor: "{colors.sky-panel-ink}"
     rounded: "{rounded.frame}"
     padding: "2.75rem 1.5rem 0"
   quote-card:
     backgroundColor: "{colors.mist-surface}"
-    textColor: "{colors.yunque-ink}"
+    textColor: "{colors.night-ink}"
     typography: "{typography.lead}"
     rounded: "{rounded.frame}"
     padding: "1.75rem"
   slider-tag:
-    backgroundColor: "{colors.yunque-ink}"
+    backgroundColor: "{colors.night-ink}"
     textColor: "{colors.accent-ink}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "0.3rem 0.75rem"
   slider-knob:
     backgroundColor: "{colors.accent-ink}"
-    textColor: "{colors.yunque-ink}"
+    textColor: "{colors.night-ink}"
     rounded: "{rounded.pill}"
     size: "3.25rem"
 ---
@@ -117,14 +122,14 @@ components:
 
 **Creative North Star: "The Daylight Print Wall"**
 
-The page is a pale wall in morning light with photographs hung on it. Prints come in different sizes and aspect ratios (4:5, 3:4, 1:1, 16:10), sit off-centre on a 12-column grid, and some overlap their neighbours the way prints pinned to a wall do. The ground is a cool sea-mist neutral. A single deep forest green does all the accent work, and photographs of sea, sky and training supply the rest of the colour. Type is Hanken Grotesk: very large at weight 300 in sentence case, with small text kept quiet.
+The page is a pale wall in morning light with photographs hung on it. Prints come in different sizes and aspect ratios (4:5, 3:4, 1:1, 16:10), sit off-centre on a 12-column grid, and some overlap their neighbours the way prints pinned to a wall do. The ground is a cool sea-mist neutral. A single sky blue does all the accent work, and photographs of sea, sky and training supply the rest of the colour. Type is Hanken Grotesk: very large at weight 300 in sentence case, with small text kept quiet.
 
-Density is low and the air is generous. Section gaps run up to 13rem, copy blocks stay narrow (22 to 46ch), and each viewport holds one idea. Depth comes from overlap and tonal steps, never from shadow. The one dark moment is a forest-green inset panel; the closing band and its button echo it.
+Density is low and the air is generous. Section gaps run up to 13rem, copy blocks stay narrow (22 to 46ch), and each viewport holds one idea. Depth comes from overlap and tonal steps, never from shadow. The one dark moment is a sky-blue inset panel; the closing band and its button echo it.
 
 The world rejects the category default for fitness pages: a dark gym page with red glow, stat cards and icon tiles.
 
 **Key Characteristics:**
-- Light, cool, calm ground; one green accent; colour comes from photographs.
+- Light, cool, calm ground; one sky-blue accent; colour comes from photographs.
 - Light-weight display type at very large sizes, sentence case, tight negative tracking.
 - Every photo and panel uses the same soft 16px corner; every button is a pill.
 - Photos hang at uneven sizes and overlap; neighbouring frames differ in size or ratio.
@@ -133,23 +138,24 @@ The world rejects the category default for fitness pages: a dark gym page with r
 
 ## Colors
 
-A cool, low-chroma green-grey family on a pale ground, with one saturated-enough deep green and a near-black ink that leans green.
+A cool, low-chroma blue-grey family on a pale ground, with one clear sky blue and a near-black ink that leans blue.
 
 ### Primary
-- **El Yunque Green** (yunque-green): the only accent. Fills primary pill buttons, the active side of a sample before/after, the arch photo's empty ground, text selection and the focus outline. Never used for large text or decoration.
-- **Pressed Yunque** (yunque-green-press): hover and active state for primary buttons only.
-- **Forest Panel** (forest-panel): the ground of the one inset dark panel and of the closing band. Its ink is the sea-mist ground colour (forest-panel-ink), and secondary text on it uses Soft Fern (soft-on-forest).
+- **Sky Blue** (sky-blue): the only accent. Fills primary pill buttons, the active side of a sample before/after, text selection and the focus outline. Never used for large text or decoration.
+- **Pressed Sky** (sky-blue-press): hover and active state for primary buttons only.
+- **Sky Panel** (sky-panel): the ground of the one inset dark panel and of the closing band. Its ink is the sea-mist ground colour (sky-panel-ink), and secondary text on it uses Soft Slate (soft-on-sky).
 
 ### Neutral
 - **Sea Mist** (sea-mist): page background and theme colour; also the light button fill on dark grounds.
 - **Mist Surface** (mist-surface): one step darker. Used for empty photo frames, the quote card, the FAQ band and the footer side.
 - **Deep Mist** (mist-surface-deep): two steps darker. Used for the before/after ground, the "before" sample side, and the second photo in a stacked pair, so an overlapping frame reads apart from the one under it.
-- **Yunque Ink** (yunque-ink): all body and heading text on light grounds; also the fill of the slider's Antes/Después tags.
-- **Moss Muted** (moss-muted): captions, figure descriptions, legal text and the labels inside empty photo slots.
-- **White** (accent-ink): text on green buttons, the slider divider and knob, and the hover state of the light button.
+- **Night Ink** (night-ink): all body and heading text on light grounds; also the fill of the slider's Antes/Después tags.
+- **Slate Muted** (slate-muted): captions, figure descriptions, legal text and the labels inside empty photo slots.
+- **Night Ink on accent** (accent-ink): text on sky-blue buttons. **White** (white): the light button, slider divider and knob, and slider tags' text.
+- **Focus Ring** (focus-ring): a deeper sky blue for focus outlines, so focus keeps 3:1 contrast on the pale ground.
 
 ### Named Rules
-**The One Green Rule.** El Yunque green is the only hue in the system that is not neutral. A second accent colour is never added; photographs supply colour.
+**The One Sky Rule.** Sky blue is the only hue in the system that is not neutral. A second accent colour is never added; photographs supply colour.
 
 **The Tone-Step Rule.** Neighbouring surfaces separate by stepping down the mist ramp (sea-mist, mist-surface, mist-surface-deep), never with a border.
 
@@ -179,7 +185,7 @@ The build defines five fluid size steps as tokens. Display, headline and lead sh
 
 Mobile first, with one breakpoint at 52em. Below it, sections stack in one column inside a fluid side margin, and photos stagger by width (100%, 62%, 78%, 70%) and alternate left and right alignment. At 52em and above, every section becomes a 12-column grid with a fluid gutter, and photos and copy take uneven column spans (for example a 4:5 portrait across columns 7 to 11 with a square print across 2 to 4).
 
-Overlap is a layout tool. It comes from negative margins (the hero square crosses the portrait's lower-left corner on desktop and overlaps it on phones, the arch photo drops off the panel's bottom edge). Client before-and-afters hang as plain, tall collage prints at alternating heights; the before/after slider remains in the code only for entries given as separate before and after photos. In "Cómo empezamos" a single photo is pinned (`position: sticky`) beside the steps instead of overlapping.
+Overlap is a layout tool. It comes from negative margins (the hero square crosses the portrait's lower-left corner on desktop and overlaps it on phones). Client before-and-afters hang as plain, tall collage prints at alternating heights; the before/after slider remains in the code only for entries given as separate before and after photos. In "Cómo empezamos" a single photo is pinned (`position: sticky`) beside the steps instead of overlapping.
 
 Rhythm: sections are separated by the section-gap token (7 to 13rem). Inside sections, gaps step through 0.75, 1.25, 1.75, 2.5 and 3.5 to 4.5rem. The two dark blocks (panel and closing band) are inset from the viewport by 0.625rem on phones and 1.25rem on desktop, so they read as framed prints rather than full-bleed bands. The closing photo is the only full-bleed image. The FAQ and the footer are text only, on the Mist Surface tone.
 
@@ -196,8 +202,6 @@ The system is flat: there is no `box-shadow` anywhere. Depth comes from overlapp
 
 One soft corner: photos, the inset panel, the closing band, the quote card and the before/after frame all use the frame radius (16px). Buttons, slider tags and the slider knob are full pills or circles. The focus outline uses a small 4px corner.
 
-The one exception to the frame corner is the arch: inside the forest panel, the main photo has a tall rounded top and a square base (`999px 999px 0 0 / 46% 46% 0 0`), cropped by the panel's bottom edge. It recalls the doors and windows of Old San Juan, appears once, and was confirmed by the user.
-
 The full-bleed closing photo has no corner radius of its own, because it fills a rounded container.
 
 There are no borders or hairline rules. The only drawn lines are functional: the slider's 3px white divider, the 2px chevron strokes on FAQ items, and 1px text-link underlines.
@@ -207,11 +211,11 @@ There are no borders or hairline rules. The only drawn lines are functional: the
 ### Buttons
 Calm, solid pills with a gentle press.
 - **Shape:** full pill (999px), minimum height 3.25rem (2.75rem for the small variant), no border.
-- **Primary:** El Yunque green fill with white text, weight 500, body step, padding 0 1.6rem.
-- **Light:** sea-mist fill with ink text. Used only on forest-green grounds (the panel and the closing band); it turns white on hover.
+- **Primary:** sky blue fill with white text, weight 500, body step, padding 0 1.6rem.
+- **Light:** sea-mist fill with ink text. Used only on sky-blue grounds (the panel and the closing band); it turns white on hover.
 - **Small:** primary styling at the small step, padding 0 1.2rem. Used for the top-right nav action.
-- **Hover / Active:** hover (fine pointers only) darkens to Pressed Yunque in 180ms. Active scales to 0.97 in 140ms on an ease-out curve and darkens.
-- **Focus:** 2px El Yunque outline with a 3px offset, switching to the sea-mist ink on dark grounds.
+- **Hover / Active:** hover (fine pointers only) darkens to Pressed Sky in 180ms. Active scales to 0.97 in 140ms on an ease-out curve and darkens.
+- **Focus:** 2px Focus Ring outline with a 3px offset, switching to the light closing ink on the closing band.
 - **Dock:** on phones, a full-width primary pill fixed to the bottom.
 
 ### Text links
@@ -221,13 +225,13 @@ Calm, solid pills with a gentle press.
 ### Photo frame
 The base unit of the wall.
 - **Corner Style:** frame radius (16px), clipped content, image object-fit cover.
-- **Background:** Mist Surface, or Deep Mist for the smaller print in an overlapping pair, or El Yunque green for the arch.
+- **Background:** Mist Surface, or Deep Mist for the smaller print in an overlapping pair.
 - **Empty state:** until a file exists in `assets/fotos/`, the frame shows its tone with a small muted caption at the bottom naming the slot, aspect ratio and file name. This is a durable state of the system, not a placeholder to style away.
 - **Aspect ratios:** 4:5, 3:4, 1:1 and 16:10, mixed deliberately.
 
-### Forest panel
+### Sky panel
 The one dark inset block.
-- Forest Panel ground, sea-mist ink, frame radius, inset from the viewport edge. Holds a headline, short title-and-body blocks in Soft Fern, a light pill button and the arch photo cropped by its bottom edge. On desktop it is at least 110svh tall.
+- Sky Panel ground, Night Ink text, frame radius, inset from the viewport edge. Holds a headline, short title-and-body blocks in Soft Slate, a light pill button and one whole photo in the standard 16px frame, fully inside the panel.
 - The closing band reuses the same ground and inset, with a full-bleed photo, a neutral scrim and a light pill button.
 
 ### Quote card
@@ -244,8 +248,8 @@ The one dark inset block.
 - A 4:5 frame with the frame radius on a Deep Mist ground. The "after" image fills it, and the "before" image is clipped from the right by `clip-path`.
 - **Handle:** a 3px white vertical divider with a 3.25rem white circular knob holding an inline SVG double chevron in ink. The knob grows to 1.06 on hover and shrinks to 0.9 while dragging.
 - **Tags:** ink pills reading "Antes" and "Después" in the top corners, set in white label type.
-- **Input:** a visually hidden range input drives it, for keyboard and screen readers. The whole frame shows a 2px El Yunque focus outline with a 4px offset. Touch pans vertically and drags horizontally.
-- **Sample state:** without real photos, each side shows a headline-size word on a solid ground (Deep Mist for before, El Yunque for after), and the tags hide.
+- **Input:** a visually hidden range input drives it, for keyboard and screen readers. The whole frame shows a 2px Focus Ring outline with a 4px offset. Touch pans vertically and drags horizontally.
+- **Sample state:** without real photos, each side shows a headline-size word on a solid ground (Deep Mist for before, Sky Blue for after), and the tags hide.
 
 ### Motion
 - Easing tokens: ease-out `cubic-bezier(0.22, 1, 0.36, 1)` for most transitions, ease-soft `cubic-bezier(0.33, 1, 0.68, 1)` for photo settles. Durations: 140ms press, 180ms hover, 240ms UI, 800ms reveal.
@@ -259,7 +263,7 @@ The one dark inset block.
 - **Do** hang photos at uneven widths and mixed aspect ratios (4:5, 3:4, 1:1, 16:10), overlapping a smaller print onto a larger one with negative margins.
 - **Do** separate surfaces by stepping the mist ramp (sea-mist, mist-surface, mist-surface-deep).
 - **Do** set headings at weight 300 in sentence case with negative tracking (-0.03em to -0.035em).
-- **Do** keep El Yunque green for actions, focus, selection and the single forest panel.
+- **Do** keep sky blue for actions, focus, selection and the single sky panel.
 - **Do** inset dark blocks from the viewport (0.625rem on phones, 1.25rem on desktop) so they read as framed.
 - **Do** keep labelled empty photo frames working until real photos exist.
 
@@ -268,5 +272,4 @@ The one dark inset block.
 - **Don't** add borders, hairline dividers or rules between sections, cards or FAQ rows. Functional strokes (the slider divider, the chevron, link underlines) are the only lines.
 - **Don't** introduce a second accent hue, a red glow or a dark full-page theme.
 - **Don't** use uppercase or letter-spaced labels, eyebrows above headings, or stat cards and icon tiles.
-- **Don't** repeat the arch outside the forest panel; it appears once.
 - **Don't** use weights other than 300, 400 and 500, or a family other than Hanken Grotesk.
