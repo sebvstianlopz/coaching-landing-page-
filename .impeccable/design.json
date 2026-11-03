@@ -1,164 +1,494 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-03T00:30:00Z",
+  "generatedAt": "2026-11-03T03:00:00Z",
   "title": "Design System: Jan Medina · Coaching híbrido",
   "extensions": {
     "colorMeta": {
-      "sea-mist": { "role": "neutral", "displayName": "Sea Mist", "canonical": "#eef3f5", "cssVar": "--bg", "tonalRamp": ["#1d221e", "#343b36", "#4e5650", "#6b746d", "#8b938d", "#adb4ae", "#d0d6d1", "#eef3f5"] },
-      "mist-surface": { "role": "neutral", "displayName": "Mist Surface", "canonical": "#e1eaef", "cssVar": "--surface", "tonalRamp": ["#1b211c", "#323a34", "#4b554d", "#68736a", "#88938a", "#aab4ac", "#cbd4cd", "#e1eaef"] },
-      "mist-surface-deep": { "role": "neutral", "displayName": "Deep Mist", "canonical": "#cfdde5", "cssVar": "--surface-2", "tonalRamp": ["#19201b", "#303a32", "#48554b", "#647368", "#839387", "#a5b3a8", "#cfdde5", "#e9eeea"] },
-      "night-ink": { "role": "neutral", "displayName": "Night Ink", "canonical": "#121a1f", "cssVar": "--ink", "tonalRamp": ["#121a1f", "#2a332d", "#434d46", "#5e6961", "#7d877f", "#9fa8a1", "#c4cbc6", "#e8ece9"] },
-      "slate-muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#4b5962", "cssVar": "--muted", "tonalRamp": ["#181d1a", "#2d3530", "#4b5962", "#66726a", "#828d86", "#a3aca6", "#c6cdc8", "#e7ebe8"] },
-      "sky-blue": { "role": "primary", "displayName": "Sky Blue", "canonical": "#5fb8e6", "cssVar": "--accent", "tonalRamp": ["#111c14", "#1f3225", "#5fb8e6", "#46644d", "#628168", "#86a08a", "#b0c4b3", "#dde7de"] },
-      "sky-blue-press": { "role": "primary", "displayName": "Pressed Yunque", "canonical": "#46a6d8", "cssVar": "--accent-press", "tonalRamp": ["#0f1a12", "#1a2e20", "#46a6d8", "#3c5843", "#587660", "#7d9882", "#a9bfad", "#dae5dc"] },
-      "accent-ink": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "cssVar": "--accent-ink", "tonalRamp": ["#1a1a1a", "#383838", "#585858", "#7a7a7a", "#9c9c9c", "#bfbfbf", "#e2e2e2", "#ffffff"] },
-      "sky-panel": { "role": "primary", "displayName": "Sky Panel", "canonical": "#a9dcf2", "cssVar": "--field-dark", "tonalRamp": ["#101a13", "#1a2a1f", "#a9dcf2", "#3b5443", "#57725e", "#7c957f", "#a9bdac", "#dbe5dc"] },
-      "sky-panel-ink": { "role": "neutral", "displayName": "Sea Mist on Forest", "canonical": "#eef3f5", "cssVar": "--field-dark-ink", "tonalRamp": ["#1d221e", "#343b36", "#4e5650", "#6b746d", "#8b938d", "#adb4ae", "#d0d6d1", "#eef3f5"] },
-      "soft-on-sky": { "role": "neutral", "displayName": "Soft Slate", "canonical": "#26414f", "cssVar": "--soft-on-dark", "tonalRamp": ["#18201a", "#2f3b32", "#47574b", "#637567", "#829486", "#a4b4a8", "#26414f", "#e8eee9"] }
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "cssVar": "--bg / --white / --accent-ink",
+        "tonalRamp": [
+          "#0f172a",
+          "#334155",
+          "#64748b",
+          "#cbd5e1",
+          "#e0f2fe",
+          "#f0f9ff",
+          "#f5fafd",
+          "#ffffff"
+        ]
+      },
+      "sky-wash": {
+        "role": "secondary",
+        "displayName": "Sky Wash",
+        "canonical": "#f5fafd",
+        "cssVar": "--surface",
+        "tonalRamp": [
+          "#0f172a",
+          "#334155",
+          "#64748b",
+          "#cbd5e1",
+          "#e0f2fe",
+          "#f0f9ff",
+          "#f5fafd",
+          "#ffffff"
+        ]
+      },
+      "sky-pale": {
+        "role": "secondary",
+        "displayName": "Pale Sky",
+        "canonical": "#e0f2fe",
+        "cssVar": "--sky-pale / --surface-2",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "sky-light": {
+        "role": "secondary",
+        "displayName": "Light Sky",
+        "canonical": "#bae6fd",
+        "cssVar": "--sky-light / --field-sky",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "sky": {
+        "role": "primary",
+        "displayName": "Sky",
+        "canonical": "#38bdf8",
+        "cssVar": "--sky",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "sky-button": {
+        "role": "primary",
+        "displayName": "Button Sky",
+        "canonical": "#0891d1",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0891d1",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "sky-deep": {
+        "role": "primary",
+        "displayName": "Deep Sky",
+        "canonical": "#0284c7",
+        "cssVar": "--accent-press / --focus",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "navy-ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "#0f172a",
+        "cssVar": "--ink / --field-sky-ink / --field-dark",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#334155",
+        "cssVar": "--ink-soft / --soft-on-sky",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "#64748b",
+        "cssVar": "--muted",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "closing-ink": {
+        "role": "neutral",
+        "displayName": "Closing Ink",
+        "canonical": "#f0f9ff",
+        "cssVar": "--field-dark-ink",
+        "tonalRamp": [
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#7dd3fc",
+          "#bae6fd",
+          "#e0f2fe"
+        ]
+      },
+      "soft-on-dark": {
+        "role": "neutral",
+        "displayName": "Soft on Dark",
+        "canonical": "#cbd5e1",
+        "cssVar": "--soft-on-dark",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "cssVar": "--step-display", "purpose": "The hero headline only, broken into deliberate lines." },
-      "headline": { "displayName": "Headline", "cssVar": "--step-head", "purpose": "Section titles; also large figures, footer menu links and the slider's sample words, all at weight 300." },
-      "title": { "displayName": "Title", "cssVar": "--step-lead", "purpose": "Sub-heads inside the panel and transformation case names." },
-      "lead": { "displayName": "Lead", "cssVar": "--step-lead", "purpose": "Hero supporting line, quotes, FAQ questions, fact lists and slider remarks." },
-      "body": { "displayName": "Body", "cssVar": "--step-body", "purpose": "Running copy, kept to 34 to 46ch. Buttons use this step at weight 500." },
-      "label": { "displayName": "Label", "cssVar": "--step-small", "purpose": "Nav links, small button, captions, slider tags, footer blocks and legal text. Sentence case, no tracking." }
+      "display": {
+        "displayName": "Display",
+        "cssVar": "--step-display",
+        "purpose": "The hero headline only, three lines, weight 400. Between 52em and 75em it uses the headline step."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "cssVar": "--step-head",
+        "purpose": "Section titles, number-band figures and footer menu links at 300; hero stats at 500."
+      },
+      "title": {
+        "displayName": "Title",
+        "cssVar": "--step-lead",
+        "purpose": "Panel sub-heads and transformation case names."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "cssVar": "--step-lead",
+        "purpose": "Quotes, FAQ questions, fact list, desktop method steps."
+      },
+      "body": {
+        "displayName": "Body",
+        "cssVar": "--step-body",
+        "purpose": "Running copy, 32 to 52ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "cssVar": "--step-small",
+        "purpose": "Nav links, stat labels, captions, footer blocks, legal. The outline pill uses it at 500."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Every solid and light pill: 700, 19px, white on Button Sky for 3.5:1 large-text contrast."
+      }
     },
     "shadows": [],
+    "gradients": [
+      {
+        "name": "hero-ground",
+        "value": "radial-gradient(60% 48% at 66% 92%, rgba(56, 189, 248, 0.26), rgba(56, 189, 248, 0) 72%), linear-gradient(180deg, #ffffff 0%, #ffffff 40%, #e0f2fe 76%, #bae6fd 100%)",
+        "purpose": "Hero only, client-requested: white fading to pale and light sky with a soft sky glow behind the coach."
+      },
+      {
+        "name": "closing-scrim",
+        "value": "linear-gradient(to top, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.5) 45%, rgba(15, 23, 42, 0) 85%)",
+        "purpose": "Legibility scrim under text on the closing photo."
+      }
+    ],
     "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for presses, reveals, dock and accordion." },
-      { "name": "ease-in-out", "value": "cubic-bezier(0.76, 0, 0.24, 1)", "purpose": "Defined token for symmetric moves." },
-      { "name": "ease-soft", "value": "cubic-bezier(0.33, 1, 0.68, 1)", "purpose": "Photo settles (hero portrait, photo reveals)." },
-      { "name": "t-press", "value": "140ms", "purpose": "Button and knob press scale." },
-      { "name": "t-hover", "value": "180ms", "purpose": "Hover colour and underline changes." },
-      { "name": "t-ui", "value": "240ms", "purpose": "Dock slide, accordion chevron, footer link slide." },
-      { "name": "t-reveal", "value": "800ms", "purpose": "Headline rise on load, staggered 90ms." },
-      { "name": "hero-crossfade", "value": "1600ms ease", "purpose": "Slow crossfade between multiple hero portraits." }
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default easing for presses, reveals, dock, nav underline and accordion."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.76, 0, 0.24, 1)",
+        "purpose": "Scroll-indicator dot loop."
+      },
+      {
+        "name": "ease-soft",
+        "value": "cubic-bezier(0.33, 1, 0.68, 1)",
+        "purpose": "Photo settles and the hero coach entrance."
+      },
+      {
+        "name": "t-press",
+        "value": "140ms",
+        "purpose": "Button press scale."
+      },
+      {
+        "name": "t-hover",
+        "value": "180ms",
+        "purpose": "Hover colour and underline changes."
+      },
+      {
+        "name": "t-ui",
+        "value": "240ms",
+        "purpose": "Dock slide, nav underline, accordion chevron, footer link slide."
+      },
+      {
+        "name": "t-reveal",
+        "value": "800ms",
+        "purpose": "Headline rise on load, staggered 90ms."
+      },
+      {
+        "name": "coach-in",
+        "value": "1200ms ease-soft, 250ms delay, from translateY(36px) scale(1.03)",
+        "purpose": "Hero coach cutout entrance."
+      },
+      {
+        "name": "waves-in",
+        "value": "1600ms ease, 150ms delay",
+        "purpose": "Hero wave lines fade in."
+      },
+      {
+        "name": "wave-drift",
+        "value": "16s and 21s ease-in-out infinite alternate",
+        "purpose": "Slow drift of the two hero wave ribbons."
+      },
+      {
+        "name": "scroll-dot",
+        "value": "2.4s ease-in-out infinite",
+        "purpose": "Hero scroll-indicator dot."
+      }
     ],
     "breakpoints": [
-      { "name": "desktop", "value": "52em" }
+      {
+        "name": "desktop",
+        "value": "52em"
+      },
+      {
+        "name": "hero-wide",
+        "value": "75em",
+        "purpose": "Below this, the hero headline uses the headline step and the coach shifts right."
+      }
     ],
     "layout": {
       "grid": "12 columns at 52em and above, gutter var(--gutter); single column below.",
-      "darkBlockInset": "0.625rem on phones, 1.25rem on desktop",
-      "archRadius": "999px 999px 0 0 / 46% 46% 0 0"
-    }
+      "insetBlocks": "0.625rem on phones, 1.25rem on desktop (sky panel, closing band)"
+    },
+    "lines": [
+      {
+        "name": "outline-pill",
+        "value": "1.5px solid #0f172a"
+      },
+      {
+        "name": "nav-underline",
+        "value": "1.5px #38bdf8, scaleX from left"
+      },
+      {
+        "name": "hero-wave",
+        "value": "1px #38bdf8, non-scaling, opacity 0.22-0.72"
+      },
+      {
+        "name": "hero-divider",
+        "value": "1px rgba(15, 23, 42, 0.28)",
+        "purpose": "Single client-requested rule in the hero."
+      },
+      {
+        "name": "focus-ring",
+        "value": "2px solid #0284c7, offset 3px, radius 4px"
+      }
+    ]
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one action: a solid El Yunque pill reading 'Agenda por WhatsApp'.",
+      "description": "The one action: a Button Sky pill with white bold text.",
       "html": "<a class=\"ds-btn\" href=\"#\">Agenda por WhatsApp</a>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: var(--accent, #5fb8e6); color: var(--accent-ink, #ffffff); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); text-decoration: none; white-space: nowrap; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn:hover { background: var(--accent-press, #46a6d8); } .ds-btn:active { transform: scale(0.97); background: var(--accent-press, #46a6d8); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #5fb8e6); outline-offset: 3px; }"
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border: 0; border-radius: 999px; background: var(--accent, #0891d1); color: var(--accent-ink, #ffffff); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: 0.005em; text-decoration: none; white-space: nowrap; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn:hover { background: var(--accent-press, #0284c7); } .ds-btn:active { transform: scale(0.97); background: var(--accent-press, #0284c7); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; }"
+    },
+    {
+      "name": "Hero Call-to-Action",
+      "kind": "button",
+      "refersTo": "button-cta",
+      "description": "The primary pill one size up, under the hero headline.",
+      "html": "<a class=\"ds-btn ds-btn-cta\" href=\"#\">Agenda una consulta</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border: 0; border-radius: 999px; background: var(--accent, #0891d1); color: var(--accent-ink, #ffffff); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: 0.005em; text-decoration: none; white-space: nowrap; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn:hover { background: var(--accent-press, #0284c7); } .ds-btn:active { transform: scale(0.97); background: var(--accent-press, #0284c7); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; } .ds-btn-cta { min-height: 3.5rem; padding: 0 1.9rem; }"
     },
     {
       "name": "Light Button",
       "kind": "button",
       "refersTo": "button-light",
-      "description": "Sea-mist pill used only on sky-blue grounds.",
-      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-light\" href=\"#\">Agenda por WhatsApp</a></div>",
-      "css": ".ds-dark { background: var(--field-dark, #a9dcf2); padding: 1.5rem; border-radius: 16px; } .ds-btn-light { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: var(--field-dark-ink, #eef3f5); color: var(--ink, #121a1f); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); text-decoration: none; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn-light:hover { background: #ffffff; } .ds-btn-light:active { transform: scale(0.97); background: #ffffff; } .ds-btn-light:focus-visible { outline: 2px solid var(--field-dark-ink, #eef3f5); outline-offset: 3px; }"
+      "description": "White pill used only on the light-sky panel and the navy closing band.",
+      "html": "<div class=\"ds-on-sky\"><a class=\"ds-btn-light\" href=\"#\">Agenda por WhatsApp</a></div>",
+      "css": ".ds-on-sky { padding: 1.5rem; border-radius: 16px; background: var(--field-sky, #bae6fd); } .ds-btn-light { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: var(--white, #ffffff); color: var(--ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: 0.005em; text-decoration: none; transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease; } .ds-btn-light:hover { background: var(--surface, #f5fafd); } .ds-btn-light:active { transform: scale(0.97); background: var(--surface, #f5fafd); } .ds-btn-light:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; }"
     },
     {
-      "name": "Navigation",
+      "name": "Hero Navigation",
       "kind": "nav",
-      "refersTo": "button-small",
-      "description": "Wordmark and quiet links top left, the one solid small pill top right.",
-      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-left\"><a class=\"ds-wordmark\" href=\"#\">Jan Medina</a><nav class=\"ds-nav-links\"><a href=\"#\">Resultados</a><a href=\"#\">Cómo empezamos</a><a href=\"#\">Preguntas</a></nav></div><a class=\"ds-btn-sm\" href=\"#\">WhatsApp</a></header>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--bg, #eef3f5); color: var(--ink, #121a1f); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-nav-left { display: flex; align-items: center; gap: 2.25rem; } .ds-wordmark { font-weight: 500; letter-spacing: -0.01em; text-decoration: none; color: inherit; } .ds-nav-links { display: flex; gap: 1.75rem; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); } .ds-nav-links a { color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.25em; text-decoration-thickness: 1px; transition: text-decoration-color 180ms ease; } .ds-nav-links a:hover { text-decoration-color: currentColor; } .ds-btn-sm { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.2rem; border-radius: 999px; background: var(--accent, #5fb8e6); color: var(--accent-ink, #ffffff); font-weight: 500; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); text-decoration: none; transition: background-color 180ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-sm:hover { background: var(--accent-press, #46a6d8); } .ds-btn-sm:active { transform: scale(0.97); } .ds-nav a:focus-visible { outline: 2px solid var(--accent, #5fb8e6); outline-offset: 3px; border-radius: 4px; }"
+      "refersTo": "button-outline",
+      "description": "Wordmark and four soft links with a growing sky underline; the outline 'Contáctame' pill top right.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-left\"><a class=\"ds-wordmark\" href=\"#\">Jan Medina</a><nav class=\"ds-nav-links\"><a href=\"#\">Sobre mí</a><a href=\"#\">Método</a><a href=\"#\">Resultados</a><a href=\"#\">Preguntas</a></nav></div><a class=\"ds-btn-outline\" href=\"#\">Contáctame</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--bg, #ffffff); color: var(--ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-nav-left { display: flex; align-items: center; gap: 2.25rem; } .ds-wordmark { font-weight: 500; letter-spacing: -0.01em; color: inherit; text-decoration: none; } .ds-nav-links { display: flex; gap: 1.75rem; } .ds-nav-links a { position: relative; display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--ink-soft, #334155); font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); text-decoration: none; transition: color 180ms ease; } .ds-nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0.55rem; height: 1.5px; background: var(--sky, #38bdf8); transform: scaleX(0); transform-origin: left; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-nav-links a:hover { color: var(--ink, #0f172a); } .ds-nav-links a:hover::after { transform: scaleX(1); } .ds-btn-outline { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.3rem; border: 1.5px solid var(--ink, #0f172a); border-radius: 999px; color: var(--ink, #0f172a); font-weight: 500; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); text-decoration: none; transition: background-color 180ms ease, color 180ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-outline:hover { background: var(--ink, #0f172a); color: #fff; } .ds-btn-outline:active { transform: scale(0.97); } .ds-nav a:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Hero Waves and Stats",
+      "kind": "custom",
+      "refersTo": "social-icon",
+      "description": "Signature hero: white-to-sky ground with soft glow, thin drifting sky wave lines, social icons and two plain stats.",
+      "html": "<div class=\"ds-hero\"><svg class=\"ds-waves\" viewBox=\"0 0 400 240\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><g class=\"ds-wa\"><path d=\"M-20 150 C 80 90, 180 210, 420 120\"/><path d=\"M-20 160 C 80 104, 180 214, 420 132\" stroke-opacity=\".6\"/><path d=\"M-20 170 C 80 118, 180 218, 420 144\" stroke-opacity=\".4\"/></g><g class=\"ds-wb\"><path d=\"M-20 190 C 120 150, 240 230, 420 170\" stroke-opacity=\".5\"/><path d=\"M-20 198 C 120 160, 240 234, 420 180\" stroke-opacity=\".3\"/></g></svg><ul class=\"ds-social\"><li><a href=\"#\" aria-label=\"Instagram\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><circle cx=\"12\" cy=\"12\" r=\"4.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><circle cx=\"17.4\" cy=\"6.6\" r=\"1.2\" fill=\"currentColor\"/></svg></a></li><li><a href=\"#\" aria-label=\"WhatsApp\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.3 20.7l4.4-1.1A8.8 8.8 0 1 0 12 3.2Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"/></svg></a></li></ul><dl class=\"ds-stats\"><div><dt>Años de experiencia</dt><dd>XX+</dd></div><div><dt>Clientes felices</dt><dd>XX+</dd></div></dl></div>",
+      "css": ".ds-hero { position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: flex-start; width: 400px; height: 240px; padding: 1rem; border-radius: 16px; color: var(--ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; background-color: #fff; background-image: radial-gradient(60% 48% at 66% 92%, rgba(56, 189, 248, 0.26), rgba(56, 189, 248, 0) 72%), linear-gradient(180deg, #ffffff 0%, #ffffff 40%, var(--sky-pale, #e0f2fe) 76%, var(--sky-light, #bae6fd) 100%); } .ds-waves { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--sky, #38bdf8); pointer-events: none; } .ds-waves path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; } .ds-wa { animation: ds-drift-a 16s ease-in-out infinite alternate; } .ds-wb { animation: ds-drift-b 21s ease-in-out infinite alternate; } @keyframes ds-drift-a { to { transform: translate(-3.5%, 1.8%); } } @keyframes ds-drift-b { to { transform: translate(2.5%, -1.6%); } } .ds-social { position: relative; display: flex; flex-direction: column; gap: 0.75rem; margin: 0; padding: 0; list-style: none; } .ds-social a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: var(--ink, #0f172a); transition: color 180ms ease, background-color 180ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-social a:hover { color: var(--accent-press, #0284c7); background: var(--sky-pale, #e0f2fe); } .ds-social a:active { transform: scale(0.92); } .ds-social a:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; } .ds-stats { position: relative; display: grid; gap: 1.5rem; margin: 0; } .ds-stats div { display: flex; flex-direction: column-reverse; gap: 0.4rem; } .ds-stats dd { margin: 0; font-size: 2rem; font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; } .ds-stats dt { font-size: 0.8125rem; color: var(--ink-soft, #334155); } @media (prefers-reduced-motion: reduce) { .ds-wa, .ds-wb { animation: none; } }"
     },
     {
       "name": "Photo Frame (empty slot)",
       "kind": "card",
       "refersTo": "photo-frame",
-      "description": "The base unit of the wall: 16px frame in a surface tone, labelled with its slot until the photo exists.",
-      "html": "<figure class=\"ds-photo\" data-slot=\"Retrato de Jan · vertical 4:5 · jan-retrato.webp\"></figure>",
-      "css": ".ds-photo { position: relative; overflow: hidden; width: 240px; aspect-ratio: 4 / 5; margin: 0; border-radius: 16px; background: var(--surface, #e1eaef); } .ds-photo::after { content: attr(data-slot); position: absolute; left: 1rem; right: 1rem; bottom: 0.9rem; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); line-height: 1.35; color: var(--muted, #4b5962); }"
+      "description": "The base unit of the wall: 16px frame in Sky Wash, labelled with its slot until the photo exists.",
+      "html": "<figure class=\"ds-photo\" data-slot=\"Jan en el gimnasio · vertical 3:4 · jan-gym.webp\"></figure>",
+      "css": ".ds-photo { position: relative; overflow: hidden; width: 240px; aspect-ratio: 3 / 4; margin: 0; border-radius: 16px; background: var(--surface, #f5fafd); } .ds-photo::after { content: attr(data-slot); position: absolute; left: 1rem; right: 1rem; bottom: 0.9rem; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); line-height: 1.35; color: var(--muted, #64748b); }"
     },
     {
-      "name": "Overlapping Print Pair",
-      "kind": "custom",
-      "refersTo": "photo-frame",
-      "description": "A smaller square print overlapping a larger portrait, separated by a tone step, never a shadow.",
-      "html": "<div class=\"ds-pair\"><figure class=\"ds-pair-tall\"></figure><figure class=\"ds-pair-sq\"></figure></div>",
-      "css": ".ds-pair { position: relative; width: 300px; padding: 0 0 2rem; background: var(--bg, #eef3f5); } .ds-pair-tall { margin: 0 0 0 auto; width: 78%; aspect-ratio: 4 / 5; border-radius: 16px; background: var(--surface, #e1eaef); } .ds-pair-sq { position: relative; z-index: 1; margin: -24% 0 0; width: 42%; aspect-ratio: 1; border-radius: 16px; background: var(--surface-2, #cfdde5); }"
-    },
-    {
-      "name": "Sky Panel with Arch",
+      "name": "Sky Panel",
       "kind": "card",
       "refersTo": "sky-panel",
-      "description": "The one dark inset block; its photo is arch-masked and cropped by the panel's bottom edge.",
-      "html": "<div class=\"ds-panel\"><h2 class=\"ds-panel-title\">Entrena con alguien que contesta.</h2><p class=\"ds-panel-text\">Check-in por WhatsApp con fotos, cargas y tiempos.</p><figure class=\"ds-arch\"></figure></div>",
-      "css": ".ds-panel { position: relative; display: grid; gap: 1.5rem; overflow: hidden; max-width: 360px; padding: 2.75rem 1.5rem 0; border-radius: 16px; background: var(--field-dark, #a9dcf2); color: var(--field-dark-ink, #eef3f5); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-panel-title { margin: 0; font-weight: 300; font-size: 2rem; line-height: 1.04; letter-spacing: -0.03em; } .ds-panel-text { margin: 0; color: var(--soft-on-dark, #26414f); line-height: 1.55; } .ds-arch { width: 86%; justify-self: center; aspect-ratio: 4 / 5; margin: 0 0 -22%; border-radius: 999px 999px 0 0 / 46% 46% 0 0; background: var(--accent, #5fb8e6); }"
+      "description": "The one inset colour block: Light Sky ground, navy text, a whole photo in the standard frame.",
+      "html": "<div class=\"ds-panel\"><h2 class=\"ds-panel-title\">Entrena con alguien que contesta.</h2><div class=\"ds-panel-block\"><h3>Jan, cada semana</h3><p>Check-in por WhatsApp con fotos, cargas y tiempos.</p></div><figure class=\"ds-panel-photo\"></figure></div>",
+      "css": ".ds-panel { display: grid; gap: 1.5rem; max-width: 360px; padding: 2.75rem 1.5rem 1.5rem; border-radius: 16px; background: var(--field-sky, #bae6fd); color: var(--field-sky-ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-panel-title { margin: 0; font-weight: 300; font-size: 2rem; line-height: 1.04; letter-spacing: -0.03em; } .ds-panel-block { display: grid; gap: 0.6rem; } .ds-panel-block h3 { margin: 0; font-weight: 400; font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.01em; } .ds-panel-block p { margin: 0; color: var(--soft-on-sky, #334155); line-height: 1.55; } .ds-panel-photo { margin: 0; width: 100%; aspect-ratio: 4 / 5; border-radius: 16px; background: var(--surface-2, #e0f2fe); }"
     },
     {
-      "name": "Before/After Slider",
-      "kind": "custom",
-      "refersTo": "slider-knob",
-      "description": "Signature interaction: drag, touch or keyboard to pull apart before and after. Shown in its sample state.",
-      "html": "<figure class=\"ds-ba\"><div class=\"ds-ba-layer ds-ba-after\"><span>Después</span></div><div class=\"ds-ba-layer ds-ba-before\"><span>Antes</span></div><span class=\"ds-ba-handle\"><span class=\"ds-ba-knob\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M9 6 3 12l6 6zM15 6l6 6-6 6z\" fill=\"currentColor\"/></svg></span></span></figure>",
-      "css": ".ds-ba { position: relative; overflow: hidden; width: 280px; aspect-ratio: 4 / 5; margin: 0; border-radius: 16px; background: var(--surface-2, #cfdde5); cursor: ew-resize; font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-ba-layer { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1.25rem; font-size: 2rem; font-weight: 300; letter-spacing: -0.03em; line-height: 1; } .ds-ba-after { background: var(--accent, #5fb8e6); color: var(--accent-ink, #ffffff); justify-content: flex-end; } .ds-ba-before { background: var(--surface-2, #cfdde5); color: var(--ink, #121a1f); clip-path: inset(0 50% 0 0); } .ds-ba-handle { position: absolute; inset: 0; z-index: 3; pointer-events: none; transform: translateX(50%); } .ds-ba-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: #fff; } .ds-ba-knob { position: absolute; top: 50%; left: 0; width: 3.25rem; height: 3.25rem; margin: -1.625rem 0 0 -1.625rem; display: grid; place-items: center; border-radius: 50%; background: #fff; color: var(--ink, #121a1f); transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-ba:hover .ds-ba-knob { transform: scale(1.06); } .ds-ba:active .ds-ba-knob { transform: scale(0.9); } .ds-ba:focus-within { outline: 2px solid var(--accent, #5fb8e6); outline-offset: 4px; }"
-    },
-    {
-      "name": "Slider Tag",
-      "kind": "chip",
-      "refersTo": "slider-tag",
-      "description": "Ink pill marking Antes/Después on real transformation photos.",
-      "html": "<span class=\"ds-tag\">Antes</span> <span class=\"ds-tag\">Después</span>",
-      "css": ".ds-tag { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--ink, #121a1f); color: #fff; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); line-height: 1.3; }"
-    },
-    {
-      "name": "Quote Card",
+      "name": "Numbers Band with Quote",
       "kind": "card",
       "refersTo": "quote-card",
-      "description": "Client quote on a mist-surface frame, lead type with a muted caption.",
-      "html": "<figure class=\"ds-quote\"><blockquote><p>Texto de la cita del cliente.</p></blockquote><figcaption>Nombre, detalle</figcaption></figure>",
-      "css": ".ds-quote { display: grid; gap: 1.25rem; max-width: 26rem; margin: 0; padding: 1.75rem; border-radius: 16px; background: var(--surface, #e1eaef); color: var(--ink, #121a1f); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-quote blockquote, .ds-quote p { margin: 0; } .ds-quote p { font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); line-height: 1.4; } .ds-quote figcaption { font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); color: var(--muted, #4b5962); }"
+      "description": "Pale Sky band of light figures with a white quote card.",
+      "html": "<section class=\"ds-numbers\"><dl class=\"ds-figs\"><div><dt>XX</dt><dd>Clientes entrenados por Jan.</dd></div></dl><figure class=\"ds-quote\"><blockquote><p>Texto de la cita del cliente.</p></blockquote><figcaption>Nombre, cliente</figcaption></figure></section>",
+      "css": ".ds-numbers { display: grid; gap: 2rem; padding: 2.5rem 1.5rem; background: var(--sky-pale, #e0f2fe); color: var(--ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-figs { margin: 0; } .ds-figs div { display: grid; grid-template-columns: 5.5rem 1fr; column-gap: 1.25rem; align-items: baseline; } .ds-figs dt { font-size: 2rem; font-weight: 300; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; } .ds-figs dd { margin: 0; color: var(--ink-soft, #334155); } .ds-quote { display: grid; gap: 1.25rem; max-width: 26rem; margin: 0; padding: 1.75rem; border-radius: 16px; background: var(--white, #ffffff); } .ds-quote blockquote, .ds-quote p { margin: 0; } .ds-quote p { font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); line-height: 1.4; } .ds-quote figcaption { font-size: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); color: var(--ink-soft, #334155); }"
+    },
+    {
+      "name": "Closing Band",
+      "kind": "card",
+      "refersTo": "closing-band",
+      "description": "Inset navy block (photo fallback) with a light pill.",
+      "html": "<section class=\"ds-close\"><h2>Tu después empieza con un mensaje.</h2><p>Llamada corta por WhatsApp, sin compromiso.</p><a class=\"ds-close-btn\" href=\"#\">Agenda por WhatsApp</a></section>",
+      "css": ".ds-close { display: grid; gap: 1.25rem; max-width: 380px; padding: 2rem 1.5rem 2.25rem; border-radius: 16px; background: var(--field-dark, #0f172a); color: var(--field-dark-ink, #f0f9ff); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-close h2 { margin: 0; font-weight: 300; font-size: 2rem; line-height: 1.04; letter-spacing: -0.03em; } .ds-close p { margin: 0; line-height: 1.55; } .ds-close-btn { justify-self: start; display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px; background: #fff; color: var(--ink, #0f172a); font-weight: 700; font-size: 1.1875rem; text-decoration: none; transition: background-color 180ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-close-btn:hover { background: var(--surface, #f5fafd); } .ds-close-btn:active { transform: scale(0.97); } .ds-close-btn:focus-visible { outline: 2px solid var(--field-dark-ink, #f0f9ff); outline-offset: 3px; }"
     },
     {
       "name": "FAQ Accordion",
       "kind": "custom",
-      "description": "Divider-free disclosure rows with a drawn two-stroke chevron.",
+      "description": "Divider-free disclosure rows on Sky Wash with a drawn two-stroke chevron.",
       "html": "<div class=\"ds-acc\"><details open><summary>¿Es online o en persona?</summary><p>Las dos. Lo decides en la llamada.</p></details><details><summary>¿Necesito experiencia?</summary><p>No. El plan empieza donde estás hoy.</p></details></div>",
-      "css": ".ds-acc { display: grid; gap: 0.5rem; max-width: 30rem; color: var(--ink, #121a1f); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-acc details { padding: 0.25rem 0; } .ds-acc summary { position: relative; display: flex; align-items: center; min-height: 2.75rem; padding-right: 2.5rem; font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); cursor: pointer; list-style: none; } .ds-acc summary::-webkit-details-marker { display: none; } .ds-acc summary::before, .ds-acc summary::after { content: ''; position: absolute; right: 0.4rem; top: 50%; width: 0.6rem; height: 2px; background: currentColor; border-radius: 2px; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-acc summary::before { right: calc(0.4rem + 0.42rem); transform: rotate(45deg); } .ds-acc summary::after { transform: rotate(-45deg); } .ds-acc details[open] summary::before { transform: rotate(-45deg); } .ds-acc details[open] summary::after { transform: rotate(45deg); } .ds-acc summary:focus-visible { outline: 2px solid var(--accent, #5fb8e6); outline-offset: 3px; border-radius: 4px; } .ds-acc p { margin: 0; max-width: 46ch; padding: 0.25rem 2.5rem 1rem 0; line-height: 1.55; }"
+      "css": ".ds-acc { display: grid; gap: 0.5rem; max-width: 30rem; padding: 1.5rem; background: var(--surface, #f5fafd); color: var(--ink, #0f172a); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-acc details { padding: 0.25rem 0; } .ds-acc summary { position: relative; display: flex; align-items: center; min-height: 2.75rem; padding-right: 2.5rem; font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem); cursor: pointer; list-style: none; } .ds-acc summary::-webkit-details-marker { display: none; } .ds-acc summary::before, .ds-acc summary::after { content: ''; position: absolute; right: 0.4rem; top: 50%; width: 0.6rem; height: 2px; background: currentColor; border-radius: 999px; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-acc summary::before { right: calc(0.4rem + 0.42rem); transform: rotate(45deg); } .ds-acc summary::after { transform: rotate(-45deg); } .ds-acc details[open] summary::before { transform: rotate(-45deg); } .ds-acc details[open] summary::after { transform: rotate(45deg); } .ds-acc summary:focus-visible { outline: 2px solid var(--focus, #0284c7); outline-offset: 3px; border-radius: 4px; } .ds-acc p { margin: 0; max-width: 46ch; padding: 0.25rem 2.5rem 1rem 0; line-height: 1.55; }"
     }
   ],
   "narrative": {
     "northStar": "The Daylight Print Wall",
-    "overview": "The page is a pale wall in morning light with photographs hung on it. Prints come in different sizes and aspect ratios (4:5, 3:4, 1:1, 16:10), sit off-centre on a 12-column grid, and some overlap their neighbours the way prints pinned to a wall do. The ground is a cool sea-mist neutral. A single sky blue does all the accent work, and photographs of sea, sky and training supply the rest of the colour. Type is Hanken Grotesk: very large at weight 300 in sentence case, with small text kept quiet.\n\nDensity is low and the air is generous. Section gaps run up to 13rem, copy blocks stay narrow (22 to 46ch), and each viewport holds one idea. Depth comes from overlap and tonal steps, never from shadow. The one dark moment is a sky-blue inset panel; the closing band and its button echo it.\n\nThe world rejects the category default for fitness pages: a dark gym page with red glow, stat cards and icon tiles.",
+    "overview": "The page is a white wall in full daylight with photographs hung on it. Prints come in different sizes and aspect ratios, sit off-centre on a 12-column grid, and some overlap or hang at staggered heights the way prints pinned to a wall do. The ground is plain white. One sky-blue family does all the colour work, from a pale wash through a light sky panel to the deeper blue of the buttons, and navy ink carries the text. Photographs of Jan, his clients, sea and training supply everything else. Type is Hanken Grotesk: large and light in sentence case, with small text kept quiet and bold kept for buttons alone.\n\nDensity is low and the air is generous. Section gaps run up to 13rem, copy blocks stay narrow (22 to 46ch), and each viewport holds one idea. Depth comes from tone steps and overlap, never from shadow. The hero is the one atmospheric moment: white fading to sky with a soft glow, thin drifting sky lines behind a cutout of Jan. After it the page goes back to flat white, pale-sky bands, one light-sky panel, and a navy closing band.\n\nThe world rejects the category default for fitness pages: a dark gym page with red glow, stat cards and icon program tiles.",
     "keyCharacteristics": [
-      "Light, cool, calm ground; one green accent; colour comes from photographs.",
-      "Light-weight display type at very large sizes, sentence case, tight negative tracking.",
+      "White ground; one sky-blue family; navy ink; colour comes from photographs.",
+      "Large, light display type in sentence case with tight negative tracking; bold only on buttons.",
       "Every photo and panel uses the same soft 16px corner; every button is a pill.",
-      "Photos hang at uneven sizes and overlap; neighbouring frames differ in size or ratio.",
-      "Flat surfaces, separated by tone steps instead of borders or shadows.",
-      "The before/after slider is the signature interaction."
+      "Photos hang at uneven sizes and staggered heights; neighbouring frames differ in size or position.",
+      "Flat surfaces, separated by sky tone steps instead of borders or shadows.",
+      "The hero's thin, slowly drifting sky wave lines behind Jan's cutout are the signature."
     ],
     "rules": [
-      { "name": "The One Green Rule", "body": "sky blue is the only hue in the system that is not neutral. A second accent colour is never added; photographs supply colour.", "section": "colors" },
-      { "name": "The Tone-Step Rule", "body": "Neighbouring surfaces separate by stepping down the mist ramp (sea-mist, mist-surface, mist-surface-deep), never with a border.", "section": "colors" },
-      { "name": "The Light-at-Scale Rule", "body": "Headings at headline size and above are weight 300 with negative tracking. Weight 500 is for buttons, the wordmark and inline emphasis only.", "section": "typography" },
-      { "name": "The Sentence-Case Rule", "body": "No uppercase labels or tracked-out small caps anywhere. Small text stays quiet: small step, regular weight, muted or ink colour.", "section": "typography" },
-      { "name": "The Pinned-Print Rule", "body": "When a surface needs to read as in front of another, overlap it and step its tone. Never add a shadow.", "section": "elevation" }
+      {
+        "name": "The One Sky Rule",
+        "body": "Sky blue is the only hue in the system. Navy and slate are blue-leaning neutrals, not a second accent. A second accent colour is never added; photographs supply colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Button Rule",
+        "body": "Solid buttons use Button Sky with white text at 700 weight and 19px, never the lighter Sky. Sky is for lines; Button Sky is for fills that carry text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone-Step Rule",
+        "body": "Neighbouring surfaces separate by stepping through the sky family (white, sky-wash, sky-pale, sky-light), never with a border.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light-at-Scale Rule",
+        "body": "Section headings are weight 300 with negative tracking; the hero headline alone is 400. Heavier weights stay small or numeric: 500 for the wordmark, outline pill, hero figures and inline emphasis, 700 only for button labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence-Case Rule",
+        "body": "No uppercase labels or tracked-out small caps anywhere. Small text stays quiet: small step, regular weight, soft or muted ink.",
+        "section": "typography"
+      },
+      {
+        "name": "The Pinned-Print Rule",
+        "body": "When a surface needs to read as in front of another, overlap it and step its tone. Never add a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Atmosphere Rule",
+        "body": "The hero is the only place with a gradient ground and glow. Every other surface is a flat tone.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do use the 16px frame radius on every photo, panel, card and slider frame, and full pills for every button and tag.",
-      "Do hang photos at uneven widths and mixed aspect ratios (4:5, 3:4, 1:1, 16:10), overlapping a smaller print onto a larger one with negative margins.",
-      "Do separate surfaces by stepping the mist ramp (sea-mist, mist-surface, mist-surface-deep).",
-      "Do set headings at weight 300 in sentence case with negative tracking (-0.03em to -0.035em).",
-      "Do keep sky blue for actions, focus, selection and the single sky panel.",
-      "Do inset dark blocks from the viewport (0.625rem on phones, 1.25rem on desktop) so they read as framed.",
+      "Do use the 16px frame radius on every photo, panel and card, and full pills for every button.",
+      "Do fill solid buttons with Button Sky and set their labels white, 700, 19px.",
+      "Do keep Sky for thin lines and small marks (waves, underlines, the scroll dot).",
+      "Do separate surfaces by stepping through the sky family (white, sky-wash, sky-pale, sky-light).",
+      "Do set section headings at weight 300 in sentence case with negative tracking (-0.03em to -0.035em).",
+      "Do hang photos at uneven spans and staggered heights.",
+      "Do inset the panel and closing band from the viewport (0.625rem on phones, 1.25rem on desktop) so they read as framed.",
       "Do keep labelled empty photo frames working until real photos exist."
     ],
     "donts": [
-      "Don't add `box-shadow` or glow to any surface; overlap and tone carry depth.",
-      "Don't add borders, hairline dividers or rules between sections, cards or FAQ rows. Functional strokes (the slider divider, the chevron, link underlines) are the only lines.",
+      "Don't add `box-shadow` to any surface; tone steps and overlap carry depth.",
+      "Don't repeat the hero's gradient ground or glow on other sections.",
+      "Don't add borders or dividers between sections, cards or FAQ rows; the hero's single divider is the only rule.",
+      "Don't set white text on the lighter Sky; it fails contrast.",
       "Don't introduce a second accent hue, a red glow or a dark full-page theme.",
       "Don't use uppercase or letter-spaced labels, eyebrows above headings, or stat cards and icon tiles.",
-      "Don't repeat the arch outside the sky panel; it appears once.",
-      "Don't use weights other than 300, 400 and 500, or a family other than Hanken Grotesk."
+      "Don't use weight 700 outside buttons, or a family other than Hanken Grotesk."
     ]
   }
 }

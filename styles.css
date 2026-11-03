@@ -1,6 +1,5 @@
 /* Jan Medina · coaching híbrido
-   Un muro tranquilo de fotos reales: cada foto a su tamaño, algunas se cruzan como copias
-   colgadas en una pared. Fondo de bruma de mar, un solo verde profundo, letra ligera. */
+   Blanco y azul cielo: fotos reales a distintos tamaños, letra ligera y un solo azul para la acción. */
 
 @font-face { font-family: 'Hanken Grotesk'; src: url('assets/fonts/hanken-grotesk-latin-300-normal.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Hanken Grotesk'; src: url('assets/fonts/hanken-grotesk-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -170,7 +169,7 @@ strong { font-weight: 500; }
   .hero-scroll { position: relative; z-index: 3; grid-column: 1; grid-row: 5; align-self: end; justify-self: start; display: grid; justify-items: center; width: 2.75rem; padding-block: 0.25rem; color: var(--ink); }
 }
 @media (min-width: 52em) and (max-width: 74.99em) {
-  .hero-h1 { grid-column: 2 / 10; font-size: clamp(2.3rem, 0.4rem + 4.2vw, 3.6rem); }
+  .hero-h1 { grid-column: 2 / 10; font-size: var(--step-head); }
   .hero-figure { left: 42%; }
   .hero-coach { left: 60%; height: 78%; }
   .hero-stats { grid-column: 10 / 13; }
@@ -315,7 +314,7 @@ strong { font-weight: 500; }
 .close { position: relative; margin: var(--gap-section) 0.625rem 0; min-height: 80svh; display: grid; align-items: end; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); }
 .close-photo { position: absolute; inset: 0; border-radius: 0; background: transparent; }
 .close-photo.is-empty::after { color: var(--soft-on-dark); top: 1rem; bottom: auto; }
-.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(18, 26, 31, 0.8), rgba(18, 26, 31, 0.5) 45%, rgba(18, 26, 31, 0) 85%); } /* taste-skill-ignore: neutral scrim under text on a photo */
+.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.5) 45%, rgba(15, 23, 42, 0) 85%); } /* taste-skill-ignore: neutral scrim under text on a photo */
 .close-copy { position: relative; z-index: 2; display: grid; gap: 1.25rem; padding: 2rem 1.5rem 2.25rem; max-width: 36rem; }
 .close-copy .button { justify-self: start; margin-top: 0.5rem; }
 @media (min-width: 52em) {
