@@ -26,7 +26,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 (() => {
   const list = document.getElementById('lista-resultados');
   const raw = Array.isArray(window.TRANSFORMACIONES) ? window.TRANSFORMACIONES : [];
-  const data = raw.filter((t) => t && typeof t === 'object' && (t.titulo || t.antes || t.despues));
+  const data = raw.filter((t) => t && typeof t === 'object' && (t.foto || t.titulo || t.antes || t.despues));
   const section = document.getElementById('resultados');
   if (!list) return;
   if (!data.length) {
@@ -45,7 +45,27 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   const placements = ['case-a', 'case-b', 'case-c'];
   const remarkHTML = '<p class="case-remark" data-reveal>Desliza cada foto para ver el cambio. Clientes reales, con su permiso.</p>';
 
+  /* Foto simple (el collage de antes y después tal como se publica): sin deslizador. */
+  const photos = data.filter((t) => t.foto);
+  if (photos.length) list.classList.add('is-photos');
+  const photoCase = (t) => {
+    const [first, ...rest] = String(t.titulo || '').split(',');
+    const title = first.trim() ? `${esc(first.trim())}${rest.length ? `, ${esc(rest.join(',').trim())}` : ''}` : '';
+    const small = t.foto640 ? `${esc(t.foto640)} 640w, ` : '';
+    const el = document.createElement('article');
+    el.className = 'case-photo';
+    el.setAttribute('aria-label', String(t.titulo || t.alt || 'Transformación'));
+    el.innerHTML = `
+      <figure class="photo case-photo-frame" data-reveal>
+        <img src="${esc(t.foto)}" srcset="${small}${esc(t.foto)} 1125w" sizes="(min-width: 52em) 40vw, 88vw" alt="${esc(t.alt || 'Antes y después de un cliente de Jan')}" width="1125" height="2000" loading="lazy" decoding="async">
+      </figure>
+      ${title ? `<h3 class="case-title" data-reveal style="--d:1">${title}</h3>` : ''}
+      ${t.descripcion ? `<p class="case-desc" data-reveal style="--d:1">${esc(t.descripcion)}</p>` : ''}`;
+    list.appendChild(el);
+  };
+
   data.forEach((t, i) => {
+    if (t.foto) { photoCase(t); return; }
     const sample = !t.antes || !t.despues;
     const [first, ...rest] = String(t.titulo || '').split(',');
     const name = esc(first.trim());
@@ -76,8 +96,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       </div>`;
     list.appendChild(el);
   });
-  // Con un solo cliente la frase va bajo el título de la sección.
-  if (data.length === 1) list.insertAdjacentHTML('beforebegin', remarkHTML.replace('case-remark', 'case-remark results-remark'));
+  // Con fotos simples, o con un solo cliente, la frase va bajo el título de la sección.
+  if (photos.length) list.insertAdjacentHTML('beforebegin', '<p class="case-remark results-remark" data-reveal>Clientes reales de Jan, con su permiso.</p>');
+  else if (data.length === 1) list.insertAdjacentHTML('beforebegin', remarkHTML.replace('case-remark', 'case-remark results-remark'));
 
   /* Una foto que no carga (ruta mal escrita, archivo borrado) deja ver el recuadro de muestra en vez de un hueco. */
   list.querySelectorAll('img').forEach((img) => {
@@ -232,7 +253,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   document.querySelectorAll('.photo').forEach((fig) => {
     const img = fig.querySelector('img');
     if (!img) return;
-    const empty = () => { if (fig.classList.contains('case-extra')) { fig.hidden = true; return; } fig.classList.add('is-empty'); img.hidden = true; };
+    const empty = () => { if (fig.classList.contains('case-photo-frame')) { fig.closest('.case-photo').hidden = true; return; } if (fig.classList.contains('case-extra')) { fig.hidden = true; return; } fig.classList.add('is-empty'); img.hidden = true; };
     if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) empty();
     else img.addEventListener('error', empty, { once: true });
     img.addEventListener('load', () => fig.classList.remove('is-empty'), { once: true });

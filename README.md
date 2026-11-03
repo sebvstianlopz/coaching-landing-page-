@@ -33,27 +33,26 @@ To make the hero fade slowly between several portraits, add `data-cross="assets/
 ## Before you publish
 
 1. **WhatsApp number:** in `main.js`, change `WHATSAPP_NUMERO` (digits only, with country code, e.g. `17875551234`). For no-JS visitors, also replace `17870000000` in the `href` attributes of `index.html`.
-2. **Transformations:** the three blocks in `transformaciones.js` are **samples**. Replace them with real clients, using their photos and their permission.
+2. **Transformations:** the four before-and-afters in `transformaciones.js` are real clients. Confirm each one's permission, and add a first name and result if you'd like a caption.
 3. **Numbers and quote:** the entries in `contenido.js` are **samples** ("XX"). Put Jan's real figures there. If there's no quote, leave `citas: []` and only the numbers show. If both lists are empty, the section disappears.
 4. **Instagram:** in the footer, point the Instagram link to Jan's profile.
 5. **Copy to confirm with Jan:** the three panel blocks, the method steps and the FAQ answers.
 
 ## Adding a transformation
 
-Photos in `assets/fotos/` (before and after vertical 4:5, same pose and light). A block in `transformaciones.js`:
+Before-and-afters show as **plain photos**, the collage just as Jan posts it (with its own BEFORE/AFTER labels). Save the photo in `assets/fotos/` (ideally also a 640 px wide copy for phones) and add a block to `transformaciones.js`:
 
 ```js
 {
-  titulo: 'Carla, 16 semanas',
-  descripcion: 'Started without running a kilometre. Today she deadlifts 100 kg and finished her first 10K.',
-  antes: 'assets/fotos/carla-antes.webp',
-  despues: 'assets/fotos/carla-despues.webp',
-  extra: null,            // optional: a horizontal 16:10 photo under the story
-  alt: 'Carla before and after 16 weeks'
+  foto: 'assets/fotos/transformacion-5.webp',
+  foto640: 'assets/fotos/transformacion-5-640.webp',
+  alt: 'Before and after of a client of Jan, side and back view',
+  titulo: '',        // optional: 'Carla, 16 semanas'
+  descripcion: ''    // optional: one real result
 }
 ```
 
-One client or ten: the section adapts and alternates positions. If the list is empty, the section and its links disappear. A photo with a wrong path shows the "Antes" / "Después" sample frame instead of a hole.
+Photos hang at alternating heights; four, eight or more all work. If the list is empty, the section and its links disappear. A photo that fails to load is hidden instead of leaving a hole.
 
 ## Publishing on GitHub Pages
 

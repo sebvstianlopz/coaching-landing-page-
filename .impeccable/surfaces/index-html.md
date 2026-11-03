@@ -23,6 +23,6 @@ FIRST VIEWPORT: A light headline across the top third at 6–9vw. Below it, Jan'
 
 FORM: Taste "uneven-photographs" (dealt 1 of 3; choice made against place-carries-it and split-stage because it carries both Movewell's calm and Kropp's overlap). seed:8777fd93f3b622ac (rolled after the user pinned the direction from their references; the pinned direction stands). Since then, at the user's choice to use each of 4 photos once: one sticky photo beside the method steps, text-only FAQ and footer, the El Yunque photo reused as the closing backdrop. The panel photo uses an arch mask (Old San Juan doorways) from the Taste shaped-portrait blueprint, pending user confirmation.
 
-SIGNATURE: The before/after slider on every transformation (drag, touch, keyboard), plus the hero portrait settling in from a soft scale and slowly crossfading between Jan's portraits when several are provided.
+SIGNATURE: Real client before-and-afters shown as plain collage prints, exactly as Jan posts them (the user asked for plain photos, no slider), plus the hero portrait settling in from a soft scale and slowly crossfading between Jan's portraits when several are provided.
 
 Unresolved: real photos, numbers, quotes and WhatsApp number are pending from the user.

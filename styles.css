@@ -169,6 +169,21 @@ strong { font-weight: 500; }
 }
 .results-list > .case-b:first-child { margin-top: 0 !important; }
 
+/* fotos simples de antes y después, colgadas a distintas alturas */
+.results-list.is-photos { gap: 2.5rem; }
+.case-photo { display: grid; gap: 0.75rem; }
+.case-photo-frame { aspect-ratio: 1125 / 2000; }
+.case-photo:nth-child(odd) { width: 88%; }
+.case-photo:nth-child(even) { width: 80%; justify-self: end; }
+@media (min-width: 52em) {
+  .results-list.is-photos { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 0; align-items: start; }
+  .case-photo:nth-child(n) { width: auto; justify-self: stretch; }
+  .case-photo:nth-child(4n+1) { grid-column: 1 / 6; }
+  .case-photo:nth-child(4n+2) { grid-column: 7 / 12; margin-top: clamp(4rem, 12vw, 11rem); }
+  .case-photo:nth-child(4n+3) { grid-column: 2 / 7; margin-top: clamp(-6rem, -6vw, -2rem); }
+  .case-photo:nth-child(4n+4) { grid-column: 8 / 13; margin-top: clamp(3rem, 8vw, 7rem); }
+}
+
 /* antes / después */
 .ba { container-type: inline-size; position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius); background: var(--surface-2); touch-action: pan-y; cursor: ew-resize; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .ba-layer { position: absolute; inset: 0; }

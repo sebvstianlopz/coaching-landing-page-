@@ -1,62 +1,48 @@
 /*
   TRANSFORMACIONES
   ----------------
-  Cada objeto es un cliente. Para añadir uno:
-    1. Guarda sus fotos en assets/fotos/ (vertical 4:5 para antes y después, mismo encuadre y pose;
-       horizontal 16:10 para la foto extra, opcional).
-    2. Copia un bloque, cambia los textos y las rutas, y guarda.
+  Cada objeto es una foto de antes y después, tal como Jan la publica (un collage con sus
+  propias etiquetas de ANTES / DESPUÉS). Para añadir una:
+    1. Guarda la foto en assets/fotos/ en dos tamaños: nombre.webp (grande) y nombre-640.webp (teléfono).
+       Si solo tienes uno, usa el mismo archivo en los dos campos.
+    2. Copia un bloque, cambia las rutas y el texto alternativo, y guarda.
 
   Campos:
-    titulo       Nombre y tiempo, opcional. Corto: "Carla, 16 semanas". Vacío = sin título.
-    descripcion  Dos o tres frases con la historia real, opcional. Vacío = sin texto.
-    antes        Ruta a la foto de antes.        (null = recuadro de muestra)
-    despues      Ruta a la foto de después.      (null = recuadro de muestra)
-    extra        Ruta a una foto horizontal 16:10 opcional, debajo de la historia. Puede ser null.
-    alt          Descripción corta de las fotos para lectores de pantalla.
+    foto         Ruta a la foto grande.
+    foto640      Ruta a la versión de 640 px de ancho (para teléfonos).
+    alt          Qué se ve en la foto, para lectores de pantalla.
+    titulo       Opcional: nombre y tiempo, "Carla, 16 semanas". Vacío = sin texto.
+    descripcion  Opcional: una o dos frases con el resultado real. Vacío = sin texto.
 
   Usa solo fotos y datos reales, con permiso del cliente.
-  Las fotos de abajo son de clientes reales de Jan. Faltan sus nombres, el tiempo y el resultado:
-  cuando los tengas, ponlos en "titulo" y "descripcion".
 */
 window.TRANSFORMACIONES = [
   {
+    foto: 'assets/fotos/transformacion-1.webp',
+    foto640: 'assets/fotos/transformacion-1-640.webp',
+    alt: 'Antes y después de un cliente de Jan, de perfil y de espalda',
     titulo: '',
-    descripcion: '',
-    antes: 'assets/fotos/cliente-1-antes.webp',
-    despues: 'assets/fotos/cliente-1-despues.webp',
-    extra: null,
-    alt: 'Cliente de Jan de espalda, antes y después del coaching'
+    descripcion: ''
   },
   {
+    foto: 'assets/fotos/transformacion-2.webp',
+    foto640: 'assets/fotos/transformacion-2-640.webp',
+    alt: 'Antes y después de una clienta de Jan, de frente y corriendo',
     titulo: '',
-    descripcion: '',
-    antes: 'assets/fotos/cliente-2-antes.webp',
-    despues: 'assets/fotos/cliente-2-despues.webp',
-    extra: null,
-    alt: 'Clienta de Jan de frente, antes y después del coaching'
+    descripcion: ''
   },
   {
+    foto: 'assets/fotos/transformacion-3.webp',
+    foto640: 'assets/fotos/transformacion-3-640.webp',
+    alt: 'Antes y después de un cliente de Jan, de perfil y de espalda',
     titulo: '',
-    descripcion: '',
-    antes: 'assets/fotos/cliente-3-antes.webp',
-    despues: 'assets/fotos/cliente-3-despues.webp',
-    extra: null,
-    alt: 'Cliente de Jan de perfil, antes y después del coaching'
+    descripcion: ''
   },
   {
+    foto: 'assets/fotos/transformacion-4.webp',
+    foto640: 'assets/fotos/transformacion-4-640.webp',
+    alt: 'Antes y después de clientes de Jan, de perfil y de frente',
     titulo: '',
-    descripcion: '',
-    antes: 'assets/fotos/cliente-4-antes.webp',
-    despues: 'assets/fotos/cliente-4-despues.webp',
-    extra: null,
-    alt: 'Cliente de Jan de frente, antes y después del coaching'
-  },
-  {
-    titulo: '',
-    descripcion: '',
-    antes: 'assets/fotos/cliente-5-antes.webp',
-    despues: 'assets/fotos/cliente-5-despues.webp',
-    extra: null,
-    alt: 'Cliente de Jan de perfil, antes y después del coaching'
+    descripcion: ''
   }
 ];
