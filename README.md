@@ -16,20 +16,19 @@ DESIGN.md             the design system, documented from the code
 
 ## Photos
 
-Every photo has a fixed filename. **Save the file in `assets/fotos/` with that name and it appears.** Until then, the page shows a frame with the slot's name.
+There are five photo spots, each with a fixed filename in `assets/fotos/`. Every photo has two sizes: `name.webp` (large) and `name-640.webp` (phone). **To change one, replace both files using the same names.**
 
-| File | Where it goes | Format |
+| File | Where it goes | Current photo |
 | --- | --- | --- |
-| `jan-retrato.webp` | Hero, Jan's main portrait | vertical 4:5, ≥1600 px tall, daylight |
-| `jan-retrato-2.webp`, `jan-retrato-3.webp` | Optional: the hero fades slowly between portraits | same framing as the first |
-| `jan-entreno.webp` | Hero, small photo overlapping the portrait | square |
-| `jan-coach.webp` | Green panel, inside the arch | vertical 4:5 |
-| `metodo-1.webp` … `metodo-4.webp` | "Cómo empezamos", one per step | 3:4, square, 16:10, 4:5 |
-| `preguntas-1.webp`, `preguntas-2.webp` | Beside the questions | vertical 3:4, square |
-| `cierre.webp` | Final band, with text over it | horizontal 16:9, ≥2400 px wide |
-| `pie.webp` | Footer, a close crop of Jan | vertical |
+| `jan-retrato` | Hero, Jan's main portrait (4:5) | Jan mid-race, flexing |
+| `jan-entreno` | Hero, square overlapping the portrait | Jan at the track |
+| `jan-coach` | Green panel, inside the arch (4:5) | Jan running in the forest |
+| `jan-gym` | "Cómo empezamos", pinned while you scroll (3:4) | Jan in the gym |
+| `cierre` | Final band, with text over it | Jan running in the forest (wide crop) |
 
-JPG works too if you change the extension in `index.html`. Before publishing, compress the photos (WebP, about 1600 px on the long side); send them to me and I'll prepare them.
+The current photos are Instagram screenshots (~1200 px). When the originals arrive, send them to me and I'll swap and compress them for sharpness on large screens.
+
+To make the hero fade slowly between several portraits, add `data-cross="assets/fotos/jan-retrato-2.webp,assets/fotos/jan-retrato-3.webp"` to the `<figure class="photo hero-portrait">` and save those files.
 
 ## Before you publish
 

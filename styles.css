@@ -209,77 +209,58 @@ strong { font-weight: 500; }
   .quote { grid-column: 9 / 13; align-self: start; margin-top: 5rem; justify-self: stretch; }
 }
 
-/* ---------- cómo empezamos ---------- */
-.method { padding: var(--gap-section) var(--margin) 0; display: grid; gap: 2.5rem; }
-.stages { display: grid; gap: 3.5rem; }
-.stage { display: grid; gap: 1rem; }
-.stage p { max-width: 36ch; }
-.stage-1 .photo { width: 100%; aspect-ratio: 3 / 4; }
-.stage-2 .photo { width: 62%; justify-self: end; aspect-ratio: 1; }
-.stage-2 p { justify-self: end; width: 62%; }
-.stage-3 .photo { width: 78%; aspect-ratio: 16 / 10; }
-.stage-4 .photo { width: 70%; justify-self: end; aspect-ratio: 4 / 5; }
-.stage-4 p { justify-self: end; width: 70%; }
+/* ---------- cómo empezamos: una foto fija, los pasos pasan a su lado ---------- */
+.method { display: grid; gap: 2.5rem; padding: var(--gap-section) var(--margin) 0; }
+.method-photo { aspect-ratio: 3 / 4; }
+.method-text { display: grid; gap: 2.25rem; align-content: start; }
+.steps { display: grid; gap: 1.75rem; }
+.steps li { max-width: 40ch; }
 @media (min-width: 52em) {
-  .method { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 0; }
-  .method-title { grid-column: 8 / 13; grid-row: 1; align-self: start; position: relative; z-index: 1; }
-  .stages { grid-column: 1 / -1; grid-row: 1; gap: 0; }
-  .stage { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
-  .stage .photo, .stage p { width: auto !important; justify-self: stretch !important; }
-  .stage-1 .photo { grid-column: 1 / 5; }
-  .stage-1 p { grid-column: 5 / 8; padding-top: 0.25rem; }
-  .stage-2 { margin-top: calc(220px - 38vw); }
-  .stage-2 .photo { grid-column: 6 / 9; }
-  .stage-2 p { grid-column: 9 / 12; }
-  .stage-3 { margin-top: 180px; }
-  .stage-3 .photo { grid-column: 8 / 13; grid-row: 1; }
-  .stage-3 p { grid-column: 4 / 8; grid-row: 1; }
-  .stage-4 { margin-top: 160px; }
-  .stage-4 .photo { grid-column: 2 / 6; }
-  .stage-4 p { grid-column: 6 / 9; }
+  .method { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+  .method-photo-wrap { grid-column: 1 / 6; position: sticky; top: 2rem; }
+  .method-photo { max-height: calc(100svh - 4rem); width: auto; aspect-ratio: 3 / 4; }
+  .method-text { grid-column: 7 / 12; gap: 3rem; padding-top: clamp(1rem, 6vw, 5rem); padding-bottom: clamp(2rem, 10vw, 9rem); }
+  .steps { gap: clamp(2.5rem, 7vh, 4.5rem); }
+  .steps li { font-size: var(--step-lead); line-height: 1.4; }
 }
 
 /* ---------- preguntas ---------- */
-.faq { display: grid; gap: 2.5rem; margin-top: var(--gap-section); padding: 0 var(--margin) clamp(4rem, 8vw, 6rem); background: var(--surface); }
-.faq-photos { order: -1; position: relative; margin-inline: calc(var(--margin) * -1); padding-bottom: 2rem; }
-.faq-tall { aspect-ratio: 4 / 5; border-radius: 0 0 var(--radius) var(--radius); }
-.faq-square { position: absolute; right: var(--margin); bottom: 0; width: 38%; aspect-ratio: 1; background: var(--surface-2); }
-.faq-text { display: grid; gap: 2rem; align-content: start; }
+.faq { display: grid; gap: 2.5rem; margin-top: var(--gap-section); padding: clamp(4rem, 8vw, 7rem) var(--margin); background: var(--surface); }
+.faq-intro { display: grid; gap: 1.75rem; align-content: start; }
+.faq-list { display: grid; gap: 2rem; }
 .facts { display: grid; gap: 0.35rem; font-size: var(--step-lead); }
 .accordion { display: grid; gap: 0.5rem; }
 .accordion details { padding: 0.25rem 0; }
 .accordion summary { position: relative; display: flex; align-items: center; min-height: 2.75rem; padding-right: 2.5rem; font-size: var(--step-lead); cursor: pointer; list-style: none; -webkit-user-select: none; user-select: none; }
 .accordion summary::-webkit-details-marker { display: none; }
-.accordion summary::before, .accordion summary::after { content: ''; position: absolute; right: 0.4rem; top: 50%; width: 0.6rem; height: 2px; background: currentColor; border-radius: 2px; transition: transform var(--t-ui) var(--ease-out); }
+.accordion summary::before, .accordion summary::after { content: ''; position: absolute; right: 0.4rem; top: 50%; width: 0.6rem; height: 2px; background: currentColor; border-radius: 999px; transition: transform var(--t-ui) var(--ease-out); }
 .accordion summary::before { right: calc(0.4rem + 0.42rem); transform: rotate(45deg); }
 .accordion summary::after { transform: rotate(-45deg); }
 .accordion details[open] summary::before { transform: rotate(-45deg); }
 .accordion details[open] summary::after { transform: rotate(45deg); }
-.accordion details p { max-width: 46ch; padding: 0.25rem 2.5rem 1rem 0; }
+.accordion details p { max-width: 52ch; padding: 0.25rem 2.5rem 1rem 0; }
 @media (min-width: 52em) {
-  .faq { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: 0; }
-  .faq-text { grid-column: 1 / 6; padding-bottom: clamp(4rem, 8vw, 7rem); }
-  .faq-photos { order: 0; grid-column: 7 / 13; margin: calc(clamp(4rem, 8vw, 7rem) * -1 - 4rem) 0 80px; padding: 0; align-self: start; }
-  .faq-tall { aspect-ratio: 3 / 4; border-radius: var(--radius); }
-  .faq-square { right: auto; left: -40px; bottom: -40px; width: 33%; }
+  .faq { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .faq-intro { grid-column: 1 / 5; position: sticky; top: 2rem; align-self: start; }
+  .faq-list { grid-column: 6 / 13; padding-top: 0.5rem; }
 }
 
 /* ---------- cierre ---------- */
 .close { position: relative; margin: var(--gap-section) 0.625rem 0; min-height: 80svh; display: grid; align-items: end; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); }
 .close-photo { position: absolute; inset: 0; border-radius: 0; background: transparent; }
 .close-photo.is-empty::after { color: var(--soft-on-dark); top: 1rem; bottom: auto; }
-.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(10, 14, 11, 0.62), rgba(10, 14, 11, 0) 70%); } /* taste-skill-ignore: neutral scrim under text on a photo */
+.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(20, 26, 22, 0.62), rgba(20, 26, 22, 0) 70%); } /* taste-skill-ignore: neutral scrim under text on a photo */
 .close-copy { position: relative; z-index: 2; display: grid; gap: 1.25rem; padding: 2rem 1.5rem 2.25rem; max-width: 36rem; }
 .close-copy .button { justify-self: start; margin-top: 0.5rem; }
 @media (min-width: 52em) {
   .close { margin-inline: 1.25rem; min-height: min(88svh, 56vw); }
-  .close-copy { padding: 3.5rem calc(var(--margin) - 1.25rem); }
+  .close-copy { padding: 3.5rem calc(var(--margin) - 1.25rem); justify-self: end; width: min(36rem, 44%); }
+  .close-photo > img { object-position: 50% 36% !important; }
 }
 
 /* ---------- pie ---------- */
-.footer { display: grid; margin-top: var(--gap-section); }
-.footer-photo { height: 50svh; border-radius: 0; }
-.footer-side { display: grid; gap: 2.25rem; align-content: start; padding: 2.5rem var(--margin) calc(6rem + env(safe-area-inset-bottom)); background: var(--surface); }
+.footer { margin-top: var(--gap-section); background: var(--surface); }
+.footer-side { display: grid; gap: 2.25rem; align-content: start; padding: 2.5rem var(--margin) calc(6rem + env(safe-area-inset-bottom)); }
 .footer-menu { display: grid; gap: 0.25rem; }
 .footer-menu a { display: inline-flex; align-items: center; min-height: 3rem; justify-self: start; font-size: var(--step-head); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1; text-decoration: none; transition: transform var(--t-ui) var(--ease-out), color var(--t-hover) ease; }
 .footer-menu a:active { opacity: 0.6; }
@@ -292,10 +273,11 @@ strong { font-weight: 500; }
 .footer-first { font-weight: 500; margin-bottom: 0.3rem; }
 .legal { font-size: var(--step-small); color: var(--muted); }
 @media (min-width: 52em) {
-  .footer { grid-template-columns: 1fr 1fr; min-height: 100svh; }
-  .footer-photo { height: auto; min-height: 100svh; }
-  .footer-side { grid-template-rows: auto auto auto 1fr; padding: 2.5rem var(--margin) 1.5rem; padding-left: calc(100% / 12 + var(--gutter)); gap: 3rem; }
-  .footer-side .legal { align-self: end; }
+  .footer-side { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 3rem; padding: 3rem var(--margin) 2rem; min-height: 70svh; }
+  .footer-side .wordmark { grid-column: 1 / -1; }
+  .footer-menu { grid-column: 1 / 8; }
+  .footer-blocks { grid-column: 9 / 13; align-self: end; }
+  .footer-side .legal { grid-column: 1 / -1; align-self: end; }
 }
 
 /* ---------- barra de WhatsApp (teléfono) ---------- */

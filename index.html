@@ -13,6 +13,7 @@
   <meta property="og:image" content="assets/fotos/jan-retrato.webp">
   <link rel="preload" href="assets/fonts/hanken-grotesk-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/fotos/jan-retrato.webp" imagesrcset="assets/fotos/jan-retrato-640.webp 640w, assets/fotos/jan-retrato.webp 1080w" imagesizes="(min-width: 52em) 38vw, 78vw">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -48,11 +49,11 @@
       </div>
     </div>
 
-    <figure class="photo hero-portrait" data-slot="Retrato de Jan · vertical 4:5 · jan-retrato.webp" data-cross="assets/fotos/jan-retrato-2.webp,assets/fotos/jan-retrato-3.webp">
-      <img src="assets/fotos/jan-retrato.webp" alt="Jan Medina" width="1200" height="1500" fetchpriority="high">
+    <figure class="photo hero-portrait" data-slot="Retrato de Jan · vertical 4:5 · jan-retrato.webp">
+      <img src="assets/fotos/jan-retrato.webp" srcset="assets/fotos/jan-retrato-640.webp 640w, assets/fotos/jan-retrato.webp 1080w" sizes="(min-width: 52em) 38vw, 78vw" alt="Jan Medina sonriendo y flexionando los brazos en plena carrera en Puerto Rico" width="1080" height="1350" fetchpriority="high">
     </figure>
     <figure class="photo hero-square" data-slot="Jan entrenando · cuadrada · jan-entreno.webp">
-      <img src="assets/fotos/jan-entreno.webp" alt="" width="900" height="900">
+      <img src="assets/fotos/jan-entreno.webp" srcset="assets/fotos/jan-entreno-640.webp 640w, assets/fotos/jan-entreno.webp 900w" sizes="(min-width: 52em) 22vw, 42vw" alt="Jan Medina riéndose junto a una pista de atletismo" width="900" height="900">
     </figure>
   </section>
 
@@ -74,8 +75,8 @@
         </div>
         <a class="button button-light" data-wa href="https://wa.me/17870000000" data-reveal style="--d:3">Agenda por WhatsApp</a>
       </div>
-      <figure class="photo panel-photo" data-slot="Jan entrenando a un cliente · vertical 4:5 · jan-coach.webp" data-reveal>
-        <img src="assets/fotos/jan-coach.webp" alt="Jan Medina entrenando a un cliente" width="1200" height="1500" loading="lazy">
+      <figure class="photo panel-photo" data-slot="Jan entrenando · vertical 4:5 · jan-coach.webp" data-reveal>
+        <img src="assets/fotos/jan-coach.webp" srcset="assets/fotos/jan-coach-640.webp 640w, assets/fotos/jan-coach.webp 1180w" sizes="(min-width: 52em) 36vw, 86vw" alt="Jan Medina corriendo por una carretera en el bosque" width="1180" height="1474" loading="lazy" style="object-position: 50% 45%">
       </figure>
     </div>
   </section>
@@ -98,43 +99,35 @@
   </section>
 
   <section id="metodo" class="method" aria-labelledby="method-title">
-    <h2 id="method-title" class="head method-title" data-reveal>Cómo empezamos</h2>
-    <ol class="stages">
-      <li class="stage stage-1">
-        <figure class="photo" data-slot="Primera llamada / Jan con el teléfono · 3:4 · metodo-1.webp" data-reveal>
-          <img src="assets/fotos/metodo-1.webp" alt="" width="1200" height="1600" loading="lazy">
-        </figure>
-        <p data-reveal style="--d:1"><strong>Primero, hablamos.</strong> Me escribes por WhatsApp y hacemos una llamada corta: tu meta, tu horario, tus lesiones y el equipo que tienes.</p>
-      </li>
-      <li class="stage stage-2">
-        <figure class="photo" data-slot="Evaluación · cuadrada · metodo-2.webp" data-reveal>
-          <img src="assets/fotos/metodo-2.webp" alt="" width="1000" height="1000" loading="lazy">
-        </figure>
-        <p data-reveal style="--d:1"><strong>Esa semana, te evalúo.</strong> Fuerza, movilidad y cardio. Medimos de dónde partes para que cada semana sepas cuánto avanzaste.</p>
-      </li>
-      <li class="stage stage-3">
-        <figure class="photo" data-slot="Entrenando · horizontal 16:10 · metodo-3.webp" data-reveal>
-          <img src="assets/fotos/metodo-3.webp" alt="" width="1600" height="1000" loading="lazy">
-        </figure>
-        <p data-reveal style="--d:1"><strong>Después, tu plan.</strong> Pesas y carrera o acondicionamiento en la misma semana, online o en persona, armado alrededor de tu&nbsp;vida.</p>
-      </li>
-      <li class="stage stage-4">
-        <figure class="photo" data-slot="Corriendo / al aire libre · vertical 4:5 · metodo-4.webp" data-reveal>
-          <img src="assets/fotos/metodo-4.webp" alt="" width="1200" height="1500" loading="lazy">
-        </figure>
-        <p data-reveal style="--d:1"><strong>Cada semana, ajustamos.</strong> Check-in por WhatsApp con fotos, cargas y tiempos. Si tu cuerpo cambia, el plan cambia&nbsp;contigo.</p>
-      </li>
-    </ol>
+    <div class="method-photo-wrap">
+      <figure class="photo method-photo" data-slot="Jan en el gimnasio · vertical 3:4 · jan-gym.webp" data-reveal>
+        <img src="assets/fotos/jan-gym.webp" srcset="assets/fotos/jan-gym-640.webp 640w, assets/fotos/jan-gym.webp 1100w" sizes="(min-width: 52em) 36vw, 100vw" alt="Jan Medina en el gimnasio, tomándose una foto frente al espejo" width="1100" height="1466" loading="lazy">
+      </figure>
+    </div>
+    <div class="method-text">
+      <h2 id="method-title" class="head" data-reveal>Cómo empezamos</h2>
+      <ol class="steps">
+        <li data-reveal><strong>Primero, hablamos.</strong> Me escribes por WhatsApp y hacemos una llamada corta: tu meta, tu horario, tus lesiones y el equipo que tienes.</li>
+        <li data-reveal><strong>Esa semana, te evalúo.</strong> Fuerza, movilidad y cardio. Medimos de dónde partes para que cada semana sepas cuánto avanzaste.</li>
+        <li data-reveal><strong>Después, tu plan.</strong> Pesas y carrera o acondicionamiento en la misma semana, online o en persona, armado alrededor de tu&nbsp;vida.</li>
+        <li data-reveal><strong>Cada semana, ajustamos.</strong> Check-in por WhatsApp con fotos, cargas y tiempos. Si tu cuerpo cambia, el plan cambia&nbsp;contigo.</li>
+      </ol>
+      <div class="actions" data-reveal>
+        <a class="button" data-wa href="https://wa.me/17870000000">Agenda por WhatsApp</a>
+      </div>
+    </div>
   </section>
 
   <section id="preguntas" class="faq" aria-labelledby="faq-title">
-    <div class="faq-text">
+    <div class="faq-intro">
       <h2 id="faq-title" class="head" data-reveal>Preguntas</h2>
       <ul class="facts" data-reveal style="--d:1">
         <li>Online o en persona</li>
         <li>En Puerto Rico</li>
         <li>Precio en la llamada, sin compromiso</li>
       </ul>
+    </div>
+    <div class="faq-list">
       <div class="accordion" data-reveal style="--d:2">
         <details>
           <summary>¿Es online o en persona?</summary>
@@ -162,19 +155,11 @@
         <a class="link-plain" href="#resultados">Ver resultados</a>
       </div>
     </div>
-    <div class="faq-photos">
-      <figure class="photo faq-tall" data-slot="Jan · vertical 3:4 · preguntas-1.webp" data-reveal>
-        <img src="assets/fotos/preguntas-1.webp" alt="" width="1200" height="1600" loading="lazy">
-      </figure>
-      <figure class="photo faq-square" data-slot="Detalle · cuadrada · preguntas-2.webp" data-reveal style="--d:2">
-        <img src="assets/fotos/preguntas-2.webp" alt="" width="900" height="900" loading="lazy">
-      </figure>
-    </div>
   </section>
 
   <section id="contacto" class="close" aria-labelledby="close-title">
-    <figure class="photo close-photo" data-slot="Paisaje: la costa o donde entrena Jan · 16:9 · cierre.webp">
-      <img src="assets/fotos/cierre.webp" alt="" width="2400" height="1350" loading="lazy">
+    <figure class="photo close-photo" data-slot="Paisaje · cierre.webp">
+      <img src="assets/fotos/cierre.webp" srcset="assets/fotos/cierre-640.webp 640w, assets/fotos/cierre.webp 1206w" sizes="100vw" alt="" width="1206" height="1480" loading="lazy" style="object-position: 50% 62%">
     </figure>
     <div class="close-copy">
       <h2 id="close-title" class="head" data-reveal>Tu después empieza con un&nbsp;mensaje.</h2>
@@ -185,9 +170,6 @@
 </main>
 
 <footer class="footer">
-  <figure class="photo footer-photo" data-slot="Jan de cerca · vertical · pie.webp">
-    <img src="assets/fotos/pie.webp" alt="" width="1200" height="1500" loading="lazy">
-  </figure>
   <div class="footer-side">
     <a class="wordmark" href="#top">Jan Medina</a>
     <nav class="footer-menu" aria-label="Pie de página">
