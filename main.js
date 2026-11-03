@@ -48,7 +48,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   /* Foto simple (el collage de antes y después tal como se publica): sin deslizador. */
   const photos = data.filter((t) => t.foto);
   if (photos.length) list.classList.add('is-photos');
-  const photoCase = (t) => {
+  const photoCase = (t, i) => {
     const [first, ...rest] = String(t.titulo || '').split(',');
     const title = first.trim() ? `${esc(first.trim())}${rest.length ? `, ${esc(rest.join(',').trim())}` : ''}` : '';
     const small = t.foto640 ? `${esc(t.foto640)} 640w, ` : '';
@@ -56,7 +56,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     el.className = 'case-photo';
     el.setAttribute('aria-label', String(t.titulo || t.alt || 'Transformación'));
     el.innerHTML = `
-      <figure class="photo case-photo-frame" data-reveal>
+      <figure class="photo case-photo-frame" data-reveal style="--d:${i % 2}">
         <img src="${esc(t.foto)}" srcset="${small}${esc(t.foto)} 1125w" sizes="(min-width: 52em) 40vw, 88vw" alt="${esc(t.alt || 'Antes y después de un cliente de Jan')}" width="1125" height="2000" loading="lazy" decoding="async">
       </figure>
       ${title ? `<h3 class="case-title" data-reveal style="--d:1">${title}</h3>` : ''}
@@ -65,7 +65,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   };
 
   data.forEach((t, i) => {
-    if (t.foto) { photoCase(t); return; }
+    if (t.foto) { photoCase(t, i); return; }
     const sample = !t.antes || !t.despues;
     const [first, ...rest] = String(t.titulo || '').split(',');
     const name = esc(first.trim());
@@ -215,14 +215,22 @@ const startReveals = () => {
   const targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;
   if (!('IntersectionObserver' in window)) { targets.forEach((el) => el.classList.add('is-in')); return; }
+  // Un elemento recortado del todo con clip-path no cuenta como visible para IntersectionObserver,
+  // así que esos se vigilan a través de su contenedor (que no está recortado).
+  const watched = new Map();
   const io = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-in');
+      (watched.get(entry.target) || [entry.target]).forEach((el) => el.classList.add('is-in'));
       io.unobserve(entry.target);
     }
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-  targets.forEach((el) => io.observe(el));
+  targets.forEach((el) => {
+    const w = el.matches('.case-photo-frame') ? el.parentElement : el;
+    if (!watched.has(w)) watched.set(w, []);
+    watched.get(w).push(el);
+    io.observe(w);
+  });
   window.addEventListener('load', () => setTimeout(() => {
     targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
   }, 2500));
@@ -272,7 +280,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     const row = document.createElement('div');
     row.dataset.reveal = '';
     row.style.setProperty('--d', String(i + 1));
-    const dt = document.createElement('dt'); dt.textContent = n.cifra;
+    const dt = document.createElement('dt'); dt.textContent = n.cifra; dt.dataset.count = '';
     const dd = document.createElement('dd'); dd.textContent = n.texto;
     row.append(dt, dd); dl.appendChild(row);
   });
@@ -321,5 +329,34 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   document.querySelectorAll('[data-hero-stat]').forEach((el) => {
     const v = h[el.dataset.heroStat];
     if (v) el.textContent = v;
+    el.dataset.count = '';
   });
+})();
+
+/* ---------- Cifras: cuentan desde 0 una sola vez al aparecer (solo si son números reales) ---------- */
+(() => {
+  const els = [...document.querySelectorAll('[data-count]')];
+  if (!els.length || reduceMotion || !('IntersectionObserver' in window)) return;
+  const ease = (x) => 1 - Math.pow(1 - x, 3);
+  const run = (el) => {
+    const m = el.textContent.trim().match(/^(\D*)(\d+(?:[.,]\d+)?)(.*)$/);
+    if (!m) return; // "XX" y otros textos se quedan como están
+    const [, pre, num, post] = m;
+    const sep = num.includes(',') ? ',' : '.';
+    const decimals = (num.split(/[.,]/)[1] || '').length;
+    const target = parseFloat(num.replace(',', '.'));
+    el.style.minWidth = `${el.getBoundingClientRect().width}px`;
+    const t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / 1200);
+      const v = (target * ease(p)).toFixed(decimals).replace('.', sep);
+      el.textContent = `${pre}${v}${post}`;
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = `${pre}${num}${post}`;
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); setTimeout(() => run(e.target), e.target.closest('.hero-stats') ? 750 : 150); } });
+  }, { threshold: 0.6 });
+  els.forEach((el) => io.observe(el));
 })();

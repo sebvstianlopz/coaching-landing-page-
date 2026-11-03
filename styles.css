@@ -370,15 +370,74 @@ strong { font-weight: 500; }
   .js .photo[data-reveal], .js .ba[data-reveal] { transform: scale(0.985); transition: opacity 700ms var(--ease-out), transform 1100ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 80ms); }
   .js .photo[data-reveal].is-in, .js .ba[data-reveal].is-in { transform: none; }
   .accordion details[open] p { animation: answer 260ms var(--ease-out); }
+
+  /* 1. Títulos de sección: suben desde detrás de su propia línea base. */
+  .js .slot[data-reveal] { opacity: 1; transform: none; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  .js .slot > span { display: block; transform: translateY(105%); transition: transform 800ms var(--ease-out); }
+  .js .slot.is-in > span { transform: none; }
+
+  /* 2. El panel se abre como una ventana; sus bloques llegan después; la foto se asienta en su marco. */
+  .js .panel[data-reveal] { opacity: 1; transform: none; clip-path: inset(6% 4% round var(--radius)); transition: clip-path 900ms var(--ease-out); }
+  .js .panel[data-reveal].is-in { clip-path: inset(0 round var(--radius)); }
+  .js .panel [data-reveal] { transition-delay: calc(220ms + var(--d, 0) * 80ms); }
+  .js .panel-photo > img { transform: scale(1.08); transition: transform 1400ms var(--ease-soft) 200ms; }
+  .js .panel-photo.is-in > img { transform: none; }
+
+  /* 3. Resultados: cada copia se descubre de abajo hacia arriba, en pares. */
+  .js .case-photo-frame[data-reveal] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0 round var(--radius)); transition: clip-path 900ms var(--ease-in-out); transition-delay: calc(var(--d, 0) * 120ms); }
+  .js .case-photo-frame[data-reveal].is-in { clip-path: inset(0 round var(--radius)); }
+
+  /* 4. La cita llega un momento después de las cifras. */
+  .js .quote[data-reveal] { transform: translateY(16px) scale(0.98); transition-delay: 200ms; }
+  .js .quote[data-reveal].is-in { transform: none; }
+
+  /* 5. Pasos: entran desde la derecha; primero la frase en negrita, luego el texto. */
+  .js .steps li[data-reveal] { transform: translateX(16px); transition-delay: 0ms; }
+  .js .steps li[data-reveal].is-in { transform: none; }
+  .js .steps li .step-text { opacity: 0; transition: opacity 600ms var(--ease-out) 60ms; }
+  .js .steps li.is-in .step-text { opacity: 1; }
+
+  /* Pie: los enlaces del menú suben uno tras otro. */
+  .js .footer-menu[data-reveal] { opacity: 1; transform: none; }
+  .js .footer-menu a { opacity: 0; }
+  .js .footer-menu.is-in a { opacity: 1; animation: rise-in 700ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+}
+
+/* 6. Preguntas: la respuesta abre su altura con suavidad donde el navegador lo permite. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .accordion details { interpolate-size: allow-keywords; }
+    .accordion details::details-content { block-size: 0; overflow: hidden; transition: block-size 240ms var(--ease-out), content-visibility 240ms allow-discrete; }
+    .accordion details[open]::details-content { block-size: auto; }
+  }
+}
+
+/* Movimiento ligado al scroll (3, 5, 7). Sin soporte, todo queda quieto y completo. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @media (min-width: 52em) {
+      .case-photo:nth-child(odd) { animation: drift-slow linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+      .case-photo:nth-child(even) { animation: drift-fast linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    }
+    .method { view-timeline-name: --metodo; }
+    .method-photo > img { animation: breathe linear both; animation-timeline: --metodo; animation-range: cover 0% cover 100%; }
+    .close-photo > img { animation: settle-zoom linear both; animation-timeline: view(); animation-range: entry 0% cover 55%; }
+  }
 }
 @keyframes answer { from { opacity: 0; transform: translateY(-6px); } }
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] { opacity: 0; transition: opacity 400ms ease; }
   .js [data-reveal].is-in { opacity: 1; }
+  .js .slot[data-reveal], .js .panel[data-reveal], .js .case-photo-frame[data-reveal], .js .footer-menu[data-reveal] { opacity: 1; }
   .dock { transform: none; opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s linear 200ms; }
   .dock.is-shown { opacity: 1; visibility: visible; transition: opacity 200ms ease, visibility 0s; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes drift-slow { from { transform: translateY(16px); } to { transform: translateY(-16px); } }
+@keyframes drift-fast { from { transform: translateY(40px); } to { transform: translateY(-40px); } }
+@keyframes breathe { from { transform: scale(1); } to { transform: scale(1.05); } }
+@keyframes settle-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes coach-in { from { opacity: 0; transform: translate(-50%, 36px) scale(1.03); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
 @keyframes waves-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes drift-a { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-3.5%, 1.8%, 0); } }
