@@ -305,7 +305,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     for (let i = 0; i < count; i++) {
       const t = i / (count - 1);
       let d = '';
-      for (let x = -120; x <= W + 120; x += 18) {
+      for (let x = -160; x <= W + 160; x += 8) {
         const u = x / W;
         const y = base + (t - 0.5) * spread * Math.cos(u * Math.PI * 1.35 + phase)
           + amp * Math.sin(u * Math.PI * 2.1 + phase + t * 0.9) - tilt * u;
@@ -313,7 +313,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
       }
       const path = document.createElementNS(NS, 'path');
       path.setAttribute('d', d);
-      path.setAttribute('stroke-opacity', (0.22 + 0.5 * (1 - Math.abs(t - 0.5) * 2)).toFixed(2));
+      path.setAttribute('stroke-opacity', (0.16 + 0.34 * (1 - Math.abs(t - 0.5) * 2)).toFixed(2));
       g.appendChild(path);
     }
     return g;
