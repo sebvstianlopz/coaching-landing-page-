@@ -36,34 +36,32 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     return;
   }
 
-  const drawings = [
-    { use: 'd-pesa', cls: 'c-pesa', fit: 'xMidYMax meet' },
-    { use: 'd-pista', cls: 'c-pista', fit: 'xMinYMax slice' },
-    { use: 'd-disco', cls: 'c-disco', fit: 'xMidYMid slice' }
-  ];
-
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   const sampleWord = (kind) => `<span class="ba-sample" aria-hidden="true">${kind === 'antes' ? 'Antes' : 'Después'}</span>`;
   const layer = (src, kind, alt) => src
     ? `<img src="${esc(src)}" alt="${kind === 'antes' ? esc(alt) : ''}" width="1200" height="1500" loading="lazy" decoding="async" draggable="false">${sampleWord(kind)}`
     : sampleWord(kind);
+  const placements = ['case-a', 'case-b', 'case-c'];
+  const remarkHTML = '<p class="case-remark" data-reveal>Desliza cada foto para ver el cambio. Clientes reales, con su permiso.</p>';
 
   data.forEach((t, i) => {
     const sample = !t.antes || !t.despues;
     const [first, ...rest] = String(t.titulo || '').split(',');
-    const title = rest.length ? `${esc(first)},<br>${esc(rest.join(',').trim())}` : esc(first);
-    const d = drawings[i % drawings.length];
+    const name = esc(first.trim());
+    const detail = rest.length ? esc(rest.join(',').trim()) : '';
+    const place = placements[i % placements.length];
     const extra = t.extra
-      ? `<img src="${esc(t.extra)}" alt="" width="1600" height="1000" loading="lazy" decoding="async">`
-      : `<div class="cell ${d.cls}" aria-hidden="true"><svg preserveAspectRatio="${d.fit}"><use href="#${d.use}"/></svg></div>`;
+      ? `<figure class="photo case-extra" data-reveal style="--d:3"><img src="${esc(t.extra)}" alt="" width="1600" height="1000" loading="lazy" decoding="async"></figure>`
+      : '';
 
     const el = document.createElement('article');
     el.setAttribute('aria-label', String(t.titulo || 'Transformación'));
-    el.className = `case case-${(i % 3) + 1}${sample ? ' is-sample' : ''}`;
+    el.className = `case ${place}${sample ? ' is-sample' : ''}`;
     el.innerHTML = `
-      <div class="case-visual">
-        <figure class="ba" data-pos="50" data-reveal>
+      ${place === 'case-b' && i === 1 ? remarkHTML : ''}
+      <div class="case-body">
+        <figure class="ba" data-pos="50" data-reveal style="--d:1">
           <div class="ba-layer ba-after">${layer(t.despues, 'despues', t.alt)}</div>
           <div class="ba-layer ba-before">${layer(t.antes, 'antes', t.alt)}</div>
           <span class="ba-tag ba-tag-before" aria-hidden="true">Antes</span>
@@ -72,20 +70,19 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
           <input class="ba-range" type="range" min="0" max="100" value="50" step="1"
             aria-label="Comparar antes y después: ${esc(t.titulo)}" aria-valuetext="Mitad antes, mitad después">
         </figure>
-      </div>
-      <div class="case-cluster">
-        <div class="case-extra" data-reveal style="--d:1">${extra}</div>
-        <div class="case-text">
-          <h3 class="case-title" data-reveal style="--d:2">${title}</h3>
-          <p class="case-desc" data-reveal style="--d:3">${esc(t.descripcion)}</p>
-        </div>
+        <h3 class="case-title" data-reveal style="--d:2">${name}${detail ? `, ${detail}` : ''}</h3>
+        <p class="case-desc" data-reveal style="--d:2">${esc(t.descripcion)}</p>
+        ${extra}
       </div>`;
     list.appendChild(el);
   });
+  // Con un solo cliente la frase va bajo el título de la sección.
+  if (data.length === 1) list.insertAdjacentHTML('beforebegin', remarkHTML.replace('case-remark', 'case-remark results-remark'));
 
   /* Una foto que no carga (ruta mal escrita, archivo borrado) deja ver el recuadro de muestra en vez de un hueco. */
   list.querySelectorAll('img').forEach((img) => {
     const extraSlot = img.closest('.case-extra');
+    if (extraSlot) return; // las fotos extra usan el mismo manejo que el resto de fotos de la página
     const fail = () => {
       img.remove();
       if (extraSlot) extraSlot.hidden = true;
@@ -121,24 +118,42 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     /* Ratón: la línea salta al clic. Dedo: solo se mueve cuando el gesto es claramente
        horizontal, así hacer scroll por encima de la foto no mueve la línea. */
     let pending = null;
-    const start = (e) => {
+    let offset = 0;        // distancia entre el dedo y la línea al agarrarla (no salta al centro)
+    const current = () => Number(fig.dataset.pos || 50);
+    /* Resorte críticamente amortiguado (sin rebote), parte del valor que está en pantalla. */
+    const glide = (target) => {
+      cancelAnimationFrame(raf);
+      if (reduceMotion) { set(target); return; }
+      let x = current(); let v = 0; let last = 0;
+      const k = 170; const c = 2 * Math.sqrt(k); // respuesta ~0.35 s, amortiguación 1.0
+      const step = (now) => {
+        const dt = last ? Math.min(0.032, (now - last) / 1000) : 0.016; last = now;
+        v += (-k * (x - target) - c * v) * dt; x += v * dt;
+        if (Math.abs(x - target) < 0.05 && Math.abs(v) < 0.5) { set(target); return; }
+        set(x); raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    };
+    const start = (e, jump) => {
       dragging = true; touched = true; pending = null;
       cancelAnimationFrame(raf);
       fig.classList.add('is-dragging');
       try { fig.setPointerCapture(e.pointerId); } catch (_) { /* nada */ }
-      set(fromEvent(e));
+      const p = fromEvent(e);
+      const near = Math.abs(p - current()) * fig.getBoundingClientRect().width / 100 < 32;
+      if (near || !jump) { offset = current() - p; } else { offset = 0; glide(p); }
     };
     fig.addEventListener('pointerdown', (e) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
-      if (e.pointerType === 'mouse') { start(e); return; }
+      if (e.pointerType === 'mouse') { start(e, true); return; }
       pending = { x: e.clientX, y: e.clientY, id: e.pointerId };
     });
     fig.addEventListener('pointermove', (e) => {
-      if (dragging) { set(fromEvent(e)); return; }
+      if (dragging) { cancelAnimationFrame(raf); set(fromEvent(e) + offset); return; }
       if (!pending || e.pointerId !== pending.id) return;
       const dx = Math.abs(e.clientX - pending.x);
       const dy = Math.abs(e.clientY - pending.y);
-      if (dx > 6 && dx > dy * 1.2) start(e);
+      if (dx > 8 && dx > dy * 1.2) start(e, false);
       else if (dy > 10) pending = null;
     });
     const end = () => { dragging = false; pending = null; fig.classList.remove('is-dragging'); };
@@ -170,15 +185,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   });
 })();
 
-/* ---------- El disco gira solo mientras se ve ---------- */
-(() => {
-  if (reduceMotion || !('IntersectionObserver' in window)) return;
-  const io = new IntersectionObserver((entries) => entries.forEach((e) => e.target.classList.toggle('is-off', !e.isIntersecting)));
-  document.querySelectorAll('.c-disco').forEach((el) => io.observe(el));
-})();
-
-/* ---------- Entradas al hacer scroll (una vez, nunca deja contenido oculto) ---------- */
-(() => {
+/* ---------- Entradas al hacer scroll (una vez, nunca deja contenido oculto) ----------
+   Arranca cuando ya corrieron todos los scripts, así incluye lo que se dibuja desde los datos. */
+const startReveals = () => {
   const targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;
   if (!('IntersectionObserver' in window)) { targets.forEach((el) => el.classList.add('is-in')); return; }
@@ -193,13 +202,14 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   window.addEventListener('load', () => setTimeout(() => {
     targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
   }, 2500));
-})();
+};
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startReveals); else startReveals();
 
 /* ---------- Barra de WhatsApp en el teléfono ---------- */
 (() => {
   const dock = document.querySelector('.dock');
-  const heroActions = document.querySelector('.hero-actions');
-  const ctaBand = document.querySelector('.cta-band');
+  const heroActions = document.querySelector('.hero .actions');
+  const ctaBand = document.querySelector('.close');
   if (!dock || !heroActions || !('IntersectionObserver' in window)) return;
   const state = { hero: true, end: false };
   const update = () => {
@@ -214,16 +224,66 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   if (ctaBand) new IntersectionObserver(([e]) => { state.end = e.isIntersecting || e.boundingClientRect.top < 0; update(); }).observe(ctaBand);
 })();
 
-/* ---------- Marca del pie: se ajusta al ancho exacto de las letras ---------- */
+/* ---------- Fotos: si un archivo todavía no existe, se ve el recuadro con el nombre del espacio ---------- */
 (() => {
-  const mark = document.querySelector('.mark');
-  const text = mark && mark.querySelector('text');
-  if (!text || !text.getBBox) return;
-  const fit = () => {
-    try {
-      const b = text.getBBox();
-      if (b.width > 0) mark.setAttribute('viewBox', `${b.x} ${b.y} ${b.width} ${b.height}`);
-    } catch (_) { /* se queda con el viewBox de respaldo */ }
-  };
-  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(fit);
+  document.querySelectorAll('.photo').forEach((fig) => {
+    const img = fig.querySelector('img');
+    if (!img) return;
+    const empty = () => { if (fig.classList.contains('case-extra')) { fig.hidden = true; return; } fig.classList.add('is-empty'); img.hidden = true; };
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) empty();
+    else img.addEventListener('error', empty, { once: true });
+    img.addEventListener('load', () => fig.classList.remove('is-empty'), { once: true });
+  });
+})();
+
+/* ---------- Números y cita (contenido.js) ---------- */
+(() => {
+  const c = window.CONTENIDO || {};
+  const nums = (Array.isArray(c.numeros) ? c.numeros : []).filter((n) => n && n.cifra && n.texto);
+  const quote = (Array.isArray(c.citas) ? c.citas : []).find((q) => q && q.texto);
+  const section = document.getElementById('numeros');
+  if (!section || (!nums.length && !quote)) return;
+  const dl = document.getElementById('lista-numeros');
+  nums.forEach((n, i) => {
+    const row = document.createElement('div');
+    row.dataset.reveal = '';
+    row.style.setProperty('--d', String(i + 1));
+    const dt = document.createElement('dt'); dt.textContent = n.cifra;
+    const dd = document.createElement('dd'); dd.textContent = n.texto;
+    row.append(dt, dd); dl.appendChild(row);
+  });
+  if (!nums.length) section.querySelector('.numbers-main').hidden = true;
+  if (quote) {
+    document.getElementById('cita-texto').textContent = `“${String(quote.texto).replace(/^[“"]|[”"]$/g, '')}”`;
+    document.getElementById('cita-autor').textContent = quote.autor || '';
+    document.getElementById('cita').hidden = false;
+  }
+  section.hidden = false;
+})();
+
+/* ---------- Retrato principal: fundido lento entre los retratos que existan ---------- */
+(() => {
+  const fig = document.querySelector('.hero-portrait');
+  if (!fig || reduceMotion) return;
+  const extra = (fig.dataset.cross || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (!extra.length) return;
+  const base = fig.querySelector('img');
+  const frames = [base];
+  let loaded = 0;
+  extra.forEach((src) => {
+    const img = new Image();
+    img.alt = ''; img.className = 'cross'; img.decoding = 'async';
+    img.onload = () => { fig.appendChild(img); frames.push(img); if (++loaded === 1) start(); };
+    img.src = src;
+  });
+  let idx = 0; let timer = 0;
+  function start() {
+    if (timer) return;
+    timer = setInterval(() => {
+      if (document.hidden || fig.classList.contains('is-empty')) return;
+      const next = (idx + 1) % frames.length;
+      frames.forEach((f, i) => { if (f !== base) f.classList.toggle('is-on', i === next); });
+      idx = next;
+    }, 5600);
+  }
 })();

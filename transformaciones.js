@@ -11,7 +11,7 @@
     descripcion  Dos o tres frases con la historia real: de dónde partió, la meta y qué cambió.
     antes        Ruta a la foto de antes.        (null = recuadro de muestra)
     despues      Ruta a la foto de después.      (null = recuadro de muestra)
-    extra        Ruta a una foto horizontal opcional (entrenando, en una carrera…). Puede ser null.
+    extra        Ruta a una foto horizontal 16:10 opcional, debajo de la historia. Puede ser null.
     alt          Descripción corta de las fotos para lectores de pantalla.
 
   Usa solo fotos y datos reales, con permiso del cliente.
