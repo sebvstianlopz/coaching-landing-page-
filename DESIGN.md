@@ -179,9 +179,9 @@ The build defines five fluid size steps as tokens. Display, headline and lead sh
 
 Mobile first, with one breakpoint at 52em. Below it, sections stack in one column inside a fluid side margin, and photos stagger by width (100%, 62%, 78%, 70%) and alternate left and right alignment. At 52em and above, every section becomes a 12-column grid with a fluid gutter, and photos and copy take uneven column spans (for example a 4:5 portrait across columns 7 to 11 with a square print across 2 to 4).
 
-Overlap is a layout tool. It comes from negative margins (the hero square rises into the portrait, the arch photo drops off the panel's bottom edge, the FAQ photo bleeds above its band, the second transformation rises beside the first) and from absolute offsets on a second, smaller print.
+Overlap is a layout tool. It comes from negative margins (the hero square crosses the portrait's lower-left corner on desktop and overlaps it on phones, the arch photo drops off the panel's bottom edge, the second transformation rises beside the first). In "Cómo empezamos" a single photo is pinned (`position: sticky`) beside the steps instead of overlapping.
 
-Rhythm: sections are separated by the section-gap token (7 to 13rem). Inside sections, gaps step through 0.75, 1.25, 1.75, 2.5 and 3.5 to 4.5rem. The two dark blocks (panel and closing band) are inset from the viewport by 0.625rem on phones and 1.25rem on desktop, so they read as framed prints rather than full-bleed bands. The footer photo and the closing photo are the only full-bleed images.
+Rhythm: sections are separated by the section-gap token (7 to 13rem). Inside sections, gaps step through 0.75, 1.25, 1.75, 2.5 and 3.5 to 4.5rem. The two dark blocks (panel and closing band) are inset from the viewport by 0.625rem on phones and 1.25rem on desktop, so they read as framed prints rather than full-bleed bands. The closing photo is the only full-bleed image. The FAQ and the footer are text only, on the Mist Surface tone.
 
 The page respects safe-area insets on the side margins and the bottom dock. On phones, a fixed WhatsApp dock slides up from the bottom once the hero button leaves view; it is hidden on desktop.
 
@@ -198,7 +198,7 @@ One soft corner: photos, the inset panel, the closing band, the quote card and t
 
 The one exception to the frame corner is the arch: inside the forest panel, the main photo has a tall rounded top and a square base (`999px 999px 0 0 / 46% 46% 0 0`), cropped by the panel's bottom edge. It recalls the doors and windows of Old San Juan, and it appears once.
 
-Full-bleed photos (the closing background, the footer half) have no corner radius, because they meet the edge of a rounded container or the viewport. On phones, the top FAQ photo rounds only its bottom corners because it bleeds off the top of its band.
+The full-bleed closing photo has no corner radius of its own, because it fills a rounded container.
 
 There are no borders or hairline rules. The only drawn lines are functional: the slider's 3px white divider, the 2px chevron strokes on FAQ items, and 1px text-link underlines.
 
