@@ -40,7 +40,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
   const sampleWord = (kind) => `<span class="ba-sample" aria-hidden="true">${kind === 'antes' ? 'Antes' : 'Después'}</span>`;
   const layer = (src, kind, alt) => src
-    ? `<img src="${esc(src)}" alt="${kind === 'antes' ? esc(alt) : ''}" width="1200" height="1500" loading="lazy" decoding="async" draggable="false">${sampleWord(kind)}`
+    ? `<img src="${esc(src)}" alt="${kind === 'antes' ? esc(alt) : ''}" width="520" height="650" loading="lazy" decoding="async" draggable="false">`
     : sampleWord(kind);
   const placements = ['case-a', 'case-b', 'case-c'];
   const remarkHTML = '<p class="case-remark" data-reveal>Desliza cada foto para ver el cambio. Clientes reales, con su permiso.</p>';
@@ -56,7 +56,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       : '';
 
     const el = document.createElement('article');
-    el.setAttribute('aria-label', String(t.titulo || 'Transformación'));
+    el.setAttribute('aria-label', String(t.titulo || t.alt || 'Transformación'));
     el.className = `case ${place}${sample ? ' is-sample' : ''}`;
     el.innerHTML = `
       ${place === 'case-b' && i === 1 ? remarkHTML : ''}
@@ -68,10 +68,10 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
           <span class="ba-tag ba-tag-after" aria-hidden="true">Después</span>
           <span class="ba-handle" aria-hidden="true"><span class="ba-knob"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M9 6 3 12l6 6zM15 6l6 6-6 6z" fill="currentColor"/></svg></span></span>
           <input class="ba-range" type="range" min="0" max="100" value="50" step="1"
-            aria-label="Comparar antes y después: ${esc(t.titulo)}" aria-valuetext="Mitad antes, mitad después">
+            aria-label="Comparar antes y después: ${esc(t.titulo || t.alt || 'cliente')}" aria-valuetext="Mitad antes, mitad después">
         </figure>
-        <h3 class="case-title" data-reveal style="--d:2">${name}${detail ? `, ${detail}` : ''}</h3>
-        <p class="case-desc" data-reveal style="--d:2">${esc(t.descripcion)}</p>
+        ${name ? `<h3 class="case-title" data-reveal style="--d:2">${name}${detail ? `, ${detail}` : ''}</h3>` : ''}
+        ${t.descripcion ? `<p class="case-desc" data-reveal style="--d:2">${esc(t.descripcion)}</p>` : ''}
         ${extra}
       </div>`;
     list.appendChild(el);
@@ -83,9 +83,12 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   list.querySelectorAll('img').forEach((img) => {
     const extraSlot = img.closest('.case-extra');
     if (extraSlot) return; // las fotos extra usan el mismo manejo que el resto de fotos de la página
+    const layerEl = img.parentElement;
     const fail = () => {
       img.remove();
-      if (extraSlot) extraSlot.hidden = true;
+      if (extraSlot) { extraSlot.hidden = true; return; }
+      // La foto no cargó: aparece la palabra de muestra en su lugar, no un hueco.
+      if (layerEl) layerEl.insertAdjacentHTML('beforeend', sampleWord(layerEl.classList.contains('ba-before') ? 'antes' : 'despues'));
     };
     if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
     else img.addEventListener('error', fail, { once: true });

@@ -2,44 +2,61 @@
   TRANSFORMACIONES
   ----------------
   Cada objeto es un cliente. Para añadir uno:
-    1. Guarda sus fotos en assets/fotos/ (vertical 4:5 para antes y después, por ejemplo 1200 × 1500 px;
+    1. Guarda sus fotos en assets/fotos/ (vertical 4:5 para antes y después, mismo encuadre y pose;
        horizontal 16:10 para la foto extra, opcional).
     2. Copia un bloque, cambia los textos y las rutas, y guarda.
 
   Campos:
-    titulo       Nombre y tiempo. Corto: "Carla, 16 semanas".
-    descripcion  Dos o tres frases con la historia real: de dónde partió, la meta y qué cambió.
+    titulo       Nombre y tiempo, opcional. Corto: "Carla, 16 semanas". Vacío = sin título.
+    descripcion  Dos o tres frases con la historia real, opcional. Vacío = sin texto.
     antes        Ruta a la foto de antes.        (null = recuadro de muestra)
     despues      Ruta a la foto de después.      (null = recuadro de muestra)
     extra        Ruta a una foto horizontal 16:10 opcional, debajo de la historia. Puede ser null.
     alt          Descripción corta de las fotos para lectores de pantalla.
 
   Usa solo fotos y datos reales, con permiso del cliente.
-  Los tres bloques de abajo son MUESTRAS: reemplázalos antes de publicar.
+  Las fotos de abajo son de clientes reales de Jan. Faltan sus nombres, el tiempo y el resultado:
+  cuando los tengas, ponlos en "titulo" y "descripcion".
 */
 window.TRANSFORMACIONES = [
   {
-    titulo: 'Nombre, 12 semanas',
-    descripcion: 'Aquí va la historia real del cliente: de dónde partió, qué meta tenía y qué cambió en fuerza, en fondo y en el espejo.',
-    antes: null,
-    despues: null,
+    titulo: '',
+    descripcion: '',
+    antes: 'assets/fotos/cliente-1-antes.webp',
+    despues: 'assets/fotos/cliente-1-despues.webp',
     extra: null,
-    alt: 'Cliente antes y después de 12 semanas de coaching'
+    alt: 'Cliente de Jan de espalda, antes y después del coaching'
   },
   {
-    titulo: 'Nombre, 16 semanas',
-    descripcion: 'Una segunda historia. Funciona mejor con un dato concreto que el cliente quiera compartir: un peso levantado, un tiempo en 5K, una talla.',
-    antes: null,
-    despues: null,
+    titulo: '',
+    descripcion: '',
+    antes: 'assets/fotos/cliente-2-antes.webp',
+    despues: 'assets/fotos/cliente-2-despues.webp',
     extra: null,
-    alt: 'Cliente antes y después de 16 semanas de coaching'
+    alt: 'Clienta de Jan de frente, antes y después del coaching'
   },
   {
-    titulo: 'Nombre, 24 semanas',
-    descripcion: 'Una tercera historia. Con tres o cuatro clientes la sección se lee completa; con más, la página sigue funcionando igual.',
-    antes: null,
-    despues: null,
+    titulo: '',
+    descripcion: '',
+    antes: 'assets/fotos/cliente-3-antes.webp',
+    despues: 'assets/fotos/cliente-3-despues.webp',
     extra: null,
-    alt: 'Cliente antes y después de 24 semanas de coaching'
+    alt: 'Cliente de Jan de perfil, antes y después del coaching'
+  },
+  {
+    titulo: '',
+    descripcion: '',
+    antes: 'assets/fotos/cliente-4-antes.webp',
+    despues: 'assets/fotos/cliente-4-despues.webp',
+    extra: null,
+    alt: 'Cliente de Jan de frente, antes y después del coaching'
+  },
+  {
+    titulo: '',
+    descripcion: '',
+    antes: 'assets/fotos/cliente-5-antes.webp',
+    despues: 'assets/fotos/cliente-5-despues.webp',
+    extra: null,
+    alt: 'Cliente de Jan de perfil, antes y después del coaching'
   }
 ];
