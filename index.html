@@ -56,7 +56,7 @@
 
     <!-- Foto del coach: cambia jan-hero.webp (PNG/WebP con fondo transparente, vertical) para usar otra. -->
     <div class="hero-figure">
-      <svg class="hero-waves" id="hero-waves" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+      <svg class="wave-lines hero-waves" id="hero-waves" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
       <img class="hero-coach" src="assets/fotos/jan-hero.webp" srcset="assets/fotos/jan-hero-480.webp 480w, assets/fotos/jan-hero.webp 670w" sizes="(min-width: 52em) 40vw, 86vw" alt="Jan Medina sonriendo, con bandana y gafas deportivas" width="670" height="941" fetchpriority="high">
     </div>
 
@@ -102,9 +102,23 @@
   </section>
 
   <section id="resultados" class="results" aria-labelledby="results-title">
-    <h2 id="results-title" class="head-sm slot" data-reveal><span>Resultados</span></h2>
+    <div class="stack" id="stack">
+      <div class="stack-track">
+        <div class="stack-stage">
+          <div class="stack-copy">
+            <h2 id="results-title" class="head slot" data-reveal><span>Resultados</span></h2>
+            <p class="lead" data-reveal style="--d:1">Clientes reales de Jan, con su permiso. Cada foto es un antes y un después.</p>
+            <div class="stack-dots" aria-hidden="true"></div>
+            <a class="button" data-wa href="https://wa.me/17870000000" data-reveal style="--d:2">Agenda por WhatsApp</a>
+          </div>
+          <div class="stack-cards" id="stack-cards" data-reveal style="--d:1">
+            <svg class="wave-lines stack-waves" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="results-list" id="lista-resultados"></div>
-    <noscript><p>Activa JavaScript para ver las transformaciones, o escríbele a Jan por <a href="https://wa.me/17870000000">WhatsApp</a>.</p></noscript>
+    <noscript><p class="results-noscript">Activa JavaScript para ver las transformaciones, o escríbele a Jan por <a href="https://wa.me/17870000000">WhatsApp</a>.</p></noscript>
   </section>
 
   <section id="numeros" class="numbers" aria-labelledby="numbers-title" hidden>

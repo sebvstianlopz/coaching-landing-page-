@@ -30,19 +30,5 @@ window.TRANSFORMACIONES = [
     alt: 'Antes y después de una clienta de Jan, de frente y corriendo',
     titulo: '',
     descripcion: ''
-  },
-  {
-    foto: 'assets/fotos/transformacion-3.webp',
-    foto640: 'assets/fotos/transformacion-3-640.webp',
-    alt: 'Antes y después de un cliente de Jan, de perfil y de espalda',
-    titulo: '',
-    descripcion: ''
-  },
-  {
-    foto: 'assets/fotos/transformacion-4.webp',
-    foto640: 'assets/fotos/transformacion-4-640.webp',
-    alt: 'Antes y después de clientes de Jan, de perfil y de frente',
-    titulo: '',
-    descripcion: ''
   }
 ];

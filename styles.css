@@ -138,7 +138,7 @@ strong { font-weight: 500; }
   -webkit-mask-composite: source-in;
   mask-image: linear-gradient(90deg, transparent 0%, var(--ink) 28%, var(--ink) 78%, transparent 100%), linear-gradient(180deg, transparent 0%, var(--ink) 16%, var(--ink) 80%, transparent 100%); /* taste-skill-ignore: edge-fade mask, not a fill */
   mask-composite: intersect; }
-.hero-waves path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.wave-lines path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .hero-coach { position: absolute; bottom: 0; left: 50%; height: 100%; width: auto; max-width: none; transform: translateX(-50%); }
 
 .hero-stats { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0; }
@@ -203,7 +203,39 @@ strong { font-weight: 500; }
 }
 
 /* ---------- resultados ---------- */
-.results { padding: var(--gap-section) var(--margin) 0; }
+.results { margin-top: var(--gap-section); padding: clamp(4rem, 8vw, 6rem) 0; background: var(--sky-pale); }
+.results > .head-sm, .results > .head, .results-list, .results-noscript { margin-inline: var(--margin); }
+
+/* Resultados: pila de copias que se recorre con el scroll */
+.stack-stage { position: relative; display: grid; gap: 2rem; padding: 0 var(--margin); }
+.stack-copy { position: relative; z-index: 2; display: grid; gap: 1.25rem; align-content: start; justify-items: start; max-width: 30rem; }
+.stack-dots { display: flex; gap: 0.6rem; }
+.stack-dots span { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--sky-light); transition: background-color var(--t-ui) ease, transform var(--t-ui) var(--ease-out); }
+.stack-dots span.is-on { background: var(--accent); transform: scale(1.35); }
+.stack-cards { position: relative; display: grid; gap: 2rem; justify-items: center; }
+.stack-waves { position: absolute; inset: -20% -40%; width: 180%; height: 140%; z-index: 0; color: var(--sky); pointer-events: none;
+  /* Las líneas se desvanecen hacia todos los bordes: nunca se ve dónde terminan. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, var(--ink) 28%, var(--ink) 78%, transparent 100%), linear-gradient(180deg, transparent 0%, var(--ink) 16%, var(--ink) 80%, transparent 100%); /* taste-skill-ignore: edge-fade mask, not a fill */
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, var(--ink) 28%, var(--ink) 78%, transparent 100%), linear-gradient(180deg, transparent 0%, var(--ink) 16%, var(--ink) 80%, transparent 100%); /* taste-skill-ignore: edge-fade mask, not a fill */
+  mask-composite: intersect; }
+/* Cada foto es una copia impresa: marco blanco, sin sombra. */
+.stack-card { position: relative; z-index: 1; width: min(78vw, 24rem); aspect-ratio: 1125 / 2000; margin: 0; padding: 8px; border-radius: var(--radius); background: var(--white); transform-origin: 50% 0%; }
+.stack-card img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius) - 8px); }
+.js .stack.is-live .stack-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; grid-template-rows: auto 1fr; align-content: start; padding-block: clamp(1.25rem, 4vh, 2.5rem); }
+.js .stack.is-live .stack-cards { --h: min(54svh, 32rem); display: block; height: var(--h); align-self: center; }
+@media (max-width: 51.99em) {
+  .js .stack.is-live .stack-stage { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  .js .stack.is-live .stack-copy .button { display: none; }
+}
+.js .stack.is-live .stack-card { position: absolute; top: 0; left: 0; right: 0; margin-inline: auto; width: calc(var(--h) * 0.5625); height: var(--h); will-change: transform; }
+@media (min-width: 52em) {
+  .stack-stage { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center; }
+  .stack-copy { grid-column: 1 / 6; }
+  .stack-cards { grid-column: 7 / 13; }
+  .js .stack.is-live .stack-stage { grid-template-rows: 1fr; padding-block: 0; }
+  .js .stack.is-live .stack-cards { --h: min(80svh, 46rem); }
+}
 .results > .head-sm { margin-bottom: clamp(2.5rem, 6vw, 5rem); }
 .results-list { display: grid; gap: 4.5rem; }
 .case { display: grid; gap: 0.75rem; }
@@ -229,21 +261,6 @@ strong { font-weight: 500; }
 }
 .results-list > .case-b:first-child { margin-top: 0 !important; }
 
-/* fotos simples de antes y después, colgadas a distintas alturas */
-.results-list.is-photos { gap: 2.5rem; }
-.case-photo { display: grid; gap: 0.75rem; }
-.case-photo-frame { aspect-ratio: 1125 / 2000; }
-.case-photo:nth-child(odd) { width: 88%; }
-.case-photo:nth-child(even) { width: 80%; justify-self: end; }
-@media (min-width: 52em) {
-  .results-list.is-photos { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 0; align-items: start; }
-  .case-photo:nth-child(n) { width: auto; justify-self: stretch; }
-  .case-photo:nth-child(4n+1) { grid-column: 1 / 6; }
-  .case-photo:nth-child(4n+2) { grid-column: 7 / 12; margin-top: clamp(4rem, 12vw, 11rem); }
-  .case-photo:nth-child(4n+3) { grid-column: 2 / 7; margin-top: clamp(-6rem, -6vw, -2rem); }
-  .case-photo:nth-child(4n+4) { grid-column: 8 / 13; margin-top: clamp(3rem, 8vw, 7rem); }
-}
-
 /* antes / después */
 .ba { container-type: inline-size; position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius); background: var(--surface-2); touch-action: pan-y; cursor: ew-resize; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .ba-layer { position: absolute; inset: 0; }
@@ -265,7 +282,7 @@ strong { font-weight: 500; }
 .ba:focus-within { outline: 2px solid var(--focus); outline-offset: 4px; }
 
 /* ---------- números ---------- */
-.numbers { display: grid; gap: 3rem; margin-top: var(--gap-section); padding: clamp(4rem, 9vw, 7rem) var(--margin); background: var(--sky-pale); }
+.numbers { display: grid; gap: 3rem; padding: clamp(4rem, 9vw, 7rem) var(--margin); background: var(--surface); }
 .numbers-main { display: grid; gap: 2.5rem; }
 .figures { display: grid; gap: 1.75rem; }
 .figures > div { display: grid; grid-template-columns: 5.5rem 1fr; column-gap: 1.25rem; align-items: baseline; }
@@ -366,8 +383,8 @@ strong { font-weight: 500; }
   .js .hero-stats > div { opacity: 0; transform: translateY(12px); animation: rise 800ms var(--ease-out) forwards; }
   .js .hero-stats > div:nth-child(1) { animation-delay: 650ms; }
   .js .hero-stats > div:nth-child(2) { animation-delay: 740ms; }
-  .hero-waves .wave-a { animation: drift-a 16s ease-in-out infinite alternate; }
-  .hero-waves .wave-b { animation: drift-b 21s ease-in-out infinite alternate; }
+  .wave-lines .wave-a { animation: drift-a 16s ease-in-out infinite alternate; }
+  .wave-lines .wave-b { animation: drift-b 21s ease-in-out infinite alternate; }
   .hero-scroll-dot { animation: scroll-dot 2.4s var(--ease-in-out) infinite; }
   .js [data-rise] { opacity: 0; transform: translateY(18px); animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 150ms); }
   .js [data-reveal] { opacity: 0; transform: translateY(44px); transition: opacity 800ms var(--ease-out), transform 1100ms var(--ease-out); transition-delay: calc(var(--d, 0) * 110ms); }
@@ -388,11 +405,6 @@ strong { font-weight: 500; }
   .js .panel-photo > img { transform: scale(1.2); transition: transform 1900ms var(--ease-soft) 250ms; }
   .js .panel-photo.is-in > img { transform: none; }
 
-  /* 3. Resultados: cada copia se descubre de abajo hacia arriba, en pares. */
-  .js .case-photo-frame[data-reveal] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0 round var(--radius)); transition: clip-path 1200ms var(--ease-in-out); transition-delay: calc(var(--d, 0) * 180ms); }
-  .js .case-photo-frame[data-reveal].is-in { clip-path: inset(0 round var(--radius)); }
-  .js .case-photo-frame > img { transform: scale(1.14); transition: transform 1700ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 180ms); }
-  .js .case-photo-frame.is-in > img { transform: none; }
 
   /* 4. La cita llega un momento después de las cifras. */
   .js .quote[data-reveal] { transform: translateY(40px) scale(0.94); transition-delay: 260ms; }
@@ -423,10 +435,6 @@ strong { font-weight: 500; }
 /* Movimiento ligado al scroll (3, 5, 7). Sin soporte, todo queda quieto y completo. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    @media (min-width: 52em) {
-      .case-photo:nth-child(odd) { animation: drift-slow linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
-      .case-photo:nth-child(even) { animation: drift-fast linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
-    }
     .method { view-timeline-name: --metodo; }
     .method-photo > img { animation: breathe linear both; animation-timeline: --metodo; animation-range: cover 0% cover 100%; }
     .close-photo > img { animation: settle-zoom linear both; animation-timeline: view(); animation-range: entry 0% cover 55%; }
@@ -436,14 +444,12 @@ strong { font-weight: 500; }
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] { opacity: 0; transition: opacity 400ms ease; }
   .js [data-reveal].is-in { opacity: 1; }
-  .js .slot[data-reveal], .js .panel[data-reveal], .js .case-photo-frame[data-reveal], .js .footer-menu[data-reveal] { opacity: 1; }
+  .js .slot[data-reveal], .js .panel[data-reveal], .js .footer-menu[data-reveal] { opacity: 1; }
   .dock { transform: none; opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s linear 200ms; }
   .dock.is-shown { opacity: 1; visibility: visible; transition: opacity 200ms ease, visibility 0s; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
 @keyframes rise-in { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: none; } }
-@keyframes drift-slow { from { transform: translateY(28px); } to { transform: translateY(-28px); } }
-@keyframes drift-fast { from { transform: translateY(80px); } to { transform: translateY(-80px); } }
 @keyframes breathe { from { transform: scale(1); } to { transform: scale(1.12); } }
 @keyframes settle-zoom { from { transform: scale(1.22); } to { transform: scale(1); } }
 @keyframes coach-in { from { opacity: 0; transform: translate(-50%, 36px) scale(1.03); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }

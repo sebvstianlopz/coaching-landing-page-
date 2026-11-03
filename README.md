@@ -32,14 +32,14 @@ The current photos are Instagram screenshots (~1200 px). When the originals arri
 ## Before you publish
 
 1. **WhatsApp number:** in `main.js`, change `WHATSAPP_NUMERO` (digits only, with country code, e.g. `17875551234`). For no-JS visitors, also replace `17870000000` in the `href` attributes of `index.html`.
-2. **Transformations:** the four before-and-afters in `transformaciones.js` are real clients. Confirm each one's permission, and add a first name and result if you'd like a caption.
+2. **Transformations:** the two before-and-afters in `transformaciones.js` are real clients. Confirm each one's permission, and add a first name and result if you'd like a caption.
 3. **Numbers and quote:** the entries in `contenido.js` are **samples** ("XX"), including the two hero figures (`hero: { anos, clientes }`). Put Jan's real figures there. If there's no quote, leave `citas: []` and only the numbers show. If both lists are empty, the section disappears.
 4. **Instagram:** point the Instagram links (hero icon and footer) to Jan's profile.
 5. **Copy to confirm with Jan:** the three panel blocks, the method steps and the FAQ answers.
 
 ## Adding a transformation
 
-Before-and-afters show as **plain photos**, the collage just as Jan posts it (with its own BEFORE/AFTER labels). Save the photo in `assets/fotos/` (ideally also a 640 px wide copy for phones) and add a block to `transformaciones.js`:
+Before-and-afters show as **plain photos**, the collage just as Jan posts it (with its own BEFORE/AFTER labels), in a **scroll stack**: the section holds in place while you scroll and each new print slides up over the previous one. Save the photo in `assets/fotos/` (ideally also a 640 px wide copy for phones) and add a block to `transformaciones.js`:
 
 ```js
 {
@@ -51,7 +51,7 @@ Before-and-afters show as **plain photos**, the collage just as Jan posts it (wi
 }
 ```
 
-Photos hang at alternating heights; four, eight or more all work. If the list is empty, the section and its links disappear. A photo that fails to load is hidden instead of leaving a hole.
+Two photos work best in the stack; three or four also work (the section just stays pinned a little longer). If the list is empty, the section and its links disappear. A photo that fails to load is skipped. Visitors who turn off motion see the photos one below the other.
 
 ## Publishing on GitHub Pages
 

@@ -45,27 +45,29 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   const placements = ['case-a', 'case-b', 'case-c'];
   const remarkHTML = '<p class="case-remark" data-reveal>Desliza cada foto para ver el cambio. Clientes reales, con su permiso.</p>';
 
-  /* Foto simple (el collage de antes y después tal como se publica): sin deslizador. */
+  /* Fotos simples (el collage tal como se publica): van en la pila que se recorre con el scroll. */
   const photos = data.filter((t) => t.foto);
-  if (photos.length) list.classList.add('is-photos');
-  const photoCase = (t, i) => {
-    const [first, ...rest] = String(t.titulo || '').split(',');
-    const title = first.trim() ? `${esc(first.trim())}${rest.length ? `, ${esc(rest.join(',').trim())}` : ''}` : '';
-    const small = t.foto640 ? `${esc(t.foto640)} 640w, ` : '';
-    const el = document.createElement('article');
-    el.className = 'case-photo';
-    el.setAttribute('aria-label', String(t.titulo || t.alt || 'Transformación'));
-    el.innerHTML = `
-      <figure class="photo case-photo-frame" data-reveal style="--d:${i % 2}">
-        <img src="${esc(t.foto)}" srcset="${small}${esc(t.foto)} 1125w" sizes="(min-width: 52em) 40vw, 88vw" alt="${esc(t.alt || 'Antes y después de un cliente de Jan')}" width="1125" height="2000" loading="lazy" decoding="async">
-      </figure>
-      ${title ? `<h3 class="case-title" data-reveal style="--d:1">${title}</h3>` : ''}
-      ${t.descripcion ? `<p class="case-desc" data-reveal style="--d:1">${esc(t.descripcion)}</p>` : ''}`;
-    list.appendChild(el);
-  };
+  const stack = document.getElementById('stack');
+  const cardsBox = document.getElementById('stack-cards');
+  if (photos.length && stack && cardsBox) {
+    photos.forEach((t, i) => {
+      const small = t.foto640 ? `${esc(t.foto640)} 640w, ` : '';
+      const fig = document.createElement('figure');
+      fig.className = 'stack-card';
+      fig.innerHTML = `<img src="${esc(t.foto)}" srcset="${small}${esc(t.foto)} 1125w" sizes="(min-width: 52em) 26rem, 70vw" alt="${esc(t.alt || 'Antes y después de un cliente de Jan')}" width="1125" height="2000" ${i ? 'loading="lazy"' : ''} decoding="async">`;
+      const img = fig.querySelector('img');
+      img.addEventListener('error', () => { fig.remove(); }, { once: true });
+      cardsBox.appendChild(fig);
+    });
+  } else if (stack) {
+    // Sin fotos simples: el título sale de la pila y la pila se esconde (las entradas antes/después usan la lista).
+    const h = stack.querySelector('#results-title');
+    if (h) section.insertBefore(h, list);
+    stack.hidden = true;
+  }
 
   data.forEach((t, i) => {
-    if (t.foto) { photoCase(t, i); return; }
+    if (t.foto) return;
     const sample = !t.antes || !t.despues;
     const [first, ...rest] = String(t.titulo || '').split(',');
     const name = esc(first.trim());
@@ -96,9 +98,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       </div>`;
     list.appendChild(el);
   });
-  // Con fotos simples, o con un solo cliente, la frase va bajo el título de la sección.
-  if (photos.length) list.insertAdjacentHTML('beforebegin', '<p class="case-remark results-remark" data-reveal>Clientes reales de Jan, con su permiso.</p>');
-  else if (data.length === 1) list.insertAdjacentHTML('beforebegin', remarkHTML.replace('case-remark', 'case-remark results-remark'));
+  // Con un solo cliente (antes/después separados), la frase va bajo el título de la sección.
+  if (!photos.length && data.length === 1) list.insertAdjacentHTML('beforebegin', remarkHTML.replace('case-remark', 'case-remark results-remark'));
 
   /* Una foto que no carga (ruta mal escrita, archivo borrado) deja ver el recuadro de muestra en vez de un hueco. */
   list.querySelectorAll('img').forEach((img) => {
@@ -226,7 +227,7 @@ const startReveals = () => {
     }
   }, { rootMargin: '0px 0px -14% 0px', threshold: 0.08 });
   targets.forEach((el) => {
-    const w = el.matches('.case-photo-frame') ? el.parentElement : el;
+    const w = el;
     if (!watched.has(w)) watched.set(w, []);
     watched.get(w).push(el);
     io.observe(w);
@@ -261,7 +262,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   document.querySelectorAll('.photo').forEach((fig) => {
     const img = fig.querySelector('img');
     if (!img) return;
-    const empty = () => { if (fig.classList.contains('case-photo-frame')) { fig.closest('.case-photo').hidden = true; return; } if (fig.classList.contains('case-extra')) { fig.hidden = true; return; } fig.classList.add('is-empty'); img.hidden = true; };
+    const empty = () => { if (fig.classList.contains('case-extra')) { fig.hidden = true; return; } fig.classList.add('is-empty'); img.hidden = true; };
     if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) empty();
     else img.addEventListener('error', empty, { once: true });
     img.addEventListener('load', () => fig.classList.remove('is-empty'), { once: true });
@@ -295,8 +296,8 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 
 /* ---------- Hero: líneas finas en ondas detrás del coach (decorativas) ---------- */
 (() => {
-  const svg = document.getElementById('hero-waves');
-  if (!svg) return;
+  const svgs = document.querySelectorAll('.wave-lines');
+  if (!svgs.length) return;
   const NS = 'http://www.w3.org/2000/svg';
   const W = 900;
   // Una cinta de líneas que se tuerce: donde el coseno pasa por cero, las líneas se juntan.
@@ -318,9 +319,11 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     }
     return g;
   };
-  const a = ribbon(30, 360, 300, 120, 0.55, 140); a.setAttribute('class', 'wave-a');
-  const b = ribbon(16, 470, 170, 90, 2.1, -60); b.setAttribute('class', 'wave-b');
-  svg.append(a, b);
+  svgs.forEach((svg, k) => {
+    const a = ribbon(30, 360, 300, 120, 0.55 + k * 1.3, 140); a.setAttribute('class', 'wave-a');
+    const b = ribbon(16, 470, 170, 90, 2.1 + k * 0.9, -60); b.setAttribute('class', 'wave-b');
+    svg.append(a, b);
+  });
 })();
 
 /* ---------- Hero: cifras desde contenido.js (si existen) ---------- */
@@ -359,4 +362,48 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     entries.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); setTimeout(() => run(e.target), e.target.closest('.hero-stats') ? 750 : 150); } });
   }, { threshold: 0.6 });
   els.forEach((el) => io.observe(el));
+})();
+
+/* ---------- Resultados: pila que se recorre con el scroll ----------
+   La sección se queda fija mientras bajas: la primera foto se aleja y se atenúa mientras la siguiente
+   sube por encima, como una tarjeta. Transform y opacidad, escritos directo en cada tarjeta. */
+(() => {
+  const stack = document.getElementById('stack');
+  if (!stack || stack.hidden) return;
+  const cards = [...stack.querySelectorAll('.stack-card')];
+  const dots = stack.querySelector('.stack-dots');
+  if (dots && cards.length > 1) cards.forEach((_, i) => { const d = document.createElement('span'); if (!i) d.className = 'is-on'; dots.appendChild(d); });
+  if (reduceMotion || cards.length < 2) return; // sin movimiento: las fotos quedan una debajo de otra
+  stack.classList.add('is-live');
+  const track = stack.querySelector('.stack-track');
+  const n = cards.length;
+  track.style.height = `calc(100svh + ${(n - 1) * 95}svh)`;
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const dotEls = dots ? [...dots.children] : [];
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const r = track.getBoundingClientRect();
+    const total = Math.max(1, r.height - innerHeight);
+    const p = clamp(-r.top / total);
+    // margen al inicio y al final para que cada foto se pueda mirar quieta
+    const span = clamp((p - 0.08) / 0.84) * (n - 1);
+    const local = cards.map((_, i) => (i === 0 ? 1 : ease(clamp(span - (i - 1)))));
+    cards.forEach((card, i) => {
+      const depth = local.slice(i + 1).reduce((a, b) => a + b, 0); // cuántas fotos tiene encima
+      const enter = 1 - local[i];
+      const y = enter * 112 - depth * 7;
+      const rot = enter * 7 - depth * 1.5;
+      const sc = 1 - depth * 0.1 + enter * 0.04;
+      card.style.transform = `translate3d(0, ${y.toFixed(2)}%, 0) rotate(${rot.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+      card.style.opacity = (1 - Math.min(depth, 1) * 0.45).toFixed(3);
+    });
+    const active = Math.round(span);
+    dotEls.forEach((d, i) => d.classList.toggle('is-on', i === active));
+  };
+  const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  update();
 })();
