@@ -224,7 +224,7 @@ const startReveals = () => {
       (watched.get(entry.target) || [entry.target]).forEach((el) => el.classList.add('is-in'));
       io.unobserve(entry.target);
     }
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px -14% 0px', threshold: 0.08 });
   targets.forEach((el) => {
     const w = el.matches('.case-photo-frame') ? el.parentElement : el;
     if (!watched.has(w)) watched.set(w, []);
@@ -348,7 +348,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     el.style.minWidth = `${el.getBoundingClientRect().width}px`;
     const t0 = performance.now();
     const tick = (now) => {
-      const p = Math.min(1, (now - t0) / 1200);
+      const p = Math.min(1, (now - t0) / 1800);
       const v = (target * ease(p)).toFixed(decimals).replace('.', sep);
       el.textContent = `${pre}${v}${post}`;
       if (p < 1) requestAnimationFrame(tick); else el.textContent = `${pre}${num}${post}`;

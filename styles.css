@@ -278,7 +278,7 @@ strong { font-weight: 500; }
 }
 
 /* ---------- cómo empezamos: una foto fija, los pasos pasan a su lado ---------- */
-.method { display: grid; gap: 2.5rem; padding: var(--gap-section) var(--margin) 0; }
+.method { display: grid; gap: 2.5rem; padding: var(--gap-section) var(--margin) 0; overflow-x: clip; }
 .method-photo { aspect-ratio: 3 / 4; }
 .method-text { display: grid; gap: 2.25rem; align-content: start; }
 .steps { display: grid; gap: 1.75rem; }
@@ -365,42 +365,45 @@ strong { font-weight: 500; }
   .hero-waves .wave-b { animation: drift-b 21s ease-in-out infinite alternate; }
   .hero-scroll-dot { animation: scroll-dot 2.4s var(--ease-in-out) infinite; }
   .js [data-rise] { opacity: 0; transform: translateY(18px); animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 150ms); }
-  .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js [data-reveal] { opacity: 0; transform: translateY(44px); transition: opacity 800ms var(--ease-out), transform 1100ms var(--ease-out); transition-delay: calc(var(--d, 0) * 110ms); }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
-  .js .photo[data-reveal], .js .ba[data-reveal] { transform: scale(0.985); transition: opacity 700ms var(--ease-out), transform 1100ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js .photo[data-reveal], .js .ba[data-reveal] { transform: translateY(36px) scale(0.94); transition: opacity 800ms var(--ease-out), transform 1300ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 110ms); }
   .js .photo[data-reveal].is-in, .js .ba[data-reveal].is-in { transform: none; }
   .accordion details[open] p { animation: answer 260ms var(--ease-out); }
 
   /* 1. Títulos de sección: suben desde detrás de su propia línea base. */
   .js .slot[data-reveal] { opacity: 1; transform: none; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; }
-  .js .slot > span { display: block; transform: translateY(105%); transition: transform 800ms var(--ease-out); }
+  .js .slot > span { display: block; transform: translateY(110%); transition: transform 1050ms var(--ease-out); }
   .js .slot.is-in > span { transform: none; }
 
   /* 2. El panel se abre como una ventana; sus bloques llegan después; la foto se asienta en su marco. */
-  .js .panel[data-reveal] { opacity: 1; transform: none; clip-path: inset(6% 4% round var(--radius)); transition: clip-path 900ms var(--ease-out); }
+  .js .panel[data-reveal] { opacity: 1; transform: none; clip-path: inset(14% 9% round var(--radius)); transition: clip-path 1200ms var(--ease-out); }
   .js .panel[data-reveal].is-in { clip-path: inset(0 round var(--radius)); }
-  .js .panel [data-reveal] { transition-delay: calc(220ms + var(--d, 0) * 80ms); }
-  .js .panel-photo > img { transform: scale(1.08); transition: transform 1400ms var(--ease-soft) 200ms; }
+  .js .panel [data-reveal] { transition-delay: calc(320ms + var(--d, 0) * 120ms); }
+  .js .panel-photo > img { transform: scale(1.2); transition: transform 1900ms var(--ease-soft) 250ms; }
   .js .panel-photo.is-in > img { transform: none; }
 
   /* 3. Resultados: cada copia se descubre de abajo hacia arriba, en pares. */
-  .js .case-photo-frame[data-reveal] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0 round var(--radius)); transition: clip-path 900ms var(--ease-in-out); transition-delay: calc(var(--d, 0) * 120ms); }
+  .js .case-photo-frame[data-reveal] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0 round var(--radius)); transition: clip-path 1200ms var(--ease-in-out); transition-delay: calc(var(--d, 0) * 180ms); }
   .js .case-photo-frame[data-reveal].is-in { clip-path: inset(0 round var(--radius)); }
+  .js .case-photo-frame > img { transform: scale(1.14); transition: transform 1700ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 180ms); }
+  .js .case-photo-frame.is-in > img { transform: none; }
 
   /* 4. La cita llega un momento después de las cifras. */
-  .js .quote[data-reveal] { transform: translateY(16px) scale(0.98); transition-delay: 200ms; }
+  .js .quote[data-reveal] { transform: translateY(40px) scale(0.94); transition-delay: 260ms; }
   .js .quote[data-reveal].is-in { transform: none; }
 
   /* 5. Pasos: entran desde la derecha; primero la frase en negrita, luego el texto. */
-  .js .steps li[data-reveal] { transform: translateX(16px); transition-delay: 0ms; }
+  .js .steps li[data-reveal] { transform: translateX(28px); transition-delay: 0ms; }
+  @media (min-width: 52em) { .js .steps li[data-reveal] { transform: translateX(56px); } }
   .js .steps li[data-reveal].is-in { transform: none; }
-  .js .steps li .step-text { opacity: 0; transition: opacity 600ms var(--ease-out) 60ms; }
+  .js .steps li .step-text { opacity: 0; transition: opacity 700ms var(--ease-out) 160ms; }
   .js .steps li.is-in .step-text { opacity: 1; }
 
   /* Pie: los enlaces del menú suben uno tras otro. */
   .js .footer-menu[data-reveal] { opacity: 1; transform: none; }
   .js .footer-menu a { opacity: 0; }
-  .js .footer-menu.is-in a { opacity: 1; animation: rise-in 700ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+  .js .footer-menu.is-in a { opacity: 1; animation: rise-in 900ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 90ms); }
 }
 
 /* 6. Preguntas: la respuesta abre su altura con suavidad donde el navegador lo permite. */
@@ -433,11 +436,11 @@ strong { font-weight: 500; }
   .dock.is-shown { opacity: 1; visibility: visible; transition: opacity 200ms ease, visibility 0s; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
-@keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-@keyframes drift-slow { from { transform: translateY(16px); } to { transform: translateY(-16px); } }
-@keyframes drift-fast { from { transform: translateY(40px); } to { transform: translateY(-40px); } }
-@keyframes breathe { from { transform: scale(1); } to { transform: scale(1.05); } }
-@keyframes settle-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: none; } }
+@keyframes drift-slow { from { transform: translateY(28px); } to { transform: translateY(-28px); } }
+@keyframes drift-fast { from { transform: translateY(80px); } to { transform: translateY(-80px); } }
+@keyframes breathe { from { transform: scale(1); } to { transform: scale(1.12); } }
+@keyframes settle-zoom { from { transform: scale(1.22); } to { transform: scale(1); } }
 @keyframes coach-in { from { opacity: 0; transform: translate(-50%, 36px) scale(1.03); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
 @keyframes waves-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes drift-a { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-3.5%, 1.8%, 0); } }
