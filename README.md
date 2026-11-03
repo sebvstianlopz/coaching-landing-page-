@@ -16,26 +16,25 @@ DESIGN.md             the design system, documented from the code
 
 ## Photos
 
-There are five photo spots, each with a fixed filename in `assets/fotos/`. Every photo has two sizes: `name.webp` (large) and `name-640.webp` (phone). **To change one, replace both files using the same names.**
+There are four photo spots, each with a fixed filename in `assets/fotos/`. Every photo has two sizes: `name.webp` (large) and a phone version (`name-640.webp`, or `name-480.webp` for the hero). **To change one, replace both files using the same names.**
 
 | File | Where it goes | Current photo |
 | --- | --- | --- |
-| `jan-retrato` | Hero, Jan's main portrait (4:5) | Jan mid-race, flexing |
-| `jan-entreno` | Hero, square overlapping the portrait | Jan at the track |
-| `jan-coach` | Green panel, inside the arch (4:5) | Jan running in the forest |
+| `jan-hero` | Hero, the coach on the right (**transparent background**, vertical) | Jan in the city, background removed |
+| `jan-coach` | Sky panel (4:5) | Jan running in the forest |
 | `jan-gym` | "Cómo empezamos", pinned while you scroll (3:4) | Jan in the gym |
 | `cierre` | Final band, with text over it | Jan running in the forest (wide crop) |
 
-The current photos are Instagram screenshots (~1200 px). When the originals arrive, send them to me and I'll swap and compress them for sharpness on large screens.
+To change the hero photo, use a vertical PNG or WebP **with a transparent background** (the person cut out), saved as `jan-hero.webp` and `jan-hero-480.webp`. Send me any photo and I'll cut it out.
 
-To make the hero fade slowly between several portraits, add `data-cross="assets/fotos/jan-retrato-2.webp,assets/fotos/jan-retrato-3.webp"` to the `<figure class="photo hero-portrait">` and save those files.
+The current photos are Instagram screenshots (~1200 px). When the originals arrive, send them to me and I'll swap and compress them for sharpness on large screens.
 
 ## Before you publish
 
 1. **WhatsApp number:** in `main.js`, change `WHATSAPP_NUMERO` (digits only, with country code, e.g. `17875551234`). For no-JS visitors, also replace `17870000000` in the `href` attributes of `index.html`.
 2. **Transformations:** the four before-and-afters in `transformaciones.js` are real clients. Confirm each one's permission, and add a first name and result if you'd like a caption.
-3. **Numbers and quote:** the entries in `contenido.js` are **samples** ("XX"). Put Jan's real figures there. If there's no quote, leave `citas: []` and only the numbers show. If both lists are empty, the section disappears.
-4. **Instagram:** in the footer, point the Instagram link to Jan's profile.
+3. **Numbers and quote:** the entries in `contenido.js` are **samples** ("XX"), including the two hero figures (`hero: { anos, clientes }`). Put Jan's real figures there. If there's no quote, leave `citas: []` and only the numbers show. If both lists are empty, the section disappears.
+4. **Instagram:** point the Instagram links (hero icon and footer) to Jan's profile.
 5. **Copy to confirm with Jan:** the three panel blocks, the method steps and the FAQ answers.
 
 ## Adding a transformation

@@ -232,7 +232,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 /* ---------- Barra de WhatsApp en el teléfono ---------- */
 (() => {
   const dock = document.querySelector('.dock');
-  const heroActions = document.querySelector('.hero .actions');
+  const heroActions = document.querySelector('.button-cta');
   const ctaBand = document.querySelector('.close');
   if (!dock || !heroActions || !('IntersectionObserver' in window)) return;
   const state = { hero: true, end: false };
@@ -285,29 +285,41 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   section.hidden = false;
 })();
 
-/* ---------- Retrato principal: fundido lento entre los retratos que existan ---------- */
+/* ---------- Hero: líneas finas en ondas detrás del coach (decorativas) ---------- */
 (() => {
-  const fig = document.querySelector('.hero-portrait');
-  if (!fig || reduceMotion) return;
-  const extra = (fig.dataset.cross || '').split(',').map((s) => s.trim()).filter(Boolean);
-  if (!extra.length) return;
-  const base = fig.querySelector('img');
-  const frames = [base];
-  let loaded = 0;
-  extra.forEach((src) => {
-    const img = new Image();
-    img.alt = ''; img.className = 'cross'; img.decoding = 'async';
-    img.onload = () => { fig.appendChild(img); frames.push(img); if (++loaded === 1) start(); };
-    img.src = src;
+  const svg = document.getElementById('hero-waves');
+  if (!svg) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const W = 900;
+  // Una cinta de líneas que se tuerce: donde el coseno pasa por cero, las líneas se juntan.
+  const ribbon = (count, base, spread, amp, phase, tilt) => {
+    const g = document.createElementNS(NS, 'g');
+    for (let i = 0; i < count; i++) {
+      const t = i / (count - 1);
+      let d = '';
+      for (let x = -120; x <= W + 120; x += 18) {
+        const u = x / W;
+        const y = base + (t - 0.5) * spread * Math.cos(u * Math.PI * 1.35 + phase)
+          + amp * Math.sin(u * Math.PI * 2.1 + phase + t * 0.9) - tilt * u;
+        d += `${d ? 'L' : 'M'}${x.toFixed(0)} ${y.toFixed(1)}`;
+      }
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('stroke-opacity', (0.22 + 0.5 * (1 - Math.abs(t - 0.5) * 2)).toFixed(2));
+      g.appendChild(path);
+    }
+    return g;
+  };
+  const a = ribbon(30, 360, 300, 120, 0.55, 140); a.setAttribute('class', 'wave-a');
+  const b = ribbon(16, 470, 170, 90, 2.1, -60); b.setAttribute('class', 'wave-b');
+  svg.append(a, b);
+})();
+
+/* ---------- Hero: cifras desde contenido.js (si existen) ---------- */
+(() => {
+  const h = (window.CONTENIDO && window.CONTENIDO.hero) || {};
+  document.querySelectorAll('[data-hero-stat]').forEach((el) => {
+    const v = h[el.dataset.heroStat];
+    if (v) el.textContent = v;
   });
-  let idx = 0; let timer = 0;
-  function start() {
-    if (timer) return;
-    timer = setInterval(() => {
-      if (document.hidden || fig.classList.contains('is-empty')) return;
-      const next = (idx + 1) % frames.length;
-      frames.forEach((f, i) => { if (f !== base) f.classList.toggle('is-on', i === next); });
-      idx = next;
-    }, 5600);
-  }
 })();

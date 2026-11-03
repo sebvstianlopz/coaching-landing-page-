@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Jan Medina · Coaching híbrido</title>
   <meta name="description" content="Coaching de entrenamiento híbrido con Jan Medina, online o en persona en Puerto Rico. Mira resultados reales y agenda tu llamada por WhatsApp.">
-  <meta name="theme-color" content="#eef3f5">
+  <meta name="theme-color" content="#ffffff">
   <meta name="color-scheme" content="light">
-  <meta property="og:title" content="Jan Medina · Fuerza y fondo, a tu ritmo">
+  <meta property="og:title" content="Jan Medina · Planes personalizados para un impacto máximo">
   <meta property="og:description" content="Coaching de entrenamiento híbrido en Puerto Rico. Agenda tu llamada por WhatsApp.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/fotos/jan-retrato.webp">
+  <meta property="og:image" content="assets/fotos/jan-coach.webp">
   <link rel="preload" href="assets/fonts/hanken-grotesk-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/fotos/jan-retrato.webp" imagesrcset="assets/fotos/jan-retrato-640.webp 640w, assets/fotos/jan-retrato.webp 1080w" imagesizes="(min-width: 52em) 38vw, 78vw">
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/fotos/jan-hero.webp" imagesrcset="assets/fotos/jan-hero-480.webp 480w, assets/fotos/jan-hero.webp 800w" imagesizes="(min-width: 52em) 40vw, 86vw">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -25,38 +26,57 @@
   nombre (la lista completa está en el README).
 -->
 
-<header class="nav">
-  <div class="nav-left">
-    <a class="wordmark" href="#top">Jan Medina</a>
-    <nav class="nav-links" aria-label="Principal">
-      <a class="link" href="#resultados">Resultados</a>
-      <a class="link" href="#metodo">Cómo empezamos</a>
-      <a class="link" href="#preguntas">Preguntas</a>
-    </nav>
+<header class="hero2" aria-labelledby="hero-title">
+  <nav class="hnav" aria-label="Principal">
+    <div class="hnav-left">
+      <a class="wordmark" href="#top">Jan Medina</a>
+      <div class="hnav-links">
+        <a href="#jan">Sobre mí</a>
+        <a href="#metodo">Método</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#preguntas">Preguntas</a>
+      </div>
+    </div>
+    <a class="button-outline" data-wa href="https://wa.me/17870000000">Contáctame</a>
+  </nav>
+
+  <div class="hero-stage">
+    <ul class="hero-social" aria-label="Redes sociales">
+      <li><a href="https://instagram.com/" rel="noopener" aria-label="Instagram de Jan Medina">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg>
+      </a></li>
+      <li><a data-wa href="https://wa.me/17870000000" aria-label="WhatsApp de Jan Medina">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.3 20.7l4.4-1.1A8.8 8.8 0 1 0 12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.1 8.2c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .5.6 1 1.4 1.8 2.5 2.4.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.3.3.5 0 .6-.3 1.3-.9 1.6-.6.3-1.6.4-3.1-.3a9 9 0 0 1-4.1-4.1c-.6-1.4-.4-2.6.1-3.4Z" fill="currentColor"/></svg>
+      </a></li>
+    </ul>
+
+    <h1 id="hero-title" class="hero-h1" data-rise style="--i:0"><span class="hl">Planes personalizados</span> <span class="hl">para un impacto</span> <span class="hl">máximo</span></h1>
+
+    <a class="button button-cta" data-wa href="https://wa.me/17870000000" data-rise style="--i:1">Agenda una consulta</a>
+
+    <!-- Foto del coach: cambia jan-hero.webp (PNG/WebP con fondo transparente, vertical) para usar otra. -->
+    <div class="hero-figure">
+      <svg class="hero-waves" id="hero-waves" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+      <img class="hero-coach" src="assets/fotos/jan-hero.webp" srcset="assets/fotos/jan-hero-480.webp 480w, assets/fotos/jan-hero.webp 800w" sizes="(min-width: 52em) 40vw, 86vw" alt="Jan Medina sonriendo con su mochila en una calle de la ciudad" width="800" height="1046" fetchpriority="high">
+    </div>
+
+    <dl class="hero-stats" aria-label="Jan en números">
+      <div><dt>Años de experiencia</dt><dd data-hero-stat="anos">XX+</dd></div>
+      <div><dt>Clientes felices</dt><dd data-hero-stat="clientes">XX+</dd></div>
+    </dl>
+
+    <span class="hero-rule" aria-hidden="true"></span>
+
+    <p class="hero-intro" data-rise style="--i:2">No importa en qué punto de tu camino estés: te ayudo a dar el siguiente paso. Juntos construimos la fuerza, el fondo y la confianza que mereces.</p>
+
+    <a class="hero-scroll" href="#jan" aria-label="Bajar a la siguiente sección">
+      <span class="hero-scroll-dot" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 40" width="22" height="36" aria-hidden="true"><path d="M12 2v34M4 28l8 8 8-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
-  <a class="button button-small" data-wa href="https://wa.me/17870000000">WhatsApp</a>
 </header>
 
 <main>
-  <section class="hero" aria-labelledby="hero-title">
-    <h1 id="hero-title" class="display hero-title"><span class="hero-line" data-rise style="--i:0">Fuerza y fondo,</span> <span class="hero-line" data-rise style="--i:1">a tu ritmo.</span></h1>
-
-    <div class="hero-copy" data-rise style="--i:2">
-      <p class="lead">Coaching de entrenamiento híbrido con Jan Medina. Online o en persona, en Puerto&nbsp;Rico.</p>
-      <div class="actions">
-        <a class="button" data-wa href="https://wa.me/17870000000">Agenda por WhatsApp</a>
-        <a class="link-plain" href="#resultados">Ver resultados</a>
-      </div>
-    </div>
-
-    <figure class="photo hero-portrait" data-slot="Retrato de Jan · vertical 4:5 · jan-retrato.webp">
-      <img src="assets/fotos/jan-retrato.webp" srcset="assets/fotos/jan-retrato-640.webp 640w, assets/fotos/jan-retrato.webp 1080w" sizes="(min-width: 52em) 38vw, 78vw" alt="Jan Medina sonriendo y flexionando los brazos en plena carrera en Puerto Rico" width="1080" height="1350" fetchpriority="high">
-    </figure>
-    <figure class="photo hero-square" data-slot="Jan entrenando · cuadrada · jan-entreno.webp">
-      <img src="assets/fotos/jan-entreno.webp" srcset="assets/fotos/jan-entreno-640.webp 640w, assets/fotos/jan-entreno.webp 900w" sizes="(min-width: 52em) 22vw, 42vw" alt="Jan Medina riéndose junto a una pista de atletismo" width="900" height="900">
-    </figure>
-  </section>
-
   <section id="jan" class="panel-wrap" aria-labelledby="about-title">
     <div class="panel">
       <h2 id="about-title" class="head panel-title" data-reveal>Entrena con alguien que&nbsp;contesta.</h2>
