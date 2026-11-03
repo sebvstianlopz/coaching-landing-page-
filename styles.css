@@ -336,16 +336,17 @@ strong { font-weight: 500; }
 }
 
 /* ---------- cierre ---------- */
-.close { position: relative; margin: var(--gap-section) 0.625rem 0; min-height: 80svh; display: grid; align-items: end; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); }
+.close { position: relative; margin: var(--gap-section) 0.625rem 0; min-height: 80svh; display: grid; align-items: start; overflow: hidden; border-radius: var(--radius); background: var(--field-dark); color: var(--field-dark-ink); }
 .close-photo { position: absolute; inset: 0; border-radius: 0; background: transparent; }
+.close-photo > img { object-position: 50% 60%; }
 .close-photo.is-empty::after { color: var(--soft-on-dark); top: 1rem; bottom: auto; }
-.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.5) 45%, rgba(15, 23, 42, 0) 85%); } /* taste-skill-ignore: neutral scrim under text on a photo */
+.close-photo:not(.is-empty)::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.45) 38%, rgba(15, 23, 42, 0) 66%); } /* taste-skill-ignore: neutral scrim under text on a photo */
 .close-copy { position: relative; z-index: 2; display: grid; gap: 1.25rem; padding: 2rem 1.5rem 2.25rem; max-width: 36rem; }
 .close-copy .button { justify-self: start; margin-top: 0.5rem; }
 @media (min-width: 52em) {
   .close { margin-inline: 1.25rem; min-height: min(88svh, 56vw); }
-  .close-copy { padding: 3.5rem calc(var(--margin) - 1.25rem); justify-self: end; width: min(36rem, 44%); }
-  .close-photo > img { object-position: 50% 36% !important; }
+  .close-copy { padding: 3.5rem calc(var(--margin) - 1.25rem); justify-self: end; width: min(34rem, 44%); }
+  .close-photo > img { object-position: 50% 55%; }
 }
 
 /* ---------- pie ---------- */

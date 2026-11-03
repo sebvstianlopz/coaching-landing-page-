@@ -23,7 +23,7 @@ There are four photo spots, each with a fixed filename in `assets/fotos/`. Every
 | `jan-hero` | Hero, the coach on the right (**transparent background**, vertical) | Jan in the city, background removed |
 | `jan-coach` | Sky panel (4:5) | Jan running in the forest |
 | `jan-gym` | "Cómo empezamos", pinned while you scroll (3:4) | Jan in the gym |
-| `cierre` | Final band, with text over it | Jan running in the forest (wide crop) |
+| `cierre` | Final band, with text over it | Jan with a running group and the Puerto Rico flag |
 
 To change the hero photo, use a vertical PNG or WebP **with a transparent background** (the person cut out), saved as `jan-hero.webp` and `jan-hero-480.webp`. Send me any photo and I'll cut it out.
 
