@@ -196,7 +196,7 @@ The system is flat: there is no `box-shadow` anywhere. Depth comes from overlapp
 
 One soft corner: photos, the inset panel, the closing band, the quote card and the before/after frame all use the frame radius (16px). Buttons, slider tags and the slider knob are full pills or circles. The focus outline uses a small 4px corner.
 
-The one exception to the frame corner is the arch: inside the forest panel, the main photo has a tall rounded top and a square base (`999px 999px 0 0 / 46% 46% 0 0`), cropped by the panel's bottom edge. It recalls the doors and windows of Old San Juan, and it appears once.
+The one exception to the frame corner is the arch: inside the forest panel, the main photo has a tall rounded top and a square base (`999px 999px 0 0 / 46% 46% 0 0`), cropped by the panel's bottom edge. It recalls the doors and windows of Old San Juan, appears once, and was confirmed by the user.
 
 The full-bleed closing photo has no corner radius of its own, because it fills a rounded container.
 
