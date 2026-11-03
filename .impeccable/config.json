@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-03T00:22:43.671Z",
+        "reason": "Claude triage (v2): flagged children are full-bleed photos by design (arch cropped by panel bottom, FAQ photo bleeding off section top, closing photo band, footer photo half); measured text insets are >=20px at 390px and >=55px at 1440px in .panel, .faq, .close and .footer-side"
+      }
+    ]
+  }
+}
