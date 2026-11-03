@@ -178,7 +178,7 @@ strong { font-weight: 500; }
   .hero-figure { left: 42%; }
   .hero-coach { left: 44%; height: 76%; }
   .hero-stats { grid-column: 10 / 13; }
-  .hero-intro { grid-column: 2 / 7; }
+  .hero-intro { grid-column: 2 / 7; max-width: 26ch; }
 }
 @media (min-width: 75em) and (max-width: 89.99em) {
   .hero-coach { left: 53%; height: 94%; }
